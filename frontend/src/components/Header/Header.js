@@ -1,5 +1,27 @@
 import { Link } from "react-router-dom";
+import "./Header.css"
+import { useEffect, useState } from "react";
+
+
 function Header() {
+    const [isLogged, setisLogged] = useState(false);
+
+    useEffect(() => {
+        checkStorage();
+        return () => { };
+    }, [isLogged]);
+    function checkStorage() {
+        if (localStorage.getItem("userId")) {
+            setisLogged(true);
+        } else {
+            setisLogged(false);
+        }
+    }
+    const logout = () => {
+        localStorage.removeItem("userId");
+        localStorage.clear();
+        setisLogged(false);
+    };
     return (
         <nav class="navbar navbar-expand-lg navbar-light bg-white w-100 navigation" id="navbar">
             <div class="container">
@@ -34,35 +56,41 @@ function Header() {
                                 <li><Link class="nav-link" to={{ pathname: "/home-care" }}>Home Care</Link></li>
 
                             </ul>
+
                         </li>
-                        <ul class="top-menu list-inline mb-0 d-none d-lg-block" id="top-menu">
 
 
 
-
-                            <li class="list-inline-item">
-
-                                <Link color="orange" class="btn btn-outline-primary m-1" to={{ pathname: "/signup" }}>Signup</Link>
-                            </li>
-                            <Link color="orange" class="btn btn-outline-primary m-1" role="button" to={{ pathname: "/login" }}>Login</Link>
-
-                            {/* <button size="10px" type="button" routerLink="/profile" class="btn btn-outline-primary m-1">Welcome,
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-        class="bi bi-person" viewBox="0 0 16 16">
-        <path
-            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-    </svg></button> */}
-                        </ul>
                     </ul>
                 </div>
-                <ul class="top-menu list-inline mb-0 d-none d-lg-block" id="top-menu">
+                {/* SIGNUP - LOGIN-LOGOUT  */}
+                {!isLogged ? (
+                    <ul class="top-menu list-inline mb-0 d-none d-lg-block" id="top-menu">
+                        <Link className="button-1" to={{ pathname: "/signup" }}>Signup</Link>
+                        <Link className="button-1" to={{ pathname: "/login" }}>Login</Link>
+                    </ul>
+                ) : (
+                    <div>
+                        <Link size="10px" type="button" to={{ pathname: "/profile" }} className="button-1">Welcome,
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                            </svg></Link>
+                        <Link className="button-1" onClick={logout}>Logout</Link>
+                    </div>
 
+
+
+                )}
+                <ul class="top-menu list-inline mb-0 d-none d-lg-block" id="top-menu">
                     <li class="dropdown cart-nav dropdown-slide list-inline-item">
                         <a href="#" class="dropdown-toggle cart-icon" data-toggle="dropdown" data-hover="dropdown">
                             <i class="tf-ion-android-cart"></i>
                         </a>
                     </li>
                 </ul>
+
             </div>
         </nav>
     );
