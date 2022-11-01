@@ -12,7 +12,7 @@ import {
 } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
+    <div>  {/* className="App" */}
 
       <BrowserRouter>
         <Header></Header>
@@ -20,7 +20,7 @@ function App() {
           {/* <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} /> */}
-
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </div>

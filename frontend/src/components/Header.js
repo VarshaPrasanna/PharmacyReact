@@ -58,9 +58,9 @@ function Header() {
                 <ul class="top-menu list-inline mb-0 d-none d-lg-block" id="top-menu">
 
                     <li class="dropdown cart-nav dropdown-slide list-inline-item">
-                        <a href="#" class="dropdown-toggle cart-icon" data-toggle="dropdown" data-hover="dropdown">
+                        <Link to={{ pathname: "/cart" }} class="dropdown-toggle cart-icon" data-toggle="dropdown" data-hover="dropdown">
                             <i class="tf-ion-android-cart"></i>
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </div>
