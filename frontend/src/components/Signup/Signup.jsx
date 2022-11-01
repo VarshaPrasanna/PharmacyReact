@@ -11,9 +11,7 @@ const Signup = () => {
         username:"",
 		email: "",
 		password: "",
-        isAdmin:0
-    
-
+        isAdmin:false
 	});
 	const [error, setError] = useState("");
 	const navigate = useNavigate();

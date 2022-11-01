@@ -1,10 +1,11 @@
 import './App.css';
 import React, { createContext } from 'react';
-
+import Layout from './components/Layout';
+import { useEffect, useState } from "react";
 import Header from './components/Header/Header';
 import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
-
+import AdminApp from './components/Admin/AdminApp';
 import {
   BrowserRouter,
   Routes,
@@ -12,18 +13,19 @@ import {
   Link,
   Outlet
 } from "react-router-dom";
+import ManageUsers from './components/Admin/AdminComponents/ManageUsers/ManageUsers';
 function App() {
-
-
-  const user = localStorage.getItem("token");
   return (
     <div className="App">
-      <BrowserRouter>
-        <Header></Header>
-        <Routes>
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
 
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route exact path="/" />
+            <Route exact path="/signup" element={<Signup />} />
+            <Route exact path="/login" element={<Login />} />
+          </Route>
+          <Route exact path="/admin" element={<AdminApp />} />
         </Routes>
       </BrowserRouter>
     </div>

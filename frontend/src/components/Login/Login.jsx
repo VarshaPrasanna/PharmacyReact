@@ -1,11 +1,14 @@
+
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
+import AdminApp from "../Admin/AdminApp";
 
 const Login = () => {
 	const [data, setData] = useState({ username: "", password: "" });
 	const [error, setError] = useState("");
+    const navigate = useNavigate();
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
@@ -21,7 +24,16 @@ const Login = () => {
             localStorage.setItem('userId', res._id)
             localStorage.setItem('userName', res.firstName + '  ' + res.lastName)
             localStorage.setItem('isAdmin', res.isAdmin)
-			window.location = "/";
+			
+            if (res.isAdmin) {
+                navigate('/admin');
+                localStorage.setItem('role', 'admin')
+      
+              }
+              else {
+                navigate('/');
+                localStorage.setItem('role', 'user')
+              }
 		} catch (error) {
 			if (
 				error.response &&
