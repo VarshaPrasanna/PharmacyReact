@@ -7,8 +7,8 @@ import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
 import AdminApp from './components/Admin/AdminApp';
 import ManageUsers from './components/Admin/AdminComponents/ManageUsers/ManageUsers';
-import React from 'react';
-import Header from './components/Header';
+
+
 import Cart from './components/Cart/Cart';
 
 import {
