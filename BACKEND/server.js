@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors());
 
 
-const { auth_route, user_route, product_route, cart_route, order_route, discussionBoard_route } = require('./app/routes/');
+const { auth_route, user_route, product_route, cart_route, order_route, prescription_route, discussionBoard_route } = require('./app/routes/');
 
 app.use('/auth', auth_route);
 app.use('/users', user_route);
@@ -20,7 +20,7 @@ app.use('/products', product_route);
 app.use('/carts', cart_route);
 app.use('/orders', order_route);
 app.use('/message', discussionBoard_route);
-
+app.use('/prescription', prescription_route);
 const dbConfig = require('./config/database.config.js');
 
 /* connecting to the database */

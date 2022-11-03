@@ -8,6 +8,7 @@ import Login from './components/Login/Login';
 import AdminApp from './components/Admin/AdminApp';
 import ManageUsers from './components/Admin/AdminComponents/ManageUsers/ManageUsers';
 import Payment from './components/Payment/Payment';
+import ManageOrders from './components/Admin/AdminComponents/ManageOrders/ManageOrders';
 import Home from './components/Home/Home';
 
 
@@ -21,6 +22,7 @@ import {
   Outlet
 } from "react-router-dom";
 import Navbar from './components/Admin/AdminComponents/Navbar';
+import ProductList from './components/product-list/product-list';
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
           <Route exact path="/admin" element={<AdminApp />} />
           <Route exact path="/ManageUsers" element={<ManageUsers />} />
           <Route exact path='/payment' element={<Payment />} />
+          <Route path='/product-list' element={<ProductList />} />
+          <Route path='/ManageOrders' element={<ManageOrders />} />
 
         </Routes>
       </BrowserRouter>
