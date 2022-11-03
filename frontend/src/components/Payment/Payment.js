@@ -1,3 +1,4 @@
+import React from 'react';
 import { Button, Col, Form, Row, Table } from "react-bootstrap";
 import './Payment.css';
 
