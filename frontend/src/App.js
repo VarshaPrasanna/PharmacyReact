@@ -20,6 +20,7 @@ import {
   Outlet
 } from "react-router-dom";
 import Navbar from './components/Admin/AdminComponents/Navbar';
+import ProductList from './components/product-list/product-list';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route exact path="/admin" element={<AdminApp />} />
           <Route exact path="/ManageUsers" element={<ManageUsers />} />
           <Route path='/payment' element={<Payment />} />
+          <Route path='/product-list' element={<ProductList />} />
 
         </Routes>
       </BrowserRouter>
