@@ -1,5 +1,7 @@
 import React from "react";
+import { Table } from "react-bootstrap";
 import './Cart.css';
+import { Link } from "react-router-dom";
 
 const products = [
     {
@@ -93,8 +95,11 @@ export default class Cart extends React.Component {
                     <div className="col-md-4 d-flex flex-column justify-content-between">
                         <div className="card border rounded flex-row product-card bill">
                             <div className="card-body">
-                                <h4 className="card-title">Order Summary</h4>
-                                <table className="table table-borderless">
+                               
+                                <Table borderless striped>
+                                    <thead>
+                                        <th><h4>Order Summary</h4></th>
+                                    </thead>
                                     <tbody>
                                         <tr>
                                             <td scope="row">Total sum</td>
@@ -104,21 +109,19 @@ export default class Cart extends React.Component {
                                             <td scope="row">Shipping charges</td>
                                             <td>{50}</td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                                <hr />
-                                <table className="table table-borderless">
-                                    <tbody>
-                                        <tr>
+                                       
+                                        <tr className="total">
                                             <td scope="row">Total Amount</td>
                                             <td>{this.state.sum + 50}</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </Table>
                             </div>
                         </div>
 
-                        <button className="btn btn-block btn-dark">Proceed to Checkout</button>
+                        <Link to={{ pathname: "/payment" }}>
+                            <button className="btn btn-block btn-dark">Proceed to Checkout</button>
+                        </Link>
 
                     </div>
 
@@ -136,9 +139,9 @@ export default class Cart extends React.Component {
                                             <div>
                                                 <div className="qty"><button className="btn btn-sm qty-button m-1" onClick={() => this.changeQty(product, 1)}
                                                 >+</button>
-                                                {product.productQty}
-                                                <button className="btn btn-sm qty-button m-1" onClick={() => this.changeQty(product, -1)}
-                                                >-</button></div>
+                                                    {product.productQty}
+                                                    <button className="btn btn-sm qty-button m-1" onClick={() => this.changeQty(product, -1)}
+                                                    >-</button></div>
                                             </div>
                                         </div>
                                         <div className="col-sm-1">

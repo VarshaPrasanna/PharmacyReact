@@ -1,0 +1,28 @@
+.form-wrapper{
+    padding-left: 75px;
+    padding-right: 50px;
+    margin-top: 60px;
+}
+
+.form-wrapper h4{
+    padding-bottom: 20px;
+}
+
+Form.Group{
+    margin-bottom: 50px;
+}
+
+.product-card{
+    margin-right: 50px;
+    margin-top: 60px;
+}
+
+.submit-button{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.submit-button Button{
+    border-radius: 10px;
+    width: 500px;
+}
