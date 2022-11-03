@@ -12,9 +12,11 @@ Form.Group{
     margin-bottom: 50px;
 }
 
-.product-card{
+.bill-card{
     margin-right: 50px;
     margin-top: 60px;
+    background-color: rgba(196, 208, 230, 0.685);
+    border-radius: 10px;
 }
 
 .submit-button{
