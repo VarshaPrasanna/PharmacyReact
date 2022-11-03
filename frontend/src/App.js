@@ -7,6 +7,10 @@ import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
 import AdminApp from './components/Admin/AdminApp';
 import ManageUsers from './components/Admin/AdminComponents/ManageUsers/ManageUsers';
+import React from 'react';
+import Header from './components/Header';
+import Cart from './components/Cart/Cart';
+
 import {
   BrowserRouter,
   Routes,
@@ -18,7 +22,7 @@ import Navbar from './components/Admin/AdminComponents/Navbar';
 
 function App() {
   return (
-    <div className="App">
+    <div>  {/* className="App" */}
 
       <BrowserRouter>
         <Routes>
@@ -27,6 +31,7 @@ function App() {
             <Route exact path="/signup" element={<Signup />} />
             <Route exact path="/login" element={<Login />} />
           </Route>
+          <Route path="/cart" element={<Cart />} />
 
           <Route exact path="/admin" element={<AdminApp />} />
           <Route exact path="/ManageUsers" element={<ManageUsers />} />
