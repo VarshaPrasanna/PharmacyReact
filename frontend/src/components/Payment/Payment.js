@@ -68,7 +68,7 @@ export default function Payment() {
                 </Col>
                 <Col md={3}>
 
-                    <div className="card border rounded flex-row product-card bill">
+                    <div className="card border rounded flex-row bill-card">
                         <div className="card-body">
 
                             <Table borderless striped>

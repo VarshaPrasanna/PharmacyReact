@@ -8,6 +8,7 @@ import Login from './components/Login/Login';
 import AdminApp from './components/Admin/AdminApp';
 import ManageUsers from './components/Admin/AdminComponents/ManageUsers/ManageUsers';
 import Payment from './components/Payment/Payment';
+import Home from './components/Home/Home';
 
 
 import Cart from './components/Cart/Cart';
@@ -28,15 +29,15 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
-            <Route exact path="/" />
+            <Route exact path="/" element={<Home />}/>
             <Route exact path="/signup" element={<Signup />} />
             <Route exact path="/login" element={<Login />} />
           </Route>
-          <Route path="/cart" element={<Cart />} />
+          <Route exact path="/cart" element={<Cart />} />
 
           <Route exact path="/admin" element={<AdminApp />} />
           <Route exact path="/ManageUsers" element={<ManageUsers />} />
-          <Route path='/payment' element={<Payment />} />
+          <Route exact path='/payment' element={<Payment />} />
 
         </Routes>
       </BrowserRouter>
