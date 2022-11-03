@@ -46,6 +46,12 @@ const ProductList = () => {
                   </p>
                 </div>
                 <div>
+                  <p className="card-text text-truncate">
+                   
+                    <small> {item.categories} </small>
+                  </p>
+                </div>
+                <div>
                   <p className="font-weight-bold"> {item.price}</p>
                 </div>
               </div>
