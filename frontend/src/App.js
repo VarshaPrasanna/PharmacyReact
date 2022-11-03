@@ -7,6 +7,7 @@ import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
 import AdminApp from './components/Admin/AdminApp';
 import ManageUsers from './components/Admin/AdminComponents/ManageUsers/ManageUsers';
+import Payment from './components/Payment/Payment';
 
 
 import Cart from './components/Cart/Cart';
@@ -35,6 +36,7 @@ function App() {
 
           <Route exact path="/admin" element={<AdminApp />} />
           <Route exact path="/ManageUsers" element={<ManageUsers />} />
+          <Route path='/payment' element={<Payment />} />
 
         </Routes>
       </BrowserRouter>
