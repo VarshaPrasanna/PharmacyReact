@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Header from '../Header/Header';
+import './product-list.css';
 // import styles from "./styles.module.css";
 
 const ProductList = () => {
@@ -26,12 +27,17 @@ const ProductList = () => {
     }, []);
 
     return (
+      <>
+      <Header />
+      
         <section className="container2">
-            <Header />
-        <div>
-          <div className="col-md-3 col-sm-6">
-            <div className="our-team">{product.map((item)=>{
+        
+          <div className='row'> {product.map((item)=>{
                 return(
+          <div className="col-md-3" class="column" >
+         
+
+            <div className="our-team">
 
                 <div>
               <div className="pic">
@@ -64,12 +70,15 @@ const ProductList = () => {
                 Add to Cart
               </button>
               </div>
+              </div>
+              </div>
               )
             })}
-              </div>
-          </div>
+              
+          
         </div>
       </section>
+      </>
     );
 }
 export default ProductList;
