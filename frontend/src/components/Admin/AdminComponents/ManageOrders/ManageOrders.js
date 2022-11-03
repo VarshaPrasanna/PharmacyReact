@@ -62,10 +62,10 @@ const ManageOrders = () => {
                   <tr>
                     <td scope="row">{item.userId} </td>                   
                     <td>₹ {item.amount} </td>
-                    <td>city    : {item.address.city} <br/>
-                        Pin Code: {item.address.pincode} <br/>
-                        state   : {item.address.state} <br/>
-                        street Address: {item.address.streetAddress}                     
+                    <td>{Object.keys(item.address)[0]} : {item.address[Object.keys(item.address)[0]]} <br/>
+                    {Object.keys(item.address)[1]}: {item.address[Object.keys(item.address)[1]]} <br/>
+                    {Object.keys(item.address)[2]} : {item.address[Object.keys(item.address)[2]]} <br/>
+                    {Object.keys(item.address)[3]}: {item.address[Object.keys(item.address)[3]]}                     
                     </td>
                     <td>{item.status}</td>
 
