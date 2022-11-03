@@ -9,6 +9,7 @@ import './product-list.css';
 const ProductList = () => {
 
     const [product, setProduct] = useState([]);
+    const [search, setSearch] = useState("");
 
     const getProductList = async () => {
         try {
@@ -29,16 +30,35 @@ const ProductList = () => {
     return (
       <>
       <Header />
-      
-        <section className="container2">
-        
-          <div className='row'> {product.map((item)=>{
+      <div className="row-md-3">
+        <div style={{ paddingTop: 1, color: "blue", marginLeft: 10 }}>
+           <input type="text" placeholder="Search for products" onChange={(e) => {
+                    setSearch(e.target.value);
+                }} />
+        </div>
+      </div> 
+      <div className=" mb-4 mt-2">
+      <select>
+          <option >Sort By Name (A to Z)</option>
+          <option value="title|desc">Sort By Name (Z to A)</option>
+          <option value="price|lth">Sort By Price (Low to High)</option>
+          <option value="price|htl">Sort By Price (High to Low)</option>
+      </select>
+     </div>    
+        <section className="container2">       
+          <div className='row'> 
+          {product.filter((item) => {
+             if (search == "") {
+             return item;
+           } else if (
+           item.title.toLowerCase().includes(search.toLowerCase())
+          ) {
+           return item;
+          }
+          }).map((item)=>{
                 return(
           <div className="col-md-3" class="column" >
-         
-
             <div className="our-team">
-
                 <div>
               <div className="pic">
                 <img src={item.image} />
