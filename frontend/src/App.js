@@ -8,6 +8,7 @@ import Login from './components/Login/Login';
 import AdminApp from './components/Admin/AdminApp';
 import ManageUsers from './components/Admin/AdminComponents/ManageUsers/ManageUsers';
 import Payment from './components/Payment/Payment';
+import ManageOrders from './components/Admin/AdminComponents/ManageOrders/ManageOrders';
 
 
 import Cart from './components/Cart/Cart';
@@ -39,6 +40,7 @@ function App() {
           <Route exact path="/ManageUsers" element={<ManageUsers />} />
           <Route path='/payment' element={<Payment />} />
           <Route path='/product-list' element={<ProductList />} />
+          <Route path='/ManageOrders' element={<ManageOrders />} />
 
         </Routes>
       </BrowserRouter>
