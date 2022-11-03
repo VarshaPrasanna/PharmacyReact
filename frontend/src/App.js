@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
 import AdminApp from './components/Admin/AdminApp';
+import ManageUsers from './components/Admin/AdminComponents/ManageUsers/ManageUsers';
 import {
   BrowserRouter,
   Routes,
@@ -13,7 +14,8 @@ import {
   Link,
   Outlet
 } from "react-router-dom";
-import ManageUsers from './components/Admin/AdminComponents/ManageUsers/ManageUsers';
+import Navbar from './components/Admin/AdminComponents/Navbar';
+
 function App() {
   return (
     <div className="App">
@@ -25,7 +27,10 @@ function App() {
             <Route exact path="/signup" element={<Signup />} />
             <Route exact path="/login" element={<Login />} />
           </Route>
+
           <Route exact path="/admin" element={<AdminApp />} />
+          <Route exact path="/ManageUsers" element={<ManageUsers />} />
+
         </Routes>
       </BrowserRouter>
     </div>

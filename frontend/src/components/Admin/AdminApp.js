@@ -18,7 +18,11 @@ export default function AdminApp() {
         <div className="App">
 
 
-            <Navbar></Navbar>
+            <Navbar>
+
+            </Navbar>
+
+
 
 
         </div>
