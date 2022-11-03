@@ -52,7 +52,7 @@ const ProductList = () => {
                   </p>
                 </div>
                 <div>
-                  <p className="font-weight-bold"> {item.price}</p>
+                  <p className="font-weight-bold"> ₹{item.price}</p>
                 </div>
               </div>
               <button
