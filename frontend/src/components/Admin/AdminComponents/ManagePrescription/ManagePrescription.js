@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
+import Navbar from '../Navbar';
 
 function ManagePrescription() {
 
@@ -71,7 +72,9 @@ function ManagePrescription() {
             })
     }
 
+
     return (
+
 
         <div className="container mr-60">
             <div class="jumbotron">

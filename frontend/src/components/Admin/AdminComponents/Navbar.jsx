@@ -1,18 +1,11 @@
 import React, { useState } from "react";
-
-// ICONS
 import * as FaIcons from "react-icons/fa"; 
 import * as AiIcons from "react-icons/ai";
-
 import { IconContext } from "react-icons";
-
 // ROUTING
-
 import { Link } from "react-router-dom";
-
 // DATA FILE
 import { SidebarData } from "./SlidebarData";
-
 // STYLES
 import "./Navbar.css";
 
@@ -24,7 +17,6 @@ export default function Navbar() {
   return (
     <>
       <IconContext.Provider value={{ color: "#FFF" }}>
-        {/* All the icons now are white */}
         <div className="navbar">
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar} />
