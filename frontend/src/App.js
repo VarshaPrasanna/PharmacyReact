@@ -23,6 +23,7 @@ import {
 } from "react-router-dom";
 import Navbar from './components/Admin/AdminComponents/Navbar';
 import ProductList from './components/product-list/product-list';
+import MyOrders from './components/my-orders/my-orders';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route exact path='/payment' element={<Payment />} />
           <Route path='/product-list' element={<ProductList />} />
           <Route path='/ManageOrders' element={<ManageOrders />} />
+          <Route path='/MyOrders' element={<MyOrders />} />
 
         </Routes>
       </BrowserRouter>

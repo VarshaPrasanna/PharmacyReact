@@ -29,6 +29,7 @@ function Header() {
 
                 <Link class="navbar-brand font-weight-bold" to={{ pathname: "/" }}>GetMeds</Link>
 
+
                 <img src="assets/images/pharmacy.png" width="50" height="50" alt=""></img>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar"
                     aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,6 +37,9 @@ function Header() {
                 </button>
                 <div class="collapse navbar-collapse " id="main-navbar">
                     <ul class="navbar-nav mx-auto">
+                    <li class="nav-item active">
+                            <Link class="nav-link" to={{ pathname: "/MyOrders" }}>My Orders</Link>
+                        </li>
                         <li class="nav-item active">
                             <Link class="nav-link" to={{ pathname: "/" }}>Home</Link>
                         </li>
