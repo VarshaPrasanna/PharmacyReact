@@ -93,7 +93,7 @@ export default class Cart extends React.Component {
                 <div className="d-flex row justify-content-around flex-row-reverse cart mt-4">
 
                     <div className="col-md-4 d-flex flex-column justify-content-between">
-                        <div className="card border rounded flex-row product-card bill">
+                        <div className="card border rounded flex-row cart-product-card bill">
                             <div className="card-body">
                                
                                 <Table borderless striped>
@@ -127,7 +127,7 @@ export default class Cart extends React.Component {
 
                     <div className="col flex-column col-md-7 ml-5">
                         {this.state.cart.map(product => (
-                            <div className="card product-card" key={product.productId}>
+                            <div className="card cart-product-card" key={product.productId}>
                                 <div className="card-body">
                                     <div className="row align-items-center">
                                         <div className="col-sm-2">
