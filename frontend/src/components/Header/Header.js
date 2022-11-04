@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import "./Header.css"
 import { useEffect, useState } from "react";
+const firstName = localStorage.getItem('userName')
 
 
 function Header() {
@@ -75,7 +76,7 @@ function Header() {
                     </ul>
                 ) : (
                     <div>
-                        <Link size="10px" type="button" to={{ pathname: "/profile" }} className="button-1">Welcome,
+                        <Link size="10px" type="button" to={{ pathname: "/profile" }} className="button-1">Welcome,{firstName}
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-person" viewBox="0 0 16 16">
                                 <path
