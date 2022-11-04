@@ -4,7 +4,7 @@ import './Carousel.css';
 function HomeCarousel() {
   return (
     <Carousel variant="dark">
-      <Carousel.Item interval={5000} dynamicHeight={false}>
+      <Carousel.Item interval={5000}>
         <div className='carousel-img'>
         <img
           className="d-block img-fluid"

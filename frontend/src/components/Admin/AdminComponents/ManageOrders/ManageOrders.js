@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const ManageOrders = () => {
 
@@ -79,9 +80,9 @@ const ManageOrders = () => {
                     </td>
                     <td>
                       <div className="row text-center  ">
-                        <button type="button" className="btn  btn-info btn-sm">
+                        <Link type="button" className="btn  btn-info btn-sm" to={`/update-status/${item._id}`} >
                           update status
-                        </button>
+                        </Link>
                       </div>
                     </td>
                   </tr>
