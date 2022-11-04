@@ -20,6 +20,8 @@ import {
   Outlet
 } from "react-router-dom";
 import Navbar from './components/Admin/AdminComponents/Navbar';
+import Prescription from './components/Prescription/Prescription';
+import ManagePrescription from './components/Admin/AdminComponents/ManagePrescription/ManagePrescription';
 
 function App() {
   return (
@@ -31,13 +33,15 @@ function App() {
             <Route exact path="/" />
             <Route exact path="/signup" element={<Signup />} />
             <Route exact path="/login" element={<Login />} />
+            <Route path="/prescription" element={<Prescription />} />
           </Route>
           <Route path="/cart" element={<Cart />} />
-
           <Route exact path="/admin" element={<AdminApp />} />
           <Route exact path="/ManageUsers" element={<ManageUsers />} />
           <Route path='/payment' element={<Payment />} />
 
+
+          <Route exact path="/managePrescription" element={<ManagePrescription />} />
         </Routes>
       </BrowserRouter>
     </div>

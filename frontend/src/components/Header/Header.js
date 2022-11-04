@@ -1,4 +1,4 @@
-import React, { Component }  from 'react';
+import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import "./Header.css"
 import { useEffect, useState } from "react";
@@ -41,6 +41,9 @@ function Header() {
                         </li>
                         <li class="nav-item active">
                             <Link class="nav-link" to={{ pathname: "/discussion-board" }}>Dicussion Board</Link>
+                        </li>
+                        <li class="nav-item active">
+                            <Link class="nav-link" to={{ pathname: "/prescription" }}>Prescription</Link>
                         </li>
                         <li class="nav-item dropdown dropdown-slide">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-delay="350"
