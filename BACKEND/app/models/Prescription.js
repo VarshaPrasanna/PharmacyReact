@@ -18,9 +18,13 @@ const PrescriptionSchema = new mongoose.Schema({
 
     prescriptionImage: {
         type: String,
-        required: true,
+
     }
     ,
+    imageUrl: {
+        type: String,
+
+    },
     prescriptionReplies: {
         type: String
     },
