@@ -18,10 +18,7 @@ export default function AdminApp() {
         <div className="App">
 
 
-            <Navbar>
-
-            </Navbar>
-
+            <h1>HELLO ADMIN</h1>
 
 
 

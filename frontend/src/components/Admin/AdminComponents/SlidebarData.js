@@ -11,7 +11,7 @@ export const SidebarData = [
 
     {
         title: "Dashboard",
-        path: "/dashboard",
+        path: "/admin",
         icon: <AiIcons.AiFillHome />,
         cName: "nav-text"
     },
