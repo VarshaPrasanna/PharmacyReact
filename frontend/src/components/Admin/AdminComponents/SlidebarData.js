@@ -42,7 +42,7 @@ export const SidebarData = [
     },
     {
         title: "Prescription",
-        path: "/Prescription",
+        path: "/managePrescription",
         icon: <IoIcons.IoIosPaper />,
         cName: "nav-text"
     },

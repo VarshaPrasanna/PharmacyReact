@@ -1,7 +1,8 @@
-import React, { Component }  from 'react';
+import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import "./Header.css"
 import { useEffect, useState } from "react";
+const firstName = localStorage.getItem('userName')
 
 
 function Header() {
@@ -29,6 +30,7 @@ function Header() {
 
                 <Link class="navbar-brand font-weight-bold" to={{ pathname: "/" }}>GetMeds</Link>
 
+
                 <img src="assets/images/pharmacy.png" width="50" height="50" alt=""></img>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar"
                     aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,11 +38,17 @@ function Header() {
                 </button>
                 <div class="collapse navbar-collapse " id="main-navbar">
                     <ul class="navbar-nav mx-auto">
+                    <li class="nav-item active">
+                            <Link class="nav-link" to={{ pathname: "/MyOrders" }}>My Orders</Link>
+                        </li>
                         <li class="nav-item active">
                             <Link class="nav-link" to={{ pathname: "/" }}>Home</Link>
                         </li>
                         <li class="nav-item active">
                             <Link class="nav-link" to={{ pathname: "/discussion-board" }}>Dicussion Board</Link>
+                        </li>
+                        <li class="nav-item active">
+                            <Link class="nav-link" to={{ pathname: "/prescription" }}>Prescription</Link>
                         </li>
                         <li class="nav-item dropdown dropdown-slide">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-delay="350"
@@ -72,7 +80,7 @@ function Header() {
                     </ul>
                 ) : (
                     <div>
-                        <Link size="10px" type="button" to={{ pathname: "/profile" }} className="button-1">Welcome,
+                        <Link size="10px" type="button" to={{ pathname: "/profile" }} className="button-1">Welcome,{firstName}
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-person" viewBox="0 0 16 16">
                                 <path
