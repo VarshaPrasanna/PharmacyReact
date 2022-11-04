@@ -1,9 +1,11 @@
 import HomeCarousel from "./Carousel/Carousel";
+import ProductCard from "./ProductCard"
 import { Row, Col, Card, CardGroup } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import './Home.css';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import PopularProducts from "./popularProducts/PopularProducts";
 
 export default function Home() {
 
@@ -98,84 +100,13 @@ export default function Home() {
 
                 {newProducts.map(product => {
                     return (
-                        <div className="col-md-3" class="column" key={product._id}>
-                            <div className="our-team">
-                                <div>
-                                    <div className="pic">
-                                        <img src={product.image} />
-                                    </div>
-                                    <div className="card-body mb-0 py-0">
-                                        <h6 className="card-title"><b>{product.title}</b></h6>
-                                        <div>
-                                            <p className="card-text text-truncate">
-                                                <p className="text-info m-0 p-0"> {product.categories} </p>
-                                            </p>
-                                        </div>
-                                        {/* <div>
-                                            <p className="card-text text-truncate text-muted">
-                                                {product.description}
-                                            </p>
-                                        </div> */}
-                                        <div>
-                                            <p className="text-dark"><b> ₹{product.price}</b></p>
-                                        </div>
-                                    </div>
-                                    <button
-                                        type="button"
-                                        className="btn btn-info mt-0 mb-1"
-                                        data-toggle="modal"
-                                        data-target="#modalCart">
-                                        Add to Cart
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        <ProductCard product={product} key={product._id}/> 
                     )
                 })}
 
             </div>
 
-            <div className="categories">
-                <h2 className="section-heading mb-5">Popular Products</h2>
-                <p></p>
-
-                {popProducts.map(product => {
-                    return (
-                        <div className="col-md-3" class="column" key={product._id}>
-                            <div className="our-team">
-                                <div>
-                                    <div className="pic">
-                                        <img src={product.image} />
-                                    </div>
-                                    <div className="card-body mb-0 py-0">
-                                        <h6 className="card-title"><b>{product.title}</b></h6>
-                                        <div>
-                                            <p className="card-text text-truncate">
-                                                <p className="text-info m-0 p-0"> {product.categories} </p>
-                                            </p>
-                                        </div>
-                                        {/* <div>
-                                            <p className="card-text text-truncate text-muted">
-                                                {product.description}
-                                            </p>
-                                        </div> */}
-                                        <div>
-                                            <p className="text-dark"><b> ₹{product.price}</b></p>
-                                        </div>
-                                    </div>
-                                    <button
-                                        type="button"
-                                        className="btn btn-info mt-0 mb-1"
-                                        data-toggle="modal"
-                                        data-target="#modalCart">
-                                        Add to Cart
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    )
-                })}
-            </div>
+            <PopularProducts />
         </>
     );
 }

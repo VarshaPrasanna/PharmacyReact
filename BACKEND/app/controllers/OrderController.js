@@ -93,12 +93,49 @@ const OrderController = {
         const _id = await Order.findById(req.params.id);
 
         try {
-            const data = await Order.aggregate([
+            const data = await Order.aggregate([{
+                $unwind: {
+                    path: "$products"
+                }
+            },
+            {
+                $lookup:
+                {
+                    from: "products",
+                    localField: "products.productId",
+                    foreignField: "_id",
+                    as: "product_info"
+                }
+            },
+            {
+                $group: {
+                    _id: "$products.productId",
+                    quantity: {
+                        $sum: "$products.quantity"
+                    },
+                    totalSold: {
+                        $sum: 1
+                    },
+                    product: {
+                        $addToSet: "$product_info", 
+                    }
+                }
+            },
+            {
+                $sort: {
+                    "totalSold": -1
+                }
+            },
+            {
+                $limit: 4
+            }
+        ])
+            /* const data = await Order.aggregate([
                 {
                     $unwind: {
                         path: "$products"
                     }
-                },
+                }, 
                 {
                     $group: {
                         _id: "$products.productId",
@@ -118,7 +155,8 @@ const OrderController = {
                 {
                     $limit: 5
                 }
-            ]);
+            ]); */
+
             res.status(200).json({
                 type: "success",
                 data
