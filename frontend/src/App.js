@@ -26,6 +26,7 @@ import Prescription from './components/Prescription/Prescription';
 import ManagePrescription from './components/Admin/AdminComponents/ManagePrescription/ManagePrescription';
 import ProductList from './components/product-list/product-list';
 import MyOrders from './components/my-orders/my-orders';
+import UpdateStatus from './components/Admin/AdminComponents/UpdateStatus/update-status';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
           <Route path='/product-list' element={<ProductList />} />
           <Route path='/ManageOrders' element={<ManageOrders />} />
           <Route path='/MyOrders' element={<MyOrders />} />
+          <Route path='/update-status/:id' element={<UpdateStatus/>} />
 
 
           <Route exact path="/managePrescription" element={<ManagePrescription />} />
