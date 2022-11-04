@@ -96,7 +96,7 @@ const MyOrders = () => {
                       <p className="text-muted mb-0">orderId:{item._id}</p>
                     </div>
                     <div className="d-flex justify-content-between">
-                      <p className="text-muted mb-0">order Date :{item.createdAt}</p>
+                      <p className="text-muted mb-0">order Date :{item.createdAt.slice(0, 10)}</p>
                     </div>
                   </div>
                   <div
