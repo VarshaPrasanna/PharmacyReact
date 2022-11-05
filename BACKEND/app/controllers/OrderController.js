@@ -117,7 +117,7 @@ const OrderController = {
                         $sum: 1
                     },
                     product: {
-                        $addToSet: "$product_info", 
+                        $last: "$product_info"
                     }
                 }
             },

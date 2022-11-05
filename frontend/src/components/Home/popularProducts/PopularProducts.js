@@ -13,7 +13,7 @@ function PopularProducts(){
             const data = await axios.get("http://localhost:3000/orders/popular")
             console.log("pop", data.data);
             data.data.data.map(dta => {
-                products.push(dta.product[0][0])
+                products.push(dta.product[0])
             })
             setPopProducts(products);
         } catch (e) {
