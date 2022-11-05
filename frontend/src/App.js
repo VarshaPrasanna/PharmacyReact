@@ -28,6 +28,9 @@ import ProductList from './components/product-list/product-list';
 import MyOrders from './components/my-orders/my-orders';
 import AdminLayout from './components/AdminLayout';
 import UpdateStatus from './components/Admin/AdminComponents/UpdateStatus/update-status';
+import ViewProduct from './components/Admin/AdminComponents/ManageProducts/View-Product';
+import AddProduct from './components/Admin/AdminComponents/ManageProducts/Add-Product';
+import UpdateProduct from './components/Admin/AdminComponents/ManageProducts/Update-Product';
 
 function App() {
   return (
@@ -54,6 +57,9 @@ function App() {
           <Route path='/ManageOrders' element={<ManageOrders />} />
           <Route path='/MyOrders' element={<MyOrders />} />
           <Route path='/update-status/:id' element={<UpdateStatus />} />
+          <Route exact path="/ProductList" element={<ViewProduct />} />
+          <Route exact path="/Addproduct" element={<AddProduct />} />
+          <Route exact path="/UpdateProduct/:_id"element={<UpdateProduct />} />
 
 
 
