@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from '../Navbar';
+import { PDFExport, savePDF } from "@progress/kendo-react-pdf";
+import { useRef, useState, useEffect } from "react";
 
 function ManagePrescription() {
 
@@ -28,6 +30,11 @@ function ManagePrescription() {
                 .catch(err => console.log(err));
         }
     }
+    const pdfExportComponent = useRef(null);
+
+    const handleExportWithComponent = event => {
+        pdfExportComponent.current.save();
+    };
 
 
 

@@ -1,6 +1,8 @@
 import './App.css';
 import React, { createContext } from 'react';
 import Layout from './components/Layout';
+import UserProfile from './components/User-Profile/Userprofile';
+import EditProfile from './components/User-Profile/EditProfile';
 import { useEffect, useState } from "react";
 import Header from './components/Header/Header';
 import Signup from './components/Signup/Signup';
@@ -32,6 +34,9 @@ import ViewProduct from './components/Admin/AdminComponents/ManageProducts/View-
 import AddProduct from './components/Admin/AdminComponents/ManageProducts/Add-Product';
 import UpdateProduct from './components/Admin/AdminComponents/ManageProducts/Update-Product';
 
+
+
+
 function App() {
   return (
     <div>  {/* className="App" */}
@@ -45,6 +50,7 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route path="/prescription" element={<Prescription />} />
 
+
           </Route>
 
           {/* ALL components which "do not" header  */}
@@ -55,12 +61,13 @@ function App() {
           <Route exact path='/payment' element={<Payment />} />
           <Route path='/product-list' element={<ProductList />} />
           <Route path='/ManageOrders' element={<ManageOrders />} />
+          <Route exact path='/Myprofile' element={<UserProfile />} />
+          <Route exact path="/EditProfile" element={<EditProfile />} />
           <Route path='/MyOrders' element={<MyOrders />} />
           <Route path='/update-status/:id' element={<UpdateStatus />} />
           <Route exact path="/ProductList" element={<ViewProduct />} />
           <Route exact path="/Addproduct" element={<AddProduct />} />
-          <Route exact path="/UpdateProduct/:_id"element={<UpdateProduct />} />
-
+          <Route exact path="/UpdateProduct/:_id" element={<UpdateProduct />} />
 
 
 
@@ -69,10 +76,12 @@ function App() {
           <Route element={<AdminLayout />}>
             <Route exact path="/admin" element={<AdminApp />} />
             <Route exact path="/ManageUsers" element={<ManageUsers />} />
-
             <Route exact path="/managePrescription" element={<ManagePrescription />} />
           </Route>
           {/* End of admin layout */}
+
+
+
 
         </Routes>
       </BrowserRouter>

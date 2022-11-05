@@ -1,12 +1,9 @@
 import React from "react";
 import axios from "axios";
 import { PDFExport, savePDF } from "@progress/kendo-react-pdf";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-
 import { useRef, useState, useEffect } from "react";
 import './my-orders.css';
-import Header from "../Header/Header";
+
 
 const MyOrders = () => {
 

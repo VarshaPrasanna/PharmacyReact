@@ -1,6 +1,5 @@
 .bg {
-    /* background-image: url('data:image/jpeg;base64,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'); */
-    /* background-color: rgb(81, 235, 94); */
+  
     background-color: rgb(176, 211, 220);
     position: fixed;
     left: 0;
@@ -9,16 +8,16 @@
     height: 100%;
     margin-top: 5%;
     background-size: cover;
-   /*  filter: blur(5px); */
+
   }
   .gradient-custom {
-    /* fallback for old browsers */
+  
     background: #2b96dd;;
     
-    /* Chrome 10-25, Safari 5.1-6 */
+    
     background: -webkit-linear-gradient(to top left, #2b96dd, rgba(246, 243, 255, 1));
     
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   
     background: linear-gradient(to top left, #2b96dd, rgba(246, 243, 255, 1))
     }
 

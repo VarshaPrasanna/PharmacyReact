@@ -3,7 +3,7 @@ import axios from "axios";
 import ProductCard from "../ProductCard";
 import ProductList from "../../product-list/product-list";
 
-function PopularProducts(){
+function PopularProducts() {
 
     const [popProducts, setPopProducts] = useState([]);
 
@@ -13,7 +13,7 @@ function PopularProducts(){
             const data = await axios.get("http://localhost:3000/orders/popular")
             console.log("pop", data.data);
             data.data.data.map(dta => {
-                products.push(dta.product[0])
+                products.push(data.product[0])
             })
             setPopProducts(products);
         } catch (e) {
@@ -25,17 +25,17 @@ function PopularProducts(){
         getPopularProductList();
     }, []);
 
-    return(
+    return (
         <div className="categories">
-        <h2 className="section-heading mb-5">Popular Products</h2>
-        <p></p>
+            <h2 className="section-heading mb-5">Popular Products</h2>
+            <p></p>
 
-        {popProducts.map(product => {
-            return (
-                <ProductCard product={product} key={product._id}/> 
-            )
-        })}
-    </div>
+            {popProducts.map(product => {
+                return (
+                    <ProductCard product={product} key={product._id} />
+                )
+            })}
+        </div>
     )
 }
 
