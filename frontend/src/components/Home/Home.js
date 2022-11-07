@@ -1,5 +1,5 @@
 import HomeCarousel from "./Carousel/Carousel";
-import ProductCard from "./ProductCard"
+import ProductCard from "../product-card/ProductCard"
 import { Row, Col, Card, CardGroup } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import './Home.css';
@@ -32,7 +32,7 @@ export default function Home() {
             <hr />
             <div className="categories">
 
-                <h2 className="section-heading">Shop By Category</h2>
+                <h1 className="section-heading">Shop By Category</h1>
                 <p className="section-heading">The best Online Pharmacy to shop for your health</p>
                 <Row>
 
@@ -76,7 +76,7 @@ export default function Home() {
             </div>
 
             <div className="categories">
-                <h2 className="section-heading mb-5">New Arrivals</h2>
+                <h1 className="section-heading mb-5">New Arrivals</h1>
                 <p></p>
 
                 {newProducts.map(product => {

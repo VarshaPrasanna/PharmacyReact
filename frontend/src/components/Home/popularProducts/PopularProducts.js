@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ProductCard from "../ProductCard";
+import ProductCard from "../../product-card/ProductCard";
 import ProductList from "../../product-list/product-list";
 
 function PopularProducts() {
@@ -27,7 +27,7 @@ function PopularProducts() {
 
     return (
         <div className="categories">
-            <h2 className="section-heading mb-5">Popular Products</h2>
+            <h1 className="section-heading mb-5">Popular Products</h1>
             <p></p>
 
             {popProducts.map(product => {
