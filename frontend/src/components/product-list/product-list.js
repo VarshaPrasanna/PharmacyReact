@@ -10,22 +10,48 @@ const ProductList = () => {
 
     const [product, setProduct] = useState([]);
     const [search, setSearch] = useState("");
+    
 
     const getProductList = async () => {
         try {
             const data = await axios.get(
                 "http://localhost:3000/products/"
             );
-            console.log(data.data);
+            console.log(data.data.products);
             // console.log(data.data.users)
             setProduct(data.data.products);
         } catch (e) {
             console.log(e);
         }
+
     };
+
     useEffect(() => {
         getProductList();
     }, []);
+    function sorting(value){
+        if(value == "ZtoA"){
+          const p = [...product].sort((a,b)=>a.title > b.title ? -1 : 1,);
+          console.log(p);
+          setProduct(p);
+        }else if(value == "AtoZ"){
+          const p = [...product].sort((a,b)=>a.title > b.title ? 1 : -1,);
+          console.log(p);
+          setProduct(p);
+        }
+        else if(value == "LtoH"){
+          const p = [...product].sort((a,b)=>a.price - b.price );
+          console.log(p);
+          setProduct(p);
+        }
+        else if(value == "HtoL"){
+          const p = [...product].sort((a,b)=>b.price - a.price );
+          console.log(p);
+          setProduct(p);
+        }
+    }
+
+
 
     return (
       <>
@@ -38,11 +64,14 @@ const ProductList = () => {
         </div>
       </div> 
       <div className=" mb-4 mt-2">
-      <select>
-          <option >Sort By Name (A to Z)</option>
-          <option value="title|desc">Sort By Name (Z to A)</option>
-          <option value="price|lth">Sort By Price (Low to High)</option>
-          <option value="price|htl">Sort By Price (High to Low)</option>
+      <select  onChange={(e)=>{
+        sorting(e.target.value);
+      }} >
+          <option value="" >SortBy</option>
+          <option value="AtoZ" >Sort By Name (A to Z)</option>
+          <option value="ZtoA">Sort By Name (Z to A)</option>
+          <option value="LtoH">Sort By Price (Low to High)</option>
+          <option value="HtoL">Sort By Price (High to Low)</option>
       </select>
      </div>    
         <section className="container2">       
@@ -59,7 +88,7 @@ const ProductList = () => {
                 return(
           <div className="col-md-3" class="column" >
             <div className="our-team">
-                <div>
+                <Link to={{ pathname: `/product-info/${item._id}` }} >
               <div className="pic">
                 <img src={item.image} />
               </div>
@@ -89,7 +118,7 @@ const ProductList = () => {
               >
                 Add to Cart
               </button>
-              </div>
+              </Link>
               </div>
               </div>
               )
