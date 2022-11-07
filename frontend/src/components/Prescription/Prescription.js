@@ -5,20 +5,19 @@ import { Link, useNavigate } from "react-router-dom";
 function Prescription() {
 
     const [prescription, setprescription] = useState([]);
-    const [replyUrl, setreplyurl] = useState({
-        prescriptionReplies: []
-    });
+    const [replyUrl, setreplyurl] = useState([]);
 
     const getAllPrescriptions = async () => {
         try {
             const data = await axios.get(
                 "http://localhost:3000/Prescription/" + userId
             );
-            console.log(data.data);
+
             console.log(data.data.pre)
             console.log(data.data.pre[0].prescriptionReplies)
             setreplyurl(data.data.pre[0].prescriptionReplies)
             setprescription(data.data.pre);
+            console.log(replyUrl)
         } catch (e) {
             console.log(e);
         }
@@ -123,11 +122,13 @@ function Prescription() {
                                                             <td><img width="50%" src={`http://localhost:3000/${item.imageUrl} `} /></td>
                                                             <td>{item.date.slice(0, 10)}</td>
 
-                                                            <td><a>{replyUrl}</a></td>
+                                                            {/* <td><a>{replyUrl}</a></td> */}
+                                                            <td>{replyUrl.map((item, i) => <li key={i}>{item}</li>)}
+                                                            </td>
 
 
 
-                                                            <td> <Link className="nav-link" to={prourl}>Prescription</Link></td>
+                                                            {/* <td> <Link className="nav-link" to={prourl}>Prescription</Link></td> */}
                                                             <td>
                                                                 <a role="button" onClick={() => removePrescription(item._id)}
                                                                     class="btn btn-danger">
