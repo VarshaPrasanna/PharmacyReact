@@ -10,7 +10,6 @@ import PopularProducts from "./popularProducts/PopularProducts";
 export default function Home() {
 
     const [newProducts, setNewProducts] = useState([]);
-    const [popProducts, setPopProducts] = useState([]);
 
     const getNewProductList = async () => {
         try {
@@ -23,26 +22,8 @@ export default function Home() {
         }
     };
 
-   /*  const getPopularProductList = async () => {
-        try {
-            const data = await axios.get("http://localhost:3000/orders/popular")
-            console.log("pop", data.data);
-            let products = [], ids = [];
-            ids = data.data.data;
-
-            await ids.map(async obj => {
-                let res = await axios.get(`http://localhost:3000/products/${obj._id}`);
-                setPopProducts([...popProducts, res.data.product]);
-            })
-            console.log(popProducts);
-        } catch (e) {
-            console.log(e);
-        }
-    } */
-
     useEffect(() => {
         getNewProductList();
-        //getPopularProductList();
     }, []);
 
     return (

@@ -2,83 +2,89 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import './Cart.css';
 import { Link } from "react-router-dom";
-
-const products = [
-    {
-        'productId': 101,
-        'productName': 'Vitamins',
-        'productPrice': 100,
-        'productQty': 5,
-    },
-    {
-        'productId': 103,
-        'productName': 'Pain Killers',
-        'productPrice': 160,
-        'productQty': 3,
-    },
-    {
-        'productId': 108,
-        'productName': 'Cough Syrup',
-        'productPrice': 180,
-        'productQty': 2,
-    }
-];
+import axios from "axios";
+import { addProductToCart, getCart } from "../../service/cart.service";
 
 export default class Cart extends React.Component {
 
     state = {
-        cart: products,
-        sum: 0
+        userId: localStorage.getItem("userId"),
+        cart: [],
+        sum: 0,
+        cartId: ''
     }
 
     componentDidMount() {
-        this.getSum()
+        this.setCart();
     }
 
-    getSum() {
-        this.setState(state => {
-            let sum = 0;
-            this.state.cart.map(p => {
-                sum += p.productPrice * p.productQty;
-            })
+    async setCart() {
+        try {
+            let data = await getCart();
 
-            return ({
-                sum: sum
+            this.setState({
+                cart: data, 
+                sum: this.getSum(data),
+                cartId: localStorage.getItem('cartId')
             });
-        })
+
+        } catch (err) {
+            console.log(err);
+            console.log(this.state.cart);
+        }
     }
 
-    changeQty(product, q) {
-        this.setState(state => {
-            let cart = [...state.cart];
+    getSum(products) {
+        let sum = 0;
+        console.log("getsum")
+        products.map(p => {
+            sum += p.price * p.quantity;
+            console.log(sum);
+        })
+        return sum
+    }
+
+    async changeQty(product, q) {
+        try {
+            let cart = [...this.state.cart];
             let i = cart.findIndex(p => p.productId === product.productId);
             //console.log(cart[i]);
-            cart[i].productQty += q;
+            cart[i].quantity += q;
 
-            if (cart[i].productQty <= 0) {
+            if (cart[i].quantity <= 0) {
                 this.delete(product);
+            } else {
+                this.setState({
+                    cart: cart,
+                    sum: this.state.sum + q * cart[i].price
+                });
             }
 
-            return ({
-                cart: cart,
-                sum: state.sum + q * cart[i].productPrice
-            })
-        })
+            const data = await axios.put(`http://localhost:3000/carts/${this.state.cartId}`, {
+                products: cart
+            });
+            console.log(data);
+
+        } catch (err) {
+            console.log(err);
+        }
     }
 
-    delete(product) {
-        this.setState(state => {
-            let cart = [...state.cart];
-            let i = cart.findIndex(p => p.productId === product.productId);
-            let sum = state.sum - cart[i].productPrice * cart[i].productQty;
-            console.log(cart[i]);
-            cart.splice(i, 1)
-            console.log(cart);
-            return ({
-                cart: cart,
-                sum: sum
-            })
-        })
+    async delete(product) {
+        let cart = [...this.state.cart];
+        let i = cart.findIndex(p => p.productId === product.productId);
+        let sum = this.state.sum - cart[i].price * cart[i].quantity;
+        console.log(cart[i]);
+        cart.splice(i, 1)
+        console.log("cart splice", cart);
+        this.setState({
+            cart: cart,
+            sum: sum
+        });
+        const data = await axios.put(`http://localhost:3000/carts/${this.state.cartId}`, {
+                products: cart
+        });
+        console.log(data);
     }
 
     render() {
@@ -95,7 +101,7 @@ export default class Cart extends React.Component {
                     <div className="col-md-4 d-flex flex-column justify-content-between">
                         <div className="card border rounded flex-row cart-product-card bill">
                             <div className="card-body">
-                               
+
                                 <Table borderless striped>
                                     <thead>
                                         <th><h4>Order Summary</h4></th>
@@ -109,7 +115,7 @@ export default class Cart extends React.Component {
                                             <td scope="row">Shipping charges</td>
                                             <td>{50}</td>
                                         </tr>
-                                       
+
                                         <tr className="total">
                                             <td scope="row">Total Amount</td>
                                             <td>{this.state.sum + 50}</td>
@@ -131,15 +137,15 @@ export default class Cart extends React.Component {
                                 <div className="card-body">
                                     <div className="row align-items-center">
                                         <div className="col-sm-2">
-                                            <img className="cart-img" src="https://images.indianexpress.com/2017/07/medicines-l.jpg" />
+                                            <img className="cart-img" src={product.image} />
                                         </div>
                                         <div className="col-sm-8">
-                                            <h5 className="card-title">{product.productName}</h5>
-                                            <p>  {product.productPrice}</p>
+                                            <h5 className="card-title">{product.title}</h5>
+                                            <p>  {product.price}</p>
                                             <div>
                                                 <div className="qty"><button className="btn btn-sm qty-button m-1" onClick={() => this.changeQty(product, 1)}
                                                 >+</button>
-                                                    {product.productQty}
+                                                    {product.quantity}
                                                     <button className="btn btn-sm qty-button m-1" onClick={() => this.changeQty(product, -1)}
                                                     >-</button></div>
                                             </div>

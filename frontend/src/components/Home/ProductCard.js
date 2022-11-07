@@ -1,7 +1,9 @@
+import { addProductToCart } from '../../service/cart.service'
+
 function ProductCard(props){
 
-    const addToCart = () => {
-        
+    const addToCart = (product) => {
+        addProductToCart(product, 1);
     }
 
     return(
@@ -31,7 +33,8 @@ function ProductCard(props){
                                         type="button"
                                         className="btn btn-info mt-0 mb-1"
                                         data-toggle="modal"
-                                        data-target="#modalCart">
+                                        data-target="#modalCart"
+                                        onClick={() => addToCart(props.product)} >
                                         Add to Cart
                                     </button>
                                 </div>
