@@ -18,9 +18,11 @@ const { authenticationVerifier, accessLevelVerifier, isAdminVerifier } = require
 
 router.get('/', PrescriptionContoller.get_prescriptions);
 router.get('/:userId', PrescriptionContoller.get_prescription);
+router.get('/pre/:id', PrescriptionContoller.get_prescriptionbyPID);
 router.post('/', upload.single('prescriptionImage'), PrescriptionContoller.post_prescription)
 router.patch('/reply/:id', PrescriptionContoller.update_prescription)
 router.delete('/', PrescriptionContoller.delete_prescriptions);
 router.delete('/:id', PrescriptionContoller.delete_prescription);
+
 
 module.exports = router;

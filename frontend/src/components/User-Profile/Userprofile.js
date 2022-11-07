@@ -50,21 +50,21 @@ const UserProfile = () => {
                         <ul className="list-unstyled components">
 
                             <li >
-                                <a href="#homeSubmenu" aria-expanded="false" className="dropdown-toggle">Home</a>
+                                <a aria-expanded="false" className="dropdown-toggle">Home</a>
 
                             </li>
                             <li>
-                                <a href="#">Orders</a>
+                                <a >Orders</a>
                             </li>
                             <li>
-                                <a href="#pageSubmenu" aria-expanded="false" className="dropdown-toggle">Shop Now</a>
+                                <a aria-expanded="false" className="dropdown-toggle">Shop Now</a>
 
                             </li>
                             <li>
-                                <a href="#">Change Password</a>
+                                <a>Change Password</a>
                             </li>
                             <li>
-                                <a href="#">Cart</a>
+                                <a >Cart</a>
                             </li>
                         </ul>
 

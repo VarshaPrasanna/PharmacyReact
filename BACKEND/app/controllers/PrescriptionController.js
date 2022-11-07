@@ -46,7 +46,7 @@ const PrescriptionController = {
     //Update message
     async update_prescription(req, res) {
 
-        const existing = await Prescription.findById(req.params.id);
+        const existing = await Prescription.findById(req.params.id).lean();
 
         if (!existing) {
             res.status(404).json({
@@ -56,7 +56,8 @@ const PrescriptionController = {
         } else {
             try {
                 const updatedPrescription = await Prescription.findByIdAndUpdate(req.params.id, {
-                    $set: req.body
+                    $set: req.body,
+                    // $push: req.body.prescriptionReplies
                 },
                     { new: true }
                 );
@@ -112,10 +113,35 @@ const PrescriptionController = {
         }
     },
 
-    /* get user messages */
+    /* get user prescription */
     async get_prescription(req, res) {
         try {
             const pre = await Prescription.find({ userId: req.params.userId });
+            if (!pre) {
+                res.status(404).json({
+                    type: "error",
+                    message: "User doesn't exists"
+                })
+            } else {
+                res.status(200).json({
+                    type: "success",
+                    pre
+                })
+            }
+        } catch (err) {
+            res.status(500).json({
+                type: "error",
+                message: "Something went wrong please try again",
+                err
+            })
+        }
+    },
+
+
+    /* get user prescription by prescription id */
+    async get_prescriptionbyPID(req, res) {
+        try {
+            const pre = await Prescription.findById(req.params.id);
             if (!pre) {
                 res.status(404).json({
                     type: "error",

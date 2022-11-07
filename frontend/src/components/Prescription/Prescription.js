@@ -5,6 +5,10 @@ import { Link, useNavigate } from "react-router-dom";
 function Prescription() {
 
     const [prescription, setprescription] = useState([]);
+    const [replyUrl, setreplyurl] = useState({
+        prescriptionReplies: []
+    });
+
     const getAllPrescriptions = async () => {
         try {
             const data = await axios.get(
@@ -12,6 +16,8 @@ function Prescription() {
             );
             console.log(data.data);
             console.log(data.data.pre)
+            console.log(data.data.pre[0].prescriptionReplies)
+            setreplyurl(data.data.pre[0].prescriptionReplies)
             setprescription(data.data.pre);
         } catch (e) {
             console.log(e);
@@ -43,6 +49,7 @@ function Prescription() {
     const firstName = localStorage.getItem('userName')
     const [prescriptionImage, setImage] = useState('');
     const [imageUrl, setImageUrl] = useState('')
+    const prourl = "/Myprofile"
 
     console.log(firstName, prescriptionImage, 12)
 
@@ -114,10 +121,13 @@ function Prescription() {
                                                         <tr >
 
                                                             <td><img width="50%" src={`http://localhost:3000/${item.imageUrl} `} /></td>
-
                                                             <td>{item.date.slice(0, 10)}</td>
 
-                                                            <td></td>
+                                                            <td><a>{replyUrl}</a></td>
+
+
+
+                                                            <td> <Link className="nav-link" to={prourl}>Prescription</Link></td>
                                                             <td>
                                                                 <a role="button" onClick={() => removePrescription(item._id)}
                                                                     class="btn btn-danger">
