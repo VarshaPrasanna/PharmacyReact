@@ -88,9 +88,10 @@ const ProductList = () => {
                 return(
           <div className="col-md-3" class="column" >
             <div className="our-team">
-                <Link to={{ pathname: `/product-info/${item._id}` }} >
+                <div>
               <div className="pic">
-                <img src={item.image} />
+              <Link to={{ pathname: `/product-info/${item._id}` }} >
+                <img src={item.image} /></Link>
               </div>
               <div className="card-body">
                 <h6 className="card-title font-weight-bold">{item.title}</h6>
@@ -118,7 +119,7 @@ const ProductList = () => {
               >
                 Add to Cart
               </button>
-              </Link>
+              </div>
               </div>
               </div>
               )
