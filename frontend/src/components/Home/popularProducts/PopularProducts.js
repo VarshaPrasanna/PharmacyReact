@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ProductCard from "../ProductCard";
+import ProductCard from "../../product-card/ProductCard";
 import ProductList from "../../product-list/product-list";
 
 function PopularProducts() {
@@ -13,7 +13,7 @@ function PopularProducts() {
             const data = await axios.get("http://localhost:3000/orders/popular")
             console.log("pop", data.data);
             data.data.data.map(dta => {
-                products.push(data.product[0])
+                products.push(dta.product[0])
             })
             setPopProducts(products);
         } catch (e) {
@@ -27,7 +27,7 @@ function PopularProducts() {
 
     return (
         <div className="categories">
-            <h2 className="section-heading mb-5">Popular Products</h2>
+            <h1 className="section-heading mb-5">Popular Products</h1>
             <p></p>
 
             {popProducts.map(product => {

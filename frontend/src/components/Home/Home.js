@@ -1,5 +1,5 @@
 import HomeCarousel from "./Carousel/Carousel";
-import ProductCard from "./ProductCard"
+import ProductCard from "../product-card/ProductCard"
 import { Row, Col, Card, CardGroup } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import './Home.css';
@@ -10,7 +10,6 @@ import PopularProducts from "./popularProducts/PopularProducts";
 export default function Home() {
 
     const [newProducts, setNewProducts] = useState([]);
-    const [popProducts, setPopProducts] = useState([]);
 
     const getNewProductList = async () => {
         try {
@@ -23,26 +22,8 @@ export default function Home() {
         }
     };
 
-   /*  const getPopularProductList = async () => {
-        try {
-            const data = await axios.get("http://localhost:3000/orders/popular")
-            console.log("pop", data.data);
-            let products = [], ids = [];
-            ids = data.data.data;
-
-            await ids.map(async obj => {
-                let res = await axios.get(`http://localhost:3000/products/${obj._id}`);
-                setPopProducts([...popProducts, res.data.product]);
-            })
-            console.log(popProducts);
-        } catch (e) {
-            console.log(e);
-        }
-    } */
-
     useEffect(() => {
         getNewProductList();
-        //getPopularProductList();
     }, []);
 
     return (
@@ -51,7 +32,7 @@ export default function Home() {
             <hr />
             <div className="categories">
 
-                <h2 className="section-heading">Shop By Category</h2>
+                <h1 className="section-heading">Shop By Category</h1>
                 <p className="section-heading">The best Online Pharmacy to shop for your health</p>
                 <Row>
 
@@ -95,7 +76,7 @@ export default function Home() {
             </div>
 
             <div className="categories">
-                <h2 className="section-heading mb-5">New Arrivals</h2>
+                <h1 className="section-heading mb-5">New Arrivals</h1>
                 <p></p>
 
                 {newProducts.map(product => {

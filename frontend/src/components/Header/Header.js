@@ -39,9 +39,6 @@ function Header() {
                 <div className="collapse navbar-collapse " id="main-navbar">
                     <ul className="navbar-nav mx-auto">
                         <li className="nav-item active">
-                            <Link className="nav-link" to={{ pathname: "/MyOrders" }}>My Orders</Link>
-                        </li>
-                        <li className="nav-item active">
                             <Link className="nav-link" to={{ pathname: "/" }}>Home</Link>
                         </li>
                         <li className="nav-item active">

@@ -34,6 +34,7 @@ import UpdateStatus from './components/Admin/AdminComponents/UpdateStatus/update
 import ViewProduct from './components/Admin/AdminComponents/ManageProducts/View-Product';
 import AddProduct from './components/Admin/AdminComponents/ManageProducts/Add-Product';
 import UpdateProduct from './components/Admin/AdminComponents/ManageProducts/Update-Product';
+import ProductInfo from './components/product-info/product-info';
 
 
 
@@ -69,6 +70,7 @@ function App() {
           <Route exact path="/ProductList" element={<ViewProduct />} />
           <Route exact path="/Addproduct" element={<AddProduct />} />
           <Route exact path="/UpdateProduct/:_id" element={<UpdateProduct />} />
+          <Route exact path="/product-info/:id" element={<ProductInfo />} />
 
 
 

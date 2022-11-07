@@ -1,15 +1,20 @@
+import { Link } from 'react-router-dom';
+import { addProductToCart } from '../../service/cart.service'
+import './ProductCard.css';
+
 function ProductCard(props){
 
-    const addToCart = () => {
-        
+    const addToCart = (product) => {
+        addProductToCart(product, 1);
     }
 
     return(
-        <div className="col-md-3" class="column">
+        <div className="col-md-3" class="column my-auto">
                             <div className="our-team">
                                 <div>
                                     <div className="pic">
-                                        <img src={props.product.image} />
+                                    <Link to={{ pathname: `/product-info/${props.product._id}` }} >
+                                        <img src={props.product.image} /></Link>
                                     </div>
                                     <div className="card-body mb-0 py-0">
                                         <h6 className="card-title"><b>{props.product.title}</b></h6>
@@ -27,13 +32,16 @@ function ProductCard(props){
                                             <p className="text-dark"><b> ₹{props.product.price}</b></p>
                                         </div>
                                     </div>
-                                    <button
-                                        type="button"
-                                        className="btn btn-info mt-0 mb-1"
-                                        data-toggle="modal"
-                                        data-target="#modalCart">
-                                        Add to Cart
-                                    </button>
+                                    <div className="card-footer bg-transparent">
+                                        <button
+                                            type="button"
+                                            className="btn btn-info mt-0 mb-1"
+                                            data-toggle="modal"
+                                            data-target="#modalCart"
+                                            onClick={() => addToCart(props.product)} >
+                                            Add to Cart
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
