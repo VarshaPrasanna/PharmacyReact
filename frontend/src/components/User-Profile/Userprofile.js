@@ -54,7 +54,7 @@ const UserProfile = () => {
 
                             </li>
                             <li>
-                                <a href="#">Orders</a>
+                            <Link className="nav-link" to={{ pathname: "/MyOrders" }}>My Orders</Link>
                             </li>
                             <li>
                                 <a href="#pageSubmenu" aria-expanded="false" className="dropdown-toggle">Shop Now</a>

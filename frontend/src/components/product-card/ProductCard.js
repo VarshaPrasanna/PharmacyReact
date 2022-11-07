@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { addProductToCart } from '../../service/cart.service'
 import './ProductCard.css';
 
@@ -12,7 +13,8 @@ function ProductCard(props){
                             <div className="our-team">
                                 <div>
                                     <div className="pic">
-                                        <img src={props.product.image} />
+                                    <Link to={{ pathname: `/product-info/${props.product._id}` }} >
+                                        <img src={props.product.image} /></Link>
                                     </div>
                                     <div className="card-body mb-0 py-0">
                                         <h6 className="card-title"><b>{props.product.title}</b></h6>

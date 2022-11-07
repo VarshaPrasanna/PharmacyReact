@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Header from '../Header/Header';
 import './product-list.css';
+import ProductCard from '../product-card/ProductCard';
 // import styles from "./styles.module.css";
 
 const ProductList = () => {
@@ -84,44 +85,9 @@ const ProductList = () => {
           ) {
            return item;
           }
-          }).map((item)=>{
+          }).map((product)=>{
                 return(
-          <div className="col-md-3" class="column" >
-            <div className="our-team">
-                <div>
-              <div className="pic">
-              <Link to={{ pathname: `/product-info/${item._id}` }} >
-                <img src={item.image} /></Link>
-              </div>
-              <div className="card-body">
-                <h6 className="card-title font-weight-bold">{item.title}</h6>
-                <div>
-                  <p className="card-text text-truncate">
-                   
-                    <small> {item.description} </small>
-                  </p>
-                </div>
-                <div>
-                  <p className="card-text text-truncate">
-                   
-                    <small> {item.categories} </small>
-                  </p>
-                </div>
-                <div>
-                  <p className="font-weight-bold"> ₹{item.price}</p>
-                </div>
-              </div>
-              <button
-                type="button"
-                className="btn btn-info mb-2"
-                data-toggle="modal"
-                data-target="#modalCart"
-              >
-                Add to Cart
-              </button>
-              </div>
-              </div>
-              </div>
+          <ProductCard product={product} key={product._id}/>
               )
             })}
               
