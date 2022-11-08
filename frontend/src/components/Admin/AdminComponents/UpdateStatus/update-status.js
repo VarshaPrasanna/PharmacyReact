@@ -130,11 +130,11 @@ const UpdateStatus = () => {
                             onChange={handleChange}
                             required /> */}
                             <select className="custom-select form-control" name="status" value={order.status} onChange={handleChange}  >
-                              <option value="">choose</option>
+                            <option value="pending">Pending</option>
                               <option value="in-transit">in-transit</option>
-                              <option value="pending">Pending</option>
+                              <option value="approved">approved</option>
                               <option value="cancelled">cancelled</option>
-                              <option value="Delivered">Delivered</option>
+                              <option value="delivered">Delivered</option>
                             </select>
                     </div>                     
                       </div>
