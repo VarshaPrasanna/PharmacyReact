@@ -73,7 +73,7 @@ const ManageOrders = () => {
                     <td>
                       <div>{item.products.map((p)=>{
                         return (
-                            <p className="text-light">productId:{p.productId}, quantity:{p.quantity}</p>
+                            <p className="text-light">Title:{p.title}, quantity:{p.quantity}</p>
                         );
                       })}
                       </div>
