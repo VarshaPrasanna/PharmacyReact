@@ -2,13 +2,17 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
+import AdminApp from "../../AdminApp";
 
+
+var userLength;
 
 const ManageUsers = () => {
 
 
     const [user, setUser] = useState([]);
     const [search, setSearch] = useState("");
+    // const [userLength, setUserLength] = useState()
 
     const getUserData = async () => {
         try {
@@ -17,7 +21,11 @@ const ManageUsers = () => {
             );
             console.log(data.data);
             console.log(data.data.users)
+            console.log(data.data.users.length)
+            userLength = data.data.users.length
+            console.log(userLength)
             setUser(data.data.users);
+
         } catch (e) {
             console.log(e);
         }
@@ -39,7 +47,12 @@ const ManageUsers = () => {
     }, []);
 
     return (
+
         <div className="ManageUsers">
+            <div>
+                <AdminApp userLength={userLength} />
+
+            </div>
             <h1>USERS LIST</h1>
             <input
                 type="text"
@@ -120,6 +133,7 @@ const ManageUsers = () => {
                     </div>
                 </div >
             </div >
+
 
 
 

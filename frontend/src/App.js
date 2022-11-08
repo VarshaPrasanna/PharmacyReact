@@ -15,6 +15,7 @@ import Home from './components/Home/Home';
 
 
 import Cart from './components/Cart/Cart';
+import UserService from './components/Admin/AdminAnalyitics';
 
 import {
   BrowserRouter,
@@ -35,12 +36,14 @@ import ViewProduct from './components/Admin/AdminComponents/ManageProducts/View-
 import AddProduct from './components/Admin/AdminComponents/ManageProducts/Add-Product';
 import UpdateProduct from './components/Admin/AdminComponents/ManageProducts/Update-Product';
 import ProductInfo from './components/product-info/product-info';
+import AdminAnalyitics from './components/Admin/AdminAnalyitics';
 
 
 
 
 function App() {
   return (
+
     <div>  {/* className="App" */}
 
       <BrowserRouter>
@@ -77,10 +80,10 @@ function App() {
           {/* All admin components to be placed inside Admin layout  */}
 
           <Route element={<AdminLayout />}>
-            <Route exact path="/admin" element={<AdminApp />} />
+            <Route exact path="/admin" element={<AdminAnalyitics />} />
             <Route exact path="/ManageUsers" element={<ManageUsers />} />
             <Route exact path="/managePrescription" element={<ManagePrescription />} />
-            <Route  path="/prescriptionReply/:_id" element={<PrescriptionReply />} />
+            <Route path="/prescriptionReply/:_id" element={<PrescriptionReply />} />
 
           </Route>
           {/* End of admin layout */}
@@ -90,6 +93,7 @@ function App() {
 
         </Routes>
       </BrowserRouter>
+
     </div>
   );
 }

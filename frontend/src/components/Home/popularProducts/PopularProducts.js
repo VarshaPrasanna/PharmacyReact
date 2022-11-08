@@ -4,7 +4,7 @@ import ProductCard from "../../product-card/ProductCard";
 
 var popProducts = [];
 
-async function getPopularProducts(){
+async function getPopularProducts() {
     try {
         let products = [];
         const data = await axios.get("http://localhost:3000/orders/popular")
@@ -12,7 +12,9 @@ async function getPopularProducts(){
         data.data.data.map(dta => {
             products.push(dta.product[0])
         })
+        // console.log("test", test)
         popProducts = products;
+        console.log("test", popProducts)
     } catch (e) {
         console.log(e);
     }
@@ -38,7 +40,7 @@ function PopularProducts() {
 
     useEffect(() => {
         //getPopularProductList();
-        if(popProducts.length == 0){
+        if (popProducts.length == 0) {
             getPopularProducts();
         }
     }, []);
