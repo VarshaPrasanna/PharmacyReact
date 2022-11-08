@@ -11,8 +11,9 @@ const ProductList = () => {
 
     const [product, setProduct] = useState([]);
     const [search, setSearch] = useState("");
+    const [type, setType] = useState("all");
     
-
+    const [pro, setPro] = useState([]);
     const getProductList = async () => {
         try {
             const data = await axios.get(
@@ -21,6 +22,8 @@ const ProductList = () => {
             console.log(data.data.products);
             // console.log(data.data.users)
             setProduct(data.data.products);
+            setPro(data.data.products);
+            console.log(pro);
         } catch (e) {
             console.log(e);
         }
@@ -51,6 +54,24 @@ const ProductList = () => {
           setProduct(p);
         }
     }
+    function category(type) {
+      setType(type);
+      console.log(pro);
+
+      console.log(type);
+      if (type !== "all") {
+        console.log(pro);
+        const tempProducts = pro.filter(
+          (x) => x.categories == type
+        );
+        console.log(tempProducts);
+        setProduct(tempProducts);
+
+      } else {
+        setProduct(pro);
+        console.log(pro);
+      }
+    }
 
 
 
@@ -74,7 +95,20 @@ const ProductList = () => {
           <option value="LtoH">Sort By Price (Low to High)</option>
           <option value="HtoL">Sort By Price (High to Low)</option>
       </select>
-     </div>    
+     </div>  
+     <div className=" mb-4 mt-2">
+      <select value={type} onChange={(e)=>{category(e.target.value)}} >
+        <option value="all" >All</option>
+        <option value="Homeopathy" >Homeopathy</option>
+        <option value="Ayurveda" >Ayurveda</option>
+        <option value="Health devices" >Health devices</option>
+        <option value="Covid essentials" >Covid essentials</option>
+        <option value="Nutrients" >Nutrients</option>
+        <option value="Clinical" >Clinical</option>
+        <option value="Personal Care" >Personal Care</option>
+        <option value="Home Care" >Home Care</option>
+      </select>
+     </div>
         <section className="container2">       
           <div className='row'> 
           {product.filter((item) => {
