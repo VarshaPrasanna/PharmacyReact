@@ -26,6 +26,7 @@ import {
 import Navbar from './components/Admin/AdminComponents/Navbar';
 import Prescription from './components/Prescription/Prescription';
 import ManagePrescription from './components/Admin/AdminComponents/ManagePrescription/ManagePrescription';
+import PrescriptionReply from './components/Admin/AdminComponents/ManagePrescription/PrescriptionReply';
 import ProductList from './components/product-list/product-list';
 import MyOrders from './components/my-orders/my-orders';
 import AdminLayout from './components/AdminLayout';
@@ -79,6 +80,8 @@ function App() {
             <Route exact path="/admin" element={<AdminApp />} />
             <Route exact path="/ManageUsers" element={<ManageUsers />} />
             <Route exact path="/managePrescription" element={<ManagePrescription />} />
+            <Route  path="/prescriptionReply/:_id" element={<PrescriptionReply />} />
+
           </Route>
           {/* End of admin layout */}
 

@@ -52,7 +52,7 @@ const UpdateStatus = () => {
         <div className="container">
     <section className="h-100 gradient-custom">
     <form onSubmit={handleSubmit}>
-      <div className="container py-5 h-100">
+      <div className="container py-5 h-100" style={{width : 1000}} >
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-10 col-xl-8">                           
             <div className="card" style={{ borderRadius: 10 }}>

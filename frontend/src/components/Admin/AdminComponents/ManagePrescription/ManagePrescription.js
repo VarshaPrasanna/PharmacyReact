@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from '../Navbar';
+
 // import { PDFExport, savePDF } from "@progress/kendo-react-pdf";s
 import { useRef, useState, useEffect } from "react";
 
@@ -30,11 +30,9 @@ function ManagePrescription() {
                 .catch(err => console.log(err));
         }
     }
-    const pdfExportComponent = useRef(null);
 
-    const handleExportWithComponent = event => {
-        pdfExportComponent.current.save();
-    };
+
+
 
 
 
@@ -73,9 +71,6 @@ function ManagePrescription() {
                 console.warn(res);
                 console.log(res.data.savedPrescription.imageUrl)
                 return setImageUrl(res.data.savedPrescription.imageUrl)
-
-
-
             })
     }
 
@@ -120,13 +115,14 @@ function ManagePrescription() {
 
                                                             <td>{item.date.slice(0, 10)}</td>
 
-                                                            <td><a role="button" class="btn btn-success" ><svg
+                                                            <td><Link role="button" to={{ pathname: `/prescriptionReply/${item._id}` }} class="btn btn-success" ><svg
                                                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                                 fill="currentColor" class="bi bi-reply-fill ml-1 mb-1"
                                                                 viewBox="0 0 16 16">
                                                                 <path
                                                                     d="M5.921 11.9 1.353 8.62a.719.719 0 0 1 0-1.238L5.921 4.1A.716.716 0 0 1 7 4.719V6c1.5 0 6 0 7 8-2.5-4.5-7-4-7-4v1.281c0 .56-.606.898-1.079.62z" />
-                                                            </svg></a></td>
+                                                            </svg></Link>
+                                                            </td>
                                                             <td>
                                                                 <a role="button" onClick={() => removePrescription(item._id)} class="btn btn-danger">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"

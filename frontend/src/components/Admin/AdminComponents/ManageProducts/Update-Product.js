@@ -82,7 +82,7 @@ function UpdateProduct(props) {
                                 required
                             />
                         </div>
-                         <div className="form-group">
+                        <div className="form-group">
                     <label className="form-label"> Product Categories</label>
                     <input type="text"
                         name="Categories"
@@ -91,7 +91,7 @@ function UpdateProduct(props) {
                         onChange={handleChange}
                         required
                     />
-                </div>  
+                     </div>  
 
                         <div className="form-group">
                             <label className="form-label">image</label>

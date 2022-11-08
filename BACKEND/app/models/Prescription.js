@@ -25,9 +25,8 @@ const PrescriptionSchema = new mongoose.Schema({
         type: String,
 
     },
-    prescriptionReplies: {
-        type: String
-    },
+    prescriptionReplies: [],
+
     date: {
         type: Date,
         default: Date.now,

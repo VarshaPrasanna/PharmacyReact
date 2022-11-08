@@ -31,7 +31,7 @@ const ProductInfo = () => {
     return(
         
          <>
-  {/* <section className="page-header">
+  <section className="page-header">
   <Carousel variant="dark">
   <Carousel.Item interval={5000}>
     <div className="carousel-img"> <img className="d-block img-fluid"  src="https://img.freepik.com/free-vector/tiny-pharmacists-with-rx-prescription-drugs_74855-7882.jpg?w=1380&t=st=1667457058~exp=1667457658~hmac=96cd4b40bef9360dc1945306b62d31513bebc14e372fcde9f36a90403f6504bd"/> </div>
@@ -59,7 +59,7 @@ const ProductInfo = () => {
     </div>
     </Carousel.Item>
     </Carousel>
-  </section> */}
+  </section>
   <section className="single-product">
     <div className="container">
       <div className="row">

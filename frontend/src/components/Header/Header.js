@@ -39,9 +39,6 @@ function Header() {
                 <div className="collapse navbar-collapse " id="main-navbar">
                     <ul className="navbar-nav mx-auto">
                         <li className="nav-item active">
-                            <Link className="nav-link" to={{ pathname: "/MyOrders" }}>My Orders</Link>
-                        </li>
-                        <li className="nav-item active">
                             <Link className="nav-link" to={{ pathname: "/" }}>Home</Link>
                         </li>
                         <li className="nav-item active">
@@ -50,25 +47,9 @@ function Header() {
                         <li className="nav-item active">
                             <Link className="nav-link" to={{ pathname: "/prescription" }}>Prescription</Link>
                         </li>
-                        <li className="nav-item dropdown dropdown-slide">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-delay="350"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                <li><Link className="nav-link" to={{ pathname: "/product-list" }}>View all Products</Link></li>
-                                <li><Link className="nav-link" to={{ pathname: "/Homeopathy" }}>Homeopathy</Link></li>
-                                <li><Link className="nav-link" to={{ pathname: "/Ayurveda" }}>Ayurveda</Link></li>
-                                <li><Link className="nav-link" to={{ pathname: "/health-device" }}>Health devices</Link></li>
-                                <li><Link className="nav-link" to={{ pathname: "/covid-essential" }}>Covid essentials</Link></li>
-                                <li><Link className="nav-link" to={{ pathname: "/Nutrients" }}>Nutrients</Link></li>
-                                <li><Link className="nav-link" to={{ pathname: "/Clinical" }}>Clinical</Link></li>
-                                <li><Link className="nav-link" to={{ pathname: "/personal-care" }}>Personal Care</Link></li>
-                                <li><Link className="nav-link" to={{ pathname: "/home-care" }}>Home Care</Link></li>
-
-                            </ul>
-
+                        <li className="nav-item active">
+                            <Link className="nav-link" to={{ pathname: "/product-list" }}>All Products</Link>
                         </li>
-
-
 
                     </ul>
                 </div>

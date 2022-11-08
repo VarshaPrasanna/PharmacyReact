@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
-
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import * as IoIcons from "react-icons/io";
 function Prescription() {
 
     const [prescription, setprescription] = useState([]);
+    const [replyUrl, setreplyurl] = useState([]);
+
     const getAllPrescriptions = async () => {
         try {
             const data = await axios.get(
                 "http://localhost:3000/Prescription/" + userId
             );
-            console.log(data.data);
+
             console.log(data.data.pre)
+            console.log(data.data.pre[0].prescriptionReplies)
+            setreplyurl(data.data.pre[0].prescriptionReplies)
             setprescription(data.data.pre);
+            console.log(replyUrl)
         } catch (e) {
             console.log(e);
         }
@@ -43,6 +50,7 @@ function Prescription() {
     const firstName = localStorage.getItem('userName')
     const [prescriptionImage, setImage] = useState('');
     const [imageUrl, setImageUrl] = useState('')
+    const prourl = "/Myprofile"
 
     console.log(firstName, prescriptionImage, 12)
 
@@ -114,10 +122,26 @@ function Prescription() {
                                                         <tr >
 
                                                             <td><img width="50%" src={`http://localhost:3000/${item.imageUrl} `} /></td>
-
                                                             <td>{item.date.slice(0, 10)}</td>
 
-                                                            <td></td>
+                                                            {/* <td><a>{replyUrl}</a></td> */}
+                                                            <td>{replyUrl.map((item, i) => <td key={i}>
+
+                                                                <a href={item} class="button"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-capsule-pill" viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd" d="M11.02 5.364a3 3 0 0 0-4.242-4.243L1.121 6.778a3 3 0 1 0 4.243 4.243l5.657-5.657Zm-6.413-.657 2.878-2.879a2 2 0 1 1 2.829 2.829L7.435 7.536 4.607 4.707ZM12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm-.5 1.041a3 3 0 0 0 0 5.918V9.04Zm1 5.918a3 3 0 0 0 0-5.918v5.918Z" />
+                                                                </svg></a>
+
+
+                                                            </td>)}
+
+
+
+
+                                                            </td>
+
+
+
+                                                            {/* <td> <Link className="nav-link" to={prourl}>Prescription</Link></td> */}
                                                             <td>
                                                                 <a role="button" onClick={() => removePrescription(item._id)}
                                                                     class="btn btn-danger">
@@ -149,7 +173,7 @@ function Prescription() {
                 </div >
             </div >
 
-        </div>
+        </div >
         ///////
 
 
