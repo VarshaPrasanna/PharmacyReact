@@ -6,6 +6,7 @@ import './Home.css';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PopularProducts from "./popularProducts/PopularProducts";
+import Footer from "../Footer/Footer";
 
 export default function Home() {
 
@@ -37,39 +38,47 @@ export default function Home() {
                 <Row>
 
                     <Col>
-                        <Card className="category">
-                            <Card.Img variant="top" src="https://newassets.apollo247.com/pub/media/catalog/category/h_and_n.png" className="category-img" />
-                            <Card.Body>
-                                <Card.Title className="category-title">Nutrients</Card.Title>
-                            </Card.Body>
-                        </Card>
+                        <Link to={{ pathname: '/Nutients' }}>
+                            <Card className="category">
+                                <Card.Img variant="top" src="https://newassets.apollo247.com/pub/media/catalog/category/h_and_n.png" className="category-img" />
+                                <Card.Body>
+                                    <Card.Title className="category-title">Nutrients</Card.Title>
+                                </Card.Body>
+                            </Card>
+                        </Link>
                     </Col>
 
                     <Col>
-                        <Card className="category">
-                            <Card.Img variant="top" src="https://newassets.apollo247.com/pub/media/catalog/category/ayurveda.jpg" className="category-img" />
-                            <Card.Body>
-                                <Card.Title className="category-title">Ayurveda</Card.Title>
-                            </Card.Body>
-                        </Card>
+                        <Link to={{ pathname: '/Ayurveda' }}>
+                            <Card className="category">
+                                <Card.Img variant="top" src="https://newassets.apollo247.com/pub/media/catalog/category/ayurveda.jpg" className="category-img" />
+                                <Card.Body>
+                                    <Card.Title className="category-title">Ayurveda</Card.Title>
+                                </Card.Body>
+                            </Card>
+                        </Link>
                     </Col>
 
                     <Col>
-                        <Card className="category">
-                            <Card.Img variant="top" src="https://newassets.apollo247.com/pub/media/catalog/category/health_devices_22oct.png" />
-                            <Card.Body>
-                                <Card.Title className="category-title">Health Devices</Card.Title>
-                            </Card.Body>
-                        </Card>
+                        <Link to={{ pathname: '/health-device' }}>
+                            <Card className="category">
+                                <Card.Img variant="top" src="https://newassets.apollo247.com/pub/media/catalog/category/health_devices_22oct.png" />
+                                <Card.Body>
+                                    <Card.Title className="category-title">Health Devices</Card.Title>
+                                </Card.Body>
+                            </Card>
+                        </Link>
                     </Col>
 
                     <Col>
-                        <Card className="category">
-                            <Card.Img variant="top" src="https://newassets.apollo247.com/pub/media/catalog/category/logo.jpg" />
-                            <Card.Body>
-                                <Card.Title className="category-title">Covid Essentials</Card.Title>
-                            </Card.Body>
-                        </Card>
+                        <Link to={{ pathname: '/covid-essential' }}>
+                            <Card className="category">
+                                <Card.Img variant="top" src="https://newassets.apollo247.com/pub/media/catalog/category/logo.jpg" />
+                                <Card.Body>
+                                    <Card.Title className="category-title">Covid Essentials</Card.Title>
+                                </Card.Body>
+                            </Card>
+                        </Link>
                     </Col>
 
                 </Row>
@@ -81,13 +90,14 @@ export default function Home() {
 
                 {newProducts.map(product => {
                     return (
-                        <ProductCard product={product} key={product._id}/> 
+                        <ProductCard product={product} key={product._id} />
                     )
                 })}
 
             </div>
 
             <PopularProducts />
+            <Footer />
         </>
     );
 }
