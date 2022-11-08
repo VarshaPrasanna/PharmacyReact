@@ -35,6 +35,7 @@ import ViewProduct from './components/Admin/AdminComponents/ManageProducts/View-
 import AddProduct from './components/Admin/AdminComponents/ManageProducts/Add-Product';
 import UpdateProduct from './components/Admin/AdminComponents/ManageProducts/Update-Product';
 import ProductInfo from './components/product-info/product-info';
+import ManageQuery from './components/Admin/AdminComponents/ManageQuery/manage-query';
 
 
 
@@ -81,6 +82,7 @@ function App() {
             <Route exact path="/ManageUsers" element={<ManageUsers />} />
             <Route exact path="/managePrescription" element={<ManagePrescription />} />
             <Route  path="/prescriptionReply/:_id" element={<PrescriptionReply />} />
+            <Route exact path="/ManageMessages" element={<ManageQuery />} />
 
           </Route>
           {/* End of admin layout */}
