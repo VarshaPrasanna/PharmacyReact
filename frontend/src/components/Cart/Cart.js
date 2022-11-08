@@ -7,6 +7,8 @@ import { addProductToCart, getCart } from "../../service/cart.service";
 
 export default class Cart extends React.Component {
 
+    shippingCharges = 50;
+
     state = {
         userId: localStorage.getItem("userId"),
         cart: [],
@@ -87,6 +89,10 @@ export default class Cart extends React.Component {
         console.log(data);
     }
 
+    onSubmit(){
+        localStorage.setItem("totalAmount", this.state.sum + this.shippingCharges);
+    }
+
     render() {
         return (
             <>
@@ -113,12 +119,12 @@ export default class Cart extends React.Component {
                                         </tr>
                                         <tr>
                                             <td scope="row">Shipping charges</td>
-                                            <td>{50}</td>
+                                            <td>{this.shippingCharges}</td>
                                         </tr>
 
                                         <tr className="total">
                                             <td scope="row">Total Amount</td>
-                                            <td>{this.state.sum + 50}</td>
+                                            <td>{this.state.sum + this.shippingCharges}</td>
                                         </tr>
                                     </tbody>
                                 </Table>
@@ -126,9 +132,8 @@ export default class Cart extends React.Component {
                         </div>
 
                         <Link to={{ pathname: "/payment" }}>
-                            <button className="btn btn-block btn-dark">Proceed to Checkout</button>
+                            <button className="btn btn-block btn-dark" onClick={this.onSubmit()}>Proceed to Checkout</button>
                         </Link>
-
                     </div>
 
                     <div className="col flex-column col-md-7 ml-5">

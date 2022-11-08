@@ -144,7 +144,9 @@ const OrderController = {
                         },
                         totalSold: {
                             $sum: 1
-                        }
+                        },
+                        //title: "$products.title",
+                       // image: "$products.image",
                     }
                 },
                 {
@@ -155,8 +157,8 @@ const OrderController = {
                 {
                     $limit: 5
                 }
-            ]); */
-
+            ]);
+ */
             res.status(200).json({
                 type: "success",
                 data

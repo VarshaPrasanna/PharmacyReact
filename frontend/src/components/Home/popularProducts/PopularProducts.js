@@ -1,11 +1,26 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ProductCard from "../../product-card/ProductCard";
-import ProductList from "../../product-list/product-list";
+
+var popProducts = [];
+
+async function getPopularProducts(){
+    try {
+        let products = [];
+        const data = await axios.get("http://localhost:3000/orders/popular")
+        console.log("pop", data.data);
+        data.data.data.map(dta => {
+            products.push(dta.product[0])
+        })
+        popProducts = products;
+    } catch (e) {
+        console.log(e);
+    }
+}
 
 function PopularProducts() {
 
-    const [popProducts, setPopProducts] = useState([]);
+    /* const [popProducts, setPopProducts] = useState([]);
 
     const getPopularProductList = async () => {
         try {
@@ -19,10 +34,13 @@ function PopularProducts() {
         } catch (e) {
             console.log(e);
         }
-    }
+    } */
 
     useEffect(() => {
-        getPopularProductList();
+        //getPopularProductList();
+        if(popProducts.length == 0){
+            getPopularProducts();
+        }
     }, []);
 
     return (

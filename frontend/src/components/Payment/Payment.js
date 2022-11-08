@@ -1,62 +1,118 @@
 import React from 'react';
+import { useState } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, Col, Form, Row, Table } from "react-bootstrap";
+import { deleteCart, getCart } from '../../service/cart.service';
 import './Payment.css';
 
 export default function Payment() {
+
+    const totalAmount = localStorage.getItem('totalAmount');
+
+    const [data, setData] = useState({
+        streetAddress: "",
+        city: "",
+        pincode: "",
+        state: "",
+    });
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        console.log(e.target);
+        setData({ ...data, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        console.log('handle submit');
+        e.preventDefault();
+        try {
+            const url = "http://localhost:3000/orders";
+            const { data: res } = await axios.post(url, {
+                address: data,
+                userId: localStorage.getItem('userId'),
+                products: await getCart(),
+                amount: totalAmount,
+                status: 'pending'
+            });
+            console.log(res);
+            deleteCart();
+            navigate("/");
+        } catch (error) {
+            if (
+                error.response &&
+                error.response.status >= 400 &&
+                error.response.status <= 500
+            ) {
+                setError(error.response.data.message);
+            }
+        }
+    };
+
     return (
         <>
             <Row>
                 <Col>
                     <div className="form-wrapper">
                         <h4>Payment Details</h4>
-                        <Form>
+                        <Form onSubmit={handleSubmit}>
                             <Row>
                                 <Col>
-                                    <Form.Group controlId="movieName">
-                                        <Form.Label>Shipping Address</Form.Label>
-                                        <Form.Control type="text" />
-                                        {/* value={this.state.shippingAddress}  */}
+                                    <Form.Group controlId="streetAddress">
+                                        <Form.Label>Street Address</Form.Label>
+                                        <Form.Control type="text"
+                                            name='streetAddress'
+                                            value={data.streetAddress}
+                                            onChange={handleChange} />
                                     </Form.Group>
                                     <Row>
                                         <Col>
-                                            <Form.Group controlId="movieDesc">
+                                            <Form.Group controlId="city">
                                                 <Form.Label>City</Form.Label>
-                                                <Form.Control type="text" />
-                                                {/*  value={this.state.city}  */}
+                                                <Form.Control type="text"
+                                                    name='city'
+                                                    value={data.city}
+                                                    onChange={handleChange} />
                                             </Form.Group>
                                         </Col>
                                         <Col>
-                                            <Form.Group controlId="movieActor">
+                                            <Form.Group controlId="pincode">
                                                 <Form.Label>Pincode</Form.Label>
-                                                <Form.Control type="text" />
-                                                {/* value={this.state.movieActor} */}
+                                                <Form.Control type="text"
+                                                    name='pincode'
+                                                    value={data.pincode}
+                                                    onChange={handleChange} />
                                             </Form.Group>
                                         </Col>
                                     </Row>
-                                    <Form.Group controlId="movieActor">
+                                    <Form.Group controlId="state">
                                         <Form.Label>State</Form.Label>
-                                        <Form.Control type="text" />
-                                        {/* value={this.state.movieActor} */}
+                                        <Form.Control type="text"
+                                            name='state'
+                                            value={data.state}
+                                            onChange={handleChange} />
                                     </Form.Group>
                                 </Col>
                                 <Col>
-                                    <Form.Group controlId="movieDesc">
+                                    <Form.Group controlId="cardName">
                                         <Form.Label>Cardholder's Name</Form.Label>
                                         <Form.Control type="text" />
                                     </Form.Group>
-                                    <Form.Group controlId="movieDesc">
+                                    <Form.Group controlId="cardNumber">
                                         <Form.Label>Card Number</Form.Label>
                                         <Form.Control type="text" />
                                     </Form.Group>
                                     <Row>
                                         <Col>
-                                            <Form.Group controlId="movieDesc">
+                                            <Form.Group controlId="expDate">
                                                 <Form.Label>Exp Date</Form.Label>
-                                                <Form.Control type="text" />
+                                                <Form.Control type="date" 
+                                                pattern="\d{3,4}"/>
                                             </Form.Group>
                                         </Col>
                                         <Col>
-                                            <Form.Group controlId="movieActor">
+                                            <Form.Group controlId="cvv">
                                                 <Form.Label>CVV</Form.Label>
                                                 <Form.Control type="text" />
                                             </Form.Group>
@@ -64,6 +120,9 @@ export default function Payment() {
                                     </Row>
                                 </Col>
                             </Row>
+                            <div className="submit-button">
+                                <Button variant="dark" size="lg" type="submit">Place Order</Button>
+                            </div>
                         </Form>
                     </div>
                 </Col>
@@ -79,7 +138,7 @@ export default function Payment() {
                                 <tbody>
                                     <tr>
                                         <td scope="row">Total sum</td>
-                                        <td>{600}</td>
+                                        <td>{totalAmount - 50}</td>
                                     </tr>
                                     <tr>
                                         <td scope="row">Shipping charges</td>
@@ -88,7 +147,7 @@ export default function Payment() {
 
                                     <tr className="total">
                                         <td scope="row">Total Amount</td>
-                                        <td>{600 + 50}</td>
+                                        <td>{totalAmount}</td>
                                     </tr>
                                 </tbody>
                             </Table>
@@ -96,9 +155,7 @@ export default function Payment() {
                     </div>
                 </Col>
             </Row>
-            <div className="submit-button">
-                        <Button variant="dark" size="lg">Place Order</Button>
-            </div>
+
         </>
     )
 }

@@ -5,39 +5,40 @@ const userId = localStorage.getItem('userId');
 
 let cart = [];
 
-export const getCart = async () => {
-    try {
-        const data = await axios.get(`http://localhost:3000/carts/${userId}`);
-        console.log(data);
-        localStorage.setItem('cartId', data.data.cart._id);
-        return data.data.cart.products;
+export const createCart = async () => {
+    const data = await axios.post('http://localhost:3000/carts', {
+        userId: userId,
+        products: [],
+    })
+    console.log(data);
+    localStorage.setItem('cartId', data.data.savedCart._id);
+    return [];
+}
 
-    } catch (err) {
-        console.log(err);
-        const data = await axios.post('http://localhost:3000/carts', {
-            userId: userId,
-            products: [],
-        })
-        console.log(data);
-        localStorage.setItem('cartId', data.data.savedCart._id);
-        return [];
+export const getCart = async () => {
+    if (localStorage.getItem('cartId')) {
+        try {
+            const data = await axios.get(`http://localhost:3000/carts/${userId}`);
+            console.log(data);
+            localStorage.setItem('cartId', data.data.cart._id);
+            return data.data.cart.products;
+        } catch (err) {
+            console.log(err);
+            return createCart();
+        }
+    } else {
+        return createCart();
     }
 
 }
 
-
-/* getCart().then(data => {
-    cart = data
-    console.log(cart);
-})
- */
 export const addProductToCart = async (product, q) => {
     //console.log("product", product);
     await getCart().then(data => {
         cart = data
         console.log(cart);
     })
-        //console.log(cart);
+    //console.log(cart);
     let i = cart.findIndex(p => p.productId === product._id);
 
     if (i === -1) {
@@ -60,5 +61,11 @@ export const addProductToCart = async (product, q) => {
     const data = await axios.put(`http://localhost:3000/carts/${cartId}`, {
         products: cart
     });
+    console.log(data);
+}
+
+export const deleteCart = async () => {
+    const data = await axios.delete(`http://localhost:3000/carts/${userId}`);
+    localStorage.removeItem('cartId');
     console.log(data);
 }
