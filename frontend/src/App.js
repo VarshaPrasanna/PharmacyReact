@@ -15,7 +15,7 @@ import Home from './components/Home/Home';
 
 
 import Cart from './components/Cart/Cart';
-import UserService from './components/Admin/AdminAnalyitics';
+import AdminAnalyitics from './components/Admin/AdminAnalyitics';
 
 import {
   BrowserRouter,
