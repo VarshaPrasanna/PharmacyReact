@@ -123,12 +123,19 @@ const UpdateStatus = () => {
                       <div className="card-body">  
                       <div className="form-group">
                         <label className="form-label">Status</label>
-                        <input type="text"
+                        {/* <input type="text"
                             name="status"
                             className="form-control"
                             value={order.status}
                             onChange={handleChange}
-                            required />
+                            required /> */}
+                            <select className="custom-select form-control" name="status" value={order.status} onChange={handleChange}  >
+                            <option value="pending">Pending</option>
+                              <option value="in-transit">in-transit</option>
+                              <option value="approved">approved</option>
+                              <option value="cancelled">cancelled</option>
+                              <option value="delivered">Delivered</option>
+                            </select>
                     </div>                     
                       </div>
                     </div>

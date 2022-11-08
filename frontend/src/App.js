@@ -36,7 +36,8 @@ import ViewProduct from './components/Admin/AdminComponents/ManageProducts/View-
 import AddProduct from './components/Admin/AdminComponents/ManageProducts/Add-Product';
 import UpdateProduct from './components/Admin/AdminComponents/ManageProducts/Update-Product';
 import ProductInfo from './components/product-info/product-info';
-import AdminAnalyitics from './components/Admin/AdminAnalyitics';
+import ManageQuery from './components/Admin/AdminComponents/ManageQuery/manage-query';
+import DiscussionBoard from './components/discussion-board/DiscussionBoard';
 
 
 
@@ -54,7 +55,7 @@ function App() {
             {/* ALL components which needs header should be placed inside layout tag */}
             <Route exact path="/" element={<Home />} />
             <Route path="/prescription" element={<Prescription />} />
-
+            <Route exact path="discussion-board" element={<DiscussionBoard />} />
 
           </Route>
 
@@ -76,7 +77,6 @@ function App() {
           <Route exact path="/product-info/:id" element={<ProductInfo />} />
 
 
-
           {/* All admin components to be placed inside Admin layout  */}
 
           <Route element={<AdminLayout />}>
@@ -84,6 +84,8 @@ function App() {
             <Route exact path="/ManageUsers" element={<ManageUsers />} />
             <Route exact path="/managePrescription" element={<ManagePrescription />} />
             <Route path="/prescriptionReply/:_id" element={<PrescriptionReply />} />
+
+            <Route exact path="/ManageMessages" element={<ManageQuery />} />
 
           </Route>
           {/* End of admin layout */}

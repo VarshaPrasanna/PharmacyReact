@@ -72,13 +72,18 @@ function AddProduct(props) {
                 </div>
                 <div className="form-group">
                     <label className="form-label"> Product Categories</label>
-                    <input type="text"
-                        name="categories"
-                        className="form-control"
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
+                        <select className="custom-select form-control" name="categories"  onChange={handleChange} required >
+                            <option value="">select</option>
+                            <option value="Homeopathy">Homeopathy</option>
+                            <option value="Ayurveda">Ayurveda</option>
+                            <option value="Health devices">Health devices</option>
+                            <option value="Covid essentials" >Covid essentials</option>
+                            <option value="Nutrients" >Nutrients</option>
+                            <option value="Clinical" >Clinical</option>
+                            <option value="Personal Care" >Personal Care</option>
+                            <option value="Home Care" >Home Care</option>                           
+                        </select>
+                    </div>
                 
                 <div className="form-group">
                     <label className="form-label">image</label>

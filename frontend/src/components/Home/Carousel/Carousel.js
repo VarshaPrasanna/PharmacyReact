@@ -1,3 +1,4 @@
+import { Button } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
 import './Carousel.css';
 
@@ -14,7 +15,7 @@ function HomeCarousel() {
         </div>
         <Carousel.Caption>
           <h3 className="carousel-text">Buy medicines online</h3>
-          <p>Shop Now</p>
+          <Button variant='dark' href='/product-list'>Shop Now</Button>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={5000}>
@@ -27,7 +28,7 @@ function HomeCarousel() {
         </div>
         <Carousel.Caption>
           <h3 className="carousel-text">Covid Essentials</h3>
-          <p>Shop Now</p>
+          <Button variant='dark' href='/product-list'>Shop Now</Button>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -39,7 +40,8 @@ function HomeCarousel() {
         />
         </div>
         <Carousel.Caption>
-          <h3 className="carousel-text">Upload Prescription</h3>
+          <h3 className="carousel-text">Upload Prescription and get your medicines</h3>
+          <Button variant='dark' href='/prescription'>Upload prescription</Button>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

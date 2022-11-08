@@ -10,6 +10,8 @@ export default function Payment() {
 
     const totalAmount = localStorage.getItem('totalAmount');
 
+    const [isSubmitted, setSubmit] = useState(false);
+
     const [data, setData] = useState({
         streetAddress: "",
         city: "",
@@ -25,7 +27,7 @@ export default function Payment() {
     };
 
     const handleSubmit = async (e) => {
-        console.log('handle submit');
+        //console.log('handle submit');
         e.preventDefault();
         try {
             const url = "http://localhost:3000/orders";
@@ -38,7 +40,7 @@ export default function Payment() {
             });
             console.log(res);
             deleteCart();
-            navigate("/");
+            setSubmit(true);
         } catch (error) {
             if (
                 error.response &&
@@ -49,13 +51,32 @@ export default function Payment() {
             }
         }
     };
-
+    
+    if(isSubmitted){
+        return(
+            <>
+            <div className="card">
+                        <div className="card-body">
+                            <h4 className="card-title">Payment Details</h4>
+                        </div>
+                    </div>
+                    <div class="alert alert-success text-center centered" role="alert">
+                        <h1 className='text-success'>Your Order is placed!</h1>
+                        <a role='button' className='btn btn-success' href="/MyOrders">View your orders</a>
+                    </div>
+                </>
+        )
+    } else {
     return (
         <>
+         <div className="card">
+                        <div className="card-body">
+                            <h4 className="card-title">Payment Details</h4>
+                        </div>
+                    </div>
             <Row>
                 <Col>
                     <div className="form-wrapper">
-                        <h4>Payment Details</h4>
                         <Form onSubmit={handleSubmit}>
                             <Row>
                                 <Col>
@@ -158,4 +179,5 @@ export default function Payment() {
 
         </>
     )
+    }
 }

@@ -84,21 +84,28 @@ const MyOrders = () => {
                             <div>{item.products.map((p) => {
 
                               return (
-
-
+                              <>
                                 <div className="row">
+                                <div className="col-md-2">
+                                <img src={p.image} className="img-fluid" alt="Image"/>
+                                </div>
 
                                   <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
-                                    <p className="text-muted mb-0">title</p>
+                                    <h5 className="text-muted mb-0">{p.title}</h5>
                                   </div>
-                                  <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                  {/* <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
                                     <p className="text-muted mb-0 small">productId: {p.productId} </p>
-                                  </div>
+                                  </div> */}
                                   <div className="col-md-2 text-center d-flex justify-content-center align-items-center">
                                     <p className="text-muted mb-0 small">Qty: {p.quantity}</p>
                                   </div>
+                                  <div className="col-md-6 text-center d-flex justify-content-center align-items-center">
+                                    <p className="text-muted mb-0 small" >price:₹ {p.price * p.quantity}</p>
+                                  </div>
 
                                 </div>
+                                <hr/>
+                                </>
 
                               )
                             })}
