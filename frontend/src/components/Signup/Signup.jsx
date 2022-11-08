@@ -89,15 +89,20 @@ const Signup = () => {
 							required
 							className={styles.input}
 						/>
+						<div className='row' >
                         <input
-							type="text"
-							placeholder="Gender"
+							type="radio"
 							name="gender"
 							onChange={handleChange}
-							value={data.gender}
-							required
-							className={styles.input}
-						/>
+							value="Male"							
+						/>Male
+						<input
+							type="radio"
+							name="gender"
+							onChange={handleChange}
+							value="Female"
+						/>Female
+						</div>
 						<input
 							type="password"
 							placeholder="Password"
