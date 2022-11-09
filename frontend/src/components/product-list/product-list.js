@@ -1,15 +1,15 @@
 import React from 'react';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import Header from '../Header/Header';
 import './product-list.css';
 import ProductCard from '../product-card/ProductCard';
-
+import Pagination from '../pagination/pagination';
 
 
 let pro = [];
-
+let PageSize = 8;
 const ProductList = () => {
 
     const location = useLocation()
@@ -17,7 +17,7 @@ const ProductList = () => {
     const [product, setProduct] = useState([]);
     const [search, setSearch] = useState("");
     const [type, setType] = useState("all");
-    //const [pro, setPro] = useState([]);
+    const [currentPage, setCurrentPage] = useState(0);
 
     const getProductList = async () => {
         try {
@@ -25,9 +25,8 @@ const ProductList = () => {
                 "http://localhost:3000/products/"
             );
             console.log(data.data.products);
-            // console.log(data.data.users)
             setProduct(data.data.products);
-            //setPro(product);
+            setCurrentPage(1);          
             pro = data.data.products;
             console.log(pro);
         } catch (e) {
@@ -35,6 +34,13 @@ const ProductList = () => {
         }
 
     };
+    const currentTableData = useMemo(() => {    
+
+      const firstPageIndex = (currentPage - 1) * PageSize;
+      const lastPageIndex = firstPageIndex + PageSize;
+      console.log(product);
+      return product.slice(firstPageIndex, lastPageIndex);
+    }, [currentPage]);
 
     useEffect(() => {
       getProductList().then(() => {
@@ -43,7 +49,6 @@ const ProductList = () => {
         }
       })
     }, []);
-
     function sorting(value){
         if(value == "ZtoA"){
           const p = [...product].sort((a,b)=>a.title > b.title ? -1 : 1,);
@@ -140,6 +145,13 @@ const ProductList = () => {
           
         </div>
       </section>
+      <Pagination
+        className="pagination-bar"
+        currentPage={currentPage}
+        totalCount={product.length}
+        pageSize={PageSize}
+        onPageChange={page => setCurrentPage(page)}
+      />
       </>
     );
 }
