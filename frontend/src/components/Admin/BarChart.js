@@ -49,6 +49,16 @@ const BarChart = () => {
     console.info([...map.values()])
     const data = {
         labels: keys,
+        options: {
+            scales: {
+                y: {
+                    ticks: {
+                        precision: 0
+                    }
+                }
+            }
+        },
+
         datasets: [
             {
                 label: 'Number of Orders VS Day',
@@ -70,6 +80,7 @@ const BarChart = () => {
                     'rgba(255, 159, 64, 1)',
                 ],
                 borderWidth: 1,
+
             },
         ],
     };
