@@ -1,5 +1,5 @@
 import HomeCarousel from "./Carousel/Carousel";
-import ProductCard from "../product-card/ProductCard"
+import ProductCard from "../product-card/ProductCard";
 import { Row, Col, Card, CardGroup } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import './Home.css';
@@ -38,7 +38,7 @@ export default function Home() {
                 <Row>
 
                     <Col>
-                        <Link to={{ pathname: '/Nutients' }}>
+                        <Link to={{ pathname: '/product-list' }} state={{type: 'Nutrients'}}>
                             <Card className="category">
                                 <Card.Img variant="top" src="https://newassets.apollo247.com/pub/media/catalog/category/h_and_n.png" className="category-img" />
                                 <Card.Body>
@@ -49,7 +49,7 @@ export default function Home() {
                     </Col>
 
                     <Col>
-                        <Link to={{ pathname: '/Ayurveda' }}>
+                    <Link to={{ pathname: '/product-list' }} state={{type: 'Ayurveda'}}>
                             <Card className="category">
                                 <Card.Img variant="top" src="https://newassets.apollo247.com/pub/media/catalog/category/ayurveda.jpg" className="category-img" />
                                 <Card.Body>
@@ -60,7 +60,7 @@ export default function Home() {
                     </Col>
 
                     <Col>
-                        <Link to={{ pathname: '/health-device' }}>
+                    <Link to={{ pathname: '/product-list' }} state={{type: 'Health devices'}}>
                             <Card className="category">
                                 <Card.Img variant="top" src="https://newassets.apollo247.com/pub/media/catalog/category/health_devices_22oct.png" />
                                 <Card.Body>
@@ -71,7 +71,7 @@ export default function Home() {
                     </Col>
 
                     <Col>
-                        <Link to={{ pathname: '/covid-essential' }}>
+                    <Link to={{ pathname: '/product-list' }} state={{type: 'Covid essentials'}}>
                             <Card className="category">
                                 <Card.Img variant="top" src="https://newassets.apollo247.com/pub/media/catalog/category/logo.jpg" />
                                 <Card.Body>

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
     return (
         <>
@@ -19,15 +21,15 @@ export default function Footer() {
                             <div class="footer-widget">
                                 <h4 class="mb-4">Category</h4>
                                 <ul class="pl-0 list-unstyled mb-0">
-                                    <li><a href="/product-list">View all Producrs</a></li>
-                                    <li><a href="/Homeopathy">Homeopathy</a></li>
-                                    <li><a href="/Ayurveda">Ayurveda</a></li>
-                                    <li><a href="/health-device">Health devices</a></li>
-                                    <li><a href="/covid-essential">Covid essentials</a></li>
-                                    <li><a href="/Nutrients">Nutrients</a></li>
-                                    <li><a href="/Clinical">Clinical</a></li>
-                                    <li><a href="/personal-care">Personal Care</a></li>
-                                    <li><a href="/home-care">Home Care</a></li>
+                                    <li><Link to={{ pathname: '/product-list'}}>View all Producrs</Link></li>
+                                    <li><Link to={{ pathname: '/product-list' }} state={{type: 'Homeopathy'}}>Homeopathy</Link></li>
+                                    <li><Link to={{ pathname: '/product-list' }} state={{type: 'Ayurveda'}}>Ayurveda</Link></li>
+                                    <li><Link to={{ pathname: '/product-list' }} state={{type: 'Health devices'}}>Health devices</Link></li>
+                                    <li><Link to={{ pathname: '/product-list' }} state={{type: 'Covid essentials'}}>Covid essentials</Link></li>
+                                    <li><Link to={{ pathname: '/product-list' }} state={{type: 'Nutrients'}}>Nutrients</Link></li>
+                                    <li><Link to={{ pathname: '/product-list' }} state={{type: 'Clinical'}}>Clinical</Link></li>
+                                    <li><Link to={{ pathname: '/product-list' }} state={{type: 'Personal Care'}}>Personal Care</Link></li>
+                                    <li><Link to={{ pathname: '/product-list' }} state={{type: 'Home Care'}}>Home Care</Link></li>
                                 </ul>
                             </div>
                         </div>
