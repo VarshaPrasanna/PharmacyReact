@@ -75,6 +75,9 @@ function App() {
           <Route exact path="/Addproduct" element={<AddProduct />} />
           <Route exact path="/UpdateProduct/:_id" element={<UpdateProduct />} />
           <Route exact path="/product-info/:id" element={<ProductInfo />} />
+          <Route exact path="/managePrescription" element={<ManagePrescription />} />
+          <Route path="/prescriptionReply/:_id" element={<PrescriptionReply />} />
+
           <Route exact path="/changePassword" element={<ChangePassword />} />
 
           {/* All admin components to be placed inside Admin layout  */}
@@ -82,8 +85,6 @@ function App() {
           <Route element={<AdminLayout />}>
             <Route exact path="/admin" element={<AdminAnalyitics />} />
             <Route exact path="/ManageUsers" element={<ManageUsers />} />
-            <Route exact path="/managePrescription" element={<ManagePrescription />} />
-            <Route path="/prescriptionReply/:_id" element={<PrescriptionReply />} />
 
             <Route exact path="/ManageMessages" element={<ManageQuery />} />
 

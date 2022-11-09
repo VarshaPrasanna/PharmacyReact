@@ -135,8 +135,7 @@ export default function PrescriptionReply(props) {
 
       <img width="50%" class="img-fluid" src={`http://localhost:3000/${imageurl} `} />
 
-      <ProductListAdmin />
-
+      <ProductListAdmin reply={handleAddChip}/>
 
     </>
 
