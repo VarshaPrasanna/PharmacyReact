@@ -25,6 +25,7 @@ const ManageUsers = () => {
             userLength = data.data.users.length
             console.log(userLength)
             setUser(data.data.users);
+            console.log("test", user)
 
         } catch (e) {
             console.log(e);
@@ -50,7 +51,7 @@ const ManageUsers = () => {
 
         <div className="ManageUsers">
             <div>
-                <AdminApp userLength={userLength} />
+
 
             </div>
             <h1>USERS LIST</h1>
