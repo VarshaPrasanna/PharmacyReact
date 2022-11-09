@@ -82,8 +82,6 @@ function ManagePrescription() {
         <div className="container mr-60">
             <div class="jumbotron">
                 <h4 class="display-4" align="center">Manage all Prescription </h4>
-
-
             </div>
 
             <div class="container">
