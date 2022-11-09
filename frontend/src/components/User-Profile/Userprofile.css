@@ -56,10 +56,10 @@
 .navheight{
   height:100vh
 }
-
-
  
-
+.nav-link{
+  color: #0e0ea9;
+}
   
   h1
    {
@@ -532,8 +532,8 @@ align-self: flex-end;
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #7386D5;
-    color: #fff;
+    background: rgb(95, 188, 201);
+    color: black;
     transition: all 0.3s;
 }
 
@@ -543,12 +543,12 @@ align-self: flex-end;
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #6d7fcc;
+    background: rgb(67, 134, 143);
 }
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #47748b;
+    border-bottom: 1px solid #3389b3;
 }
 
 #sidebar ul p {
@@ -563,7 +563,7 @@ align-self: flex-end;
 }
 
 #sidebar ul li a:hover {
-    color: #7386D5;
+    color: rgb(67, 134, 143);
     background: #fff;
 }
 

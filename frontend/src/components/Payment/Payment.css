@@ -15,8 +15,12 @@ Form.Group{
 .bill-card{
     margin-right: 50px;
     margin-top: 60px;
-    background-color: rgba(196, 208, 230, 0.685);
+    background-color: rgba(80, 178, 193, 0.438);
     border-radius: 10px;
+}
+
+.bill-card tbody td{
+    color: black;
 }
 
 .submit-button{

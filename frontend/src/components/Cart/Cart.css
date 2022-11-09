@@ -5,14 +5,14 @@
 .cart-img{
     width: 130px;
     height: 130px;
-    border: 5px solid rgba(39, 73, 136, 0.661);
+    border: 5px solid rgb(72, 183, 197);
     border-radius: 5px;
 }
 
 .qty{
     width: 70px;
     padding: 1px;
-    background-color: rgba(100, 148, 237, 0.414);
+    background-color: rgb(140, 218, 229);
 }
 
 .qty-button{
@@ -20,14 +20,18 @@
     height: 30px; 
     text-align: center;
     margin: 10px;
-    background-color: cornflowerblue;
+    background-color: rgb(72, 183, 197);
     padding: 1px;
 }
 
 .cart-product-card{
     margin-bottom: 20px;
-    background-color: rgba(196, 208, 230, 0.685);
+    background-color: rgba(80, 178, 193, 0.438);
     border-radius: 10px;
+}
+
+.cart-product-card tbody td{
+    color: black;
 }
 
 .bill{

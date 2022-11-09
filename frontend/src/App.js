@@ -38,6 +38,7 @@ import UpdateProduct from './components/Admin/AdminComponents/ManageProducts/Upd
 import ProductInfo from './components/product-info/product-info';
 import ManageQuery from './components/Admin/AdminComponents/ManageQuery/manage-query';
 import DiscussionBoard from './components/discussion-board/DiscussionBoard';
+import ChangePassword from './components/change-password/ChangePassword';
 
 
 
@@ -56,6 +57,7 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route path="/prescription" element={<Prescription />} />
             <Route exact path="discussion-board" element={<DiscussionBoard />} />
+            <Route path='/MyOrders' element={<MyOrders />} />
 
           </Route>
 
@@ -63,19 +65,17 @@ function App() {
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
-          <Route exact path="/cart" element={<Cart />} />
           <Route exact path='/payment' element={<Payment />} />
           <Route path='/product-list' element={<ProductList />} />
           <Route path='/ManageOrders' element={<ManageOrders />} />
           <Route exact path='/Myprofile' element={<UserProfile />} />
           <Route exact path="/EditProfile" element={<EditProfile />} />
-          <Route path='/MyOrders' element={<MyOrders />} />
           <Route path='/update-status/:id' element={<UpdateStatus />} />
           <Route exact path="/ProductList" element={<ViewProduct />} />
           <Route exact path="/Addproduct" element={<AddProduct />} />
           <Route exact path="/UpdateProduct/:_id" element={<UpdateProduct />} />
           <Route exact path="/product-info/:id" element={<ProductInfo />} />
-
+          <Route exact path="/changePassword" element={<ChangePassword />} />
 
           {/* All admin components to be placed inside Admin layout  */}
 
