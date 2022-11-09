@@ -1,17 +1,20 @@
 import React from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import AdminApp from "../../AdminApp";
+import Pagination from "../../../pagination/pagination";
+
 
 
 var userLength;
-
+let PageSize = 10;
 const ManageUsers = () => {
 
 
     const [user, setUser] = useState([]);
     const [search, setSearch] = useState("");
+    const [currentPage, setCurrentPage] = useState(0);
     // const [userLength, setUserLength] = useState()
 
     const getUserData = async () => {
@@ -25,12 +28,20 @@ const ManageUsers = () => {
             userLength = data.data.users.length
             console.log(userLength)
             setUser(data.data.users);
+            setCurrentPage(1); 
             console.log("test", user)
 
         } catch (e) {
             console.log(e);
         }
     };
+    const currentTableData = useMemo(() => {    
+
+        const firstPageIndex = (currentPage - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+    
+        return user.slice(firstPageIndex, lastPageIndex);
+      }, [currentPage]);
     //Delete user
     const removeUser = (id) => {
         if (window.confirm("Are you sure?")) {
@@ -48,7 +59,7 @@ const ManageUsers = () => {
     }, []);
 
     return (
-
+         <>
         <div className="ManageUsers">
             <div>
 
@@ -83,7 +94,7 @@ const ManageUsers = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {user
+                                            {currentTableData
                                                 .filter((item) => {
                                                     if (search == "") {
                                                         return item;
@@ -134,12 +145,15 @@ const ManageUsers = () => {
                     </div>
                 </div >
             </div >
-
-
-
-
-
         </div >
+        <Pagination
+        className="pagination-bar"
+        currentPage={currentPage}
+        totalCount={user.length}
+        pageSize={PageSize}
+        onPageChange={page => setCurrentPage(page)}
+      />
+        </>
     );
 };
 
