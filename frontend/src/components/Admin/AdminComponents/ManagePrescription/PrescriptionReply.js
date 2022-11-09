@@ -6,12 +6,7 @@ import "./reply.css";
 import 'bootstrap/dist/css/bootstrap.css';
 import ChipInput from "material-ui-chip-input";
 import _, { map } from 'underscore';
-
-
-
-
-
-
+import ProductListAdmin from "./ProductListAdmin";
 
 export default function PrescriptionReply(props) {
 
@@ -83,16 +78,6 @@ export default function PrescriptionReply(props) {
   function handleCancel() {
     navigate(`/managePrescription`)
   }
-  // function handleDelete(item) {
-  //   setReply({
-  //     items: reply.prescriptionReplies.filter(i => i !== item)
-  //   });
-  // };
-  // // handleDelete = item => {
-  // //   this.setState({
-  // //     items: this.state.items.filter(i => i !== item)
-  // //   });
-  // // };
 
 
   function handleChange(event) {
@@ -150,6 +135,7 @@ export default function PrescriptionReply(props) {
 
       <img width="50%" class="img-fluid" src={`http://localhost:3000/${imageurl} `} />
 
+      <ProductListAdmin />
 
 
     </>

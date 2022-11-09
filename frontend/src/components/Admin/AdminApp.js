@@ -52,7 +52,7 @@ const AdminApp = (props) => {
                 <div class="row" style={{ paddingLeft: 260 }}>
 
                     <div class="col-xl-3 col-sm-6 mb-3">
-                        <div className="mb-5" style={{ height: "300px", width: "400px" }}><PieChart />
+                        <div className="mb-5" style={{ height: "300px", width: "400px" }}>Categories<PieChart />
                         </div>
                     </div>
                     <div class="col-xl-3 col-sm-6 mb-3" style={{ paddingLeft: 260 }}>
