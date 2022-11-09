@@ -20,6 +20,13 @@ const Signup = () => {
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
 	};
+	const ConfirmPassword = ({ currentTarget: input })=>{
+
+       if(data.password !== input.value){
+		window.alert("confirm password should match with password");
+
+	   }
+	}
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -109,6 +116,15 @@ const Signup = () => {
 							name="password"
 							onChange={handleChange}
 							value={data.password}
+							required
+							className={styles.input}
+						/>
+						<input
+							type="password"
+							placeholder="Confirm Password"
+							name="confirm password"
+							onBlur={ConfirmPassword}
+							// value={data.password}
 							required
 							className={styles.input}
 						/>
