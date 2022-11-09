@@ -1,20 +1,24 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Header from '../Header/Header';
 import './product-list.css';
 import ProductCard from '../product-card/ProductCard';
 
 
 
+let pro = [];
+
 const ProductList = () => {
+
+    const location = useLocation()
 
     const [product, setProduct] = useState([]);
     const [search, setSearch] = useState("");
     const [type, setType] = useState("all");
-    
-    const [pro, setPro] = useState([]);
+    //const [pro, setPro] = useState([]);
+
     const getProductList = async () => {
         try {
             const data = await axios.get(
@@ -23,7 +27,8 @@ const ProductList = () => {
             console.log(data.data.products);
             // console.log(data.data.users)
             setProduct(data.data.products);
-            setPro(data.data.products);
+            //setPro(product);
+            pro = data.data.products;
             console.log(pro);
         } catch (e) {
             console.log(e);
@@ -32,8 +37,13 @@ const ProductList = () => {
     };
 
     useEffect(() => {
-        getProductList();
+      getProductList().then(() => {
+        if(location.state){
+          category(location.state.type);
+        }
+      })
     }, []);
+
     function sorting(value){
         if(value == "ZtoA"){
           const p = [...product].sort((a,b)=>a.title > b.title ? -1 : 1,);
@@ -55,10 +65,10 @@ const ProductList = () => {
           setProduct(p);
         }
     }
+
     function category(type) {
       setType(type);
       console.log(pro);
-
       console.log(type);
       if (type !== "all") {
         console.log(pro);
@@ -67,7 +77,6 @@ const ProductList = () => {
         );
         console.log(tempProducts);
         setProduct(tempProducts);
-
       } else {
         setProduct(pro);
         console.log(pro);
