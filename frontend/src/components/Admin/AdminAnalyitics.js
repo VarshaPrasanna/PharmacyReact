@@ -6,6 +6,7 @@ import AdminApp from "./AdminApp";
 
 
 var userLength, productLength, orderLength, preLength;
+
 const AdminAnalyitics = () => {
     const [user, setUser] = useState([]);
     const [search, setSearch] = useState("");
@@ -27,8 +28,8 @@ const AdminAnalyitics = () => {
             const data = await axios.get(
                 "http://localhost:3000/products/"
             );
-            console.log(data.data);
-            console.log(data.data.products)
+            // console.log(data.data);
+            // console.log(data.data.products)
             setProduct(data.data.products);
             productLength = data.data.products.length;
             console.log(productLength)
@@ -44,7 +45,7 @@ const AdminAnalyitics = () => {
             const data = await axios.get(
                 "http://localhost:3000/orders/"
             );
-            console.log(data.data);
+            // console.log(data.data);
 
             setOrder(data.data.orders);
             orderLength = data.data.orders.length;
@@ -58,8 +59,8 @@ const AdminAnalyitics = () => {
             const data = await axios.get(
                 "http://localhost:3000/Prescription/"
             );
-            console.log(data.data);
-            console.log(data.data.pre)
+            // console.log(data.data);
+            // console.log(data.data.pre)
             setprescription(data.data.pre);
             preLength = data.data.pre.length
         } catch (e) {

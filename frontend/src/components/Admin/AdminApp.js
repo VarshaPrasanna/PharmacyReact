@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react';
-// import PieChart from './PieChart';
-import ManageUsers from './AdminComponents/ManageUsers/ManageUsers';
 import React from "react";
+import PieChart from './AdminComponents/PieChart';
 
 const AdminApp = (props) => {
     return (
@@ -48,6 +46,10 @@ const AdminApp = (props) => {
                         </div>
                     </div>
                 </div>
+                <div style={{ paddingLeft: 260 }}>
+                    <h4 className='title mt-3 mb-3 text-center text-secondary'>Data in Chart</h4>
+                    <div className="mb-5" style={{ height: "300px", width: "400px" }}><PieChart /> </div></div>
+
             </div>
 
 

@@ -22,21 +22,7 @@ async function getPopularProducts() {
 
 function PopularProducts() {
 
-    /* const [popProducts, setPopProducts] = useState([]);
 
-    const getPopularProductList = async () => {
-        try {
-            let products = [];
-            const data = await axios.get("http://localhost:3000/orders/popular")
-            console.log("pop", data.data);
-            data.data.data.map(dta => {
-                products.push(dta.product[0])
-            })
-            setPopProducts(products);
-        } catch (e) {
-            console.log(e);
-        }
-    } */
 
     useEffect(() => {
         //getPopularProductList();

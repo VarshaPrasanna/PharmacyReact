@@ -2,11 +2,19 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Button, Form, Modal } from 'react-bootstrap';
 import './manage-query.css';
 
 const ManageQuery = () => {
 
     const [message, setMessage] = useState([]);
+    const [modal, setModal] = useState(false);
+    const [data, setData] = useState({
+      userId: localStorage.getItem('userId'),
+      firstName: localStorage.getItem('userName'),
+      replies : ''
+  });
+  const [id, setId] = useState('');
 
     const getMessages = async () => {
         try {
@@ -24,6 +32,40 @@ const ManageQuery = () => {
     useEffect(() => {
         getMessages();
     }, []);
+
+    const modalToggle = () => {
+      setModal(!modal);
+          
+  }
+  // let id = '';
+  const handleId = (Id) => {
+    setModal(!modal);
+     setId(Id);
+     console.log(id);      
+}
+console.log(id);
+
+
+
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+};
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  //setData({ ...data, [e.target.name]: e.target.value });
+  //console.log(e);
+  try {
+
+      const url = `http://localhost:3000/message/reply/${id}`;
+      const res = await axios.patch(url, data);
+      console.log(res);
+      modalToggle();
+      getMessages();
+      setData();
+  } catch (error) {
+      console.log(error)
+  }
+}
 
     return(
         <section className="intro">
@@ -57,7 +99,7 @@ const ManageQuery = () => {
                       </tr>
                     </thead>
                     <tbody>
-                        {message.map((msg)=>{
+                        {message.reverse().map((msg)=>{
                             return(
                       <tr>
                         <th scope="row">{msg.firstName}</th>
@@ -69,10 +111,10 @@ const ManageQuery = () => {
                           <button
                             type="button"
                             className="btn btn-light m-1"
-                            data-toggle="modal"
-                            data-target="#form"
+                            onClick={()=>handleId(msg._id)}
+                            // onClick={modalToggle}
                           >
-                            Reply
+                            
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               width={16}
@@ -82,7 +124,7 @@ const ManageQuery = () => {
                               viewBox="0 0 16 16"
                             >
                               <path d="M5.921 11.9 1.353 8.62a.719.719 0 0 1 0-1.238L5.921 4.1A.716.716 0 0 1 7 4.719V6c1.5 0 6 0 7 8-2.5-4.5-7-4-7-4v1.281c0 .56-.606.898-1.079.62z" />
-                            </svg>
+                            </svg>Reply
                           </button>
                         </td>
                       </tr>
@@ -97,47 +139,30 @@ const ManageQuery = () => {
         </div>
       </div>
     </div>
-    <div
-      className="modal fade"
-      id="form"
-      tabIndex={-1}
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div className="modal-dialog modal-dialog-centered" role="document">
-        <div className="modal-content">
-          <div className="text-right cross" data-dismiss="modal">
 
-            <i className="fa fa-times mr-2" />
-          </div>
-          <div className="card-body text-center">
-            <div className="comment-box text-center">
-              <h4>Post your Reply </h4>
-              <div className="modal-body">
-                <form>
-                  <div className="form-group">
-                    <textarea
-                      className="form-control"
-                      name="reply"
-                      cols={30}
-                      rows={5}
-                      formcontrolname="reply"
-                      defaultValue={""}
-                    />
-                    <div className="test">
-                      <button type="submit" className="btn btn-primary mt-2">
-                        SUBMIT
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Modal show={modal} centered onHide={modalToggle} className="text-center">
+<Modal.Header closeButton>
+    <Modal.Title id="contained-modal-title-vcenter">
+        Post your reply
+    </Modal.Title>
+</Modal.Header>
+<Form onSubmit={handleSubmit}>
+    <Modal.Body>
+        <Form.Group >
+            <Form.Label>Reply</Form.Label>
+            <Form.Control as="textarea"
+                name='replies'                
+                onChange={handleChange}
+                className='msg-input' />
+        </Form.Group>
+    </Modal.Body>
+    <Modal.Footer>
+        <Button type='submit'>Submit reply</Button>
+        {/* <Button onClick={modalToggle}>Close</Button> */}
+    </Modal.Footer>
+</Form>
+</Modal>
+    
   </div>
 </section>
 
