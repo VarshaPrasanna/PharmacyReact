@@ -19,19 +19,14 @@ const ProductList = () => {
     const [type, setType] = useState("all");
     const [currentPage, setCurrentPage] = useState(0);
 
-    //const [pro, setPro] = useState([]);
-
     const getProductList = async () => {
         try {
             const data = await axios.get(
                 "http://localhost:3000/products/"
             );
             console.log(data.data.products);
-            // console.log(data.data.users)
             setProduct(data.data.products);
             setCurrentPage(1);          
-
-            //setPro(product);
             pro = data.data.products;
             console.log(pro);
         } catch (e) {
@@ -43,7 +38,7 @@ const ProductList = () => {
 
       const firstPageIndex = (currentPage - 1) * PageSize;
       const lastPageIndex = firstPageIndex + PageSize;
-  
+      console.log(product);
       return product.slice(firstPageIndex, lastPageIndex);
     }, [currentPage]);
 
@@ -54,7 +49,6 @@ const ProductList = () => {
         }
       })
     }, []);
-
     function sorting(value){
         if(value == "ZtoA"){
           const p = [...product].sort((a,b)=>a.title > b.title ? -1 : 1,);
@@ -134,7 +128,7 @@ const ProductList = () => {
      </div>
         <section className="container2">       
           <div className='row'> 
-          {currentTableData.filter((item) => {
+          {product.filter((item) => {
              if (search == "") {
              return item;
            } else if (
