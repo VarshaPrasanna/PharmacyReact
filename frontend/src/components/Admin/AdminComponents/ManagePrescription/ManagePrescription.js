@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 // import { PDFExport, savePDF } from "@progress/kendo-react-pdf";s
 import { useRef, useState, useEffect } from "react";
+import Prescription from '../../../Prescription/Prescription';
 
 function ManagePrescription() {
 
@@ -109,8 +110,6 @@ function ManagePrescription() {
                                                     return (
 
                                                         <tr >
-
-
                                                             <td><img width="50%" src={`http://localhost:3000/${item.imageUrl} `} /></td>
 
                                                             <td>{item.date.slice(0, 10)}</td>
@@ -152,6 +151,7 @@ function ManagePrescription() {
                     </div>
                 </div >
             </div >
+
 
         </div>
         ///////

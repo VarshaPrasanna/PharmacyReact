@@ -54,8 +54,8 @@ function ProductCard(props) {
                                 </Modal.Header>
                                 <Modal.Body>Product added to cart! </Modal.Body>
                                 <Modal.Footer>
-                                        <Button variant="info" href='/cart'>Go to Cart</Button>
-                                        <Button variant="outline-info" onClick={handleClose}>Close</Button>
+                                    <Button variant="info" href='/cart'>Go to Cart</Button>
+                                    <Button variant="outline-info" onClick={handleClose}>Close</Button>
                                 </Modal.Footer>
                             </Modal>
                         </div>
