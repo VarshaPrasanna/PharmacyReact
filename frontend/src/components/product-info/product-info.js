@@ -4,12 +4,15 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import './product-info.css';
 import Carousel from 'react-bootstrap/Carousel';
-
+import Header from '../Header/Header';
+import { addProductToCart } from '../../service/cart.service'
+import { Modal, Button, CloseButton } from 'react-bootstrap';
 
 
 
 const ProductInfo = () => {
     const [product, setProduct] = useState([]);
+    const [show, setShow] = useState(false);
     const navigate = useNavigate();
     const {id} = useParams();
     const getProduct = async () => {
@@ -28,80 +31,98 @@ const ProductInfo = () => {
         getProduct();
     }, []);
 
+    const addToCart = (product) => {
+      addProductToCart(product, 1);
+      setShow(true);
+  }
+  const handleClose = () => setShow(false);
+
     return(
-        
-         <>
-  <section className="page-header">
-  <Carousel variant="dark">
-  <Carousel.Item interval={5000}>
-    <div className="carousel-img"> <img className="d-block img-fluid"  src="https://img.freepik.com/free-vector/tiny-pharmacists-with-rx-prescription-drugs_74855-7882.jpg?w=1380&t=st=1667457058~exp=1667457658~hmac=96cd4b40bef9360dc1945306b62d31513bebc14e372fcde9f36a90403f6504bd"/> </div>
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-lg-6">
-        <Carousel.Caption>
-          <div className="content text-center">
-            <h1 className="mb-3">Product Information</h1>
-            <p>
-              GetMeds Provides the finest tested medicines and provides expected
-              home delivery
-            </p>
-            <nav aria-label="breadcrumb">
-              <ol className="breadcrumb bg-transparent justify-content-center">
-                <li className="breadcrumb-item">
-                  <a routerlink="/">Home</a>
-                </li>
-              </ol>
-            </nav>
+<>
+{/* <Header/> */}
+{/* <div className="bg"></div> */}
+<section style={{ backgroundColor: "rgb(176, 211, 220)" }}>
+  <div className="container text-center " style={{ backgroundColor: "white" }} >
+  <h3>Product Information</h3>
+  </div>
+
+  <div className="container py-5">
+    <div className="row justify-content-center">
+      <div className="col-md-8 col-lg-6 col-xl-4">
+        <div className="card" style={{ borderRadius: 15 }}>
+          <div
+            className="bg-image hover-overlay ripple ripple-surface ripple-surface-light"
+            data-mdb-ripple-color="light"
+          >
+            <img
+              src={product.image}
+              style={{ borderTopLeftRadius: 15, borderTopRightRadius: 15, marginLeft: 35 }}
+              className="img-fluid"
+              alt="Laptop"
+            />
+            <a href="#!">
+              <div className="mask" />
+            </a>
           </div>
-          </Carousel.Caption>
-        </div>
-      </div>
-    </div>
-    </Carousel.Item>
-    </Carousel>
-  </section>
-  <section className="single-product">
-    <div className="container">
-      <div className="row">
-        <div className="col-md-5">
-          <div className="single-product-slider">
-            <div
-              className="carousel slide"
-              data-ride="carousel"
-              id="single-product-slider"
-            >
-              <img src={product.image} className="img-fluid" />
+          <div className="card-body pb-0">
+            <div className="d-flex justify-content-between">
+              <div>
+                <p>
+                  <a href="#!" className="text-dark">
+                  {product.title}
+                  </a>
+                </p>
+                <p className="small text-muted">{product.categories}</p>
+              </div>
+              <div>
+                <div className="d-flex flex-row justify-content-end mt-1 mb-4 text-danger">
+                  <i className="fas fa-star" />
+                  <i className="fas fa-star" />
+                  <i className="fas fa-star" />
+                  <i className="fas fa-star" />
+                </div>
+                <p className="small text-muted"></p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="col-md-7">
-          <div className="single-product-details mt-5 mt-lg-0">
-            <h2> title:{product.title}  </h2>
-            <div className="sku_wrapper mb-4">
-              Expiry Date: <span className="text-muted">24/06/2024 </span>
+          <hr className="my-0" />
+          <div className="card-body pb-0">
+            <div className="d-flex justify-content-between">
+              <p>
+                <a href="#!" className="text-dark">
+                      price:   ₹ {product.price}
+                </a>
+              </p>
+              <p className="text-dark"> <del>price: ₹ {product.price + 50}</del></p>
             </div>
-            <hr />
-            <h3 className="product-price">
-              price: {product.price}
-              <del>price: {product.price + 50}</del>
-            </h3>
-            <p className="product-description my-4 ">{product.description}</p>
-            <form className="cart" action="#" method="post">
-              <button
-                type="button"
-                className="btn btn-info mb-2"
-                data-toggle="modal"
-                data-target="#modalCart"
-              >
+            <p className="small text-muted">{product.description}</p>
+          </div>
+          <hr className="my-0" />
+          <div className="card-body">
+            <div className="d-flex justify-content-between align-items-center pb-2 mb-1">
+              
+              <button type="button" className="btn btn-primary" onClick={() => addToCart(product)} style={{marginLeft: 80}} >
                 Add to Cart
               </button>
-            </form>
+              <Modal size="sm" show={show} onHide={handleClose} className="text-center">
+                                <Modal.Header closeButton>
+                                </Modal.Header>
+                                <Modal.Body>Product added to cart! </Modal.Body>
+                                <Modal.Footer>
+                                        <Button variant="info" href='/cart'>Go to Cart</Button>
+                                        <Button variant="outline-info" onClick={handleClose}>Close</Button>
+                                </Modal.Footer>
+                            </Modal>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 </>
+
+
 
     )
 
