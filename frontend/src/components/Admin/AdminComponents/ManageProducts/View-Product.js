@@ -25,6 +25,7 @@ const ViewProduct = () => {
     const DeleteProduct = (id) => {
         if (window.confirm("Are you sure?")) {
             axios.delete("http://localhost:3000/products/" + id)
+            getProductData()
 
                 .then(console.log("Deleted"))
                 .catch(err => console.log(err));
@@ -43,16 +44,16 @@ const ViewProduct = () => {
 
             <div id="bg" />
 
-            <div className="col flex-column col-md-11 ml-5" style={{ paddingTop: '30px'}}>
-            <div className="card product-card" >
-           < div className="card-body">
-                <h1 style={{ color: "Black" }}>Manage Products</h1>
-                <Link size="10px" type="button" to={{ pathname: "/Addproduct" }} className="btn btn-success">
-                    + Add Product
-                </Link>
+            <div className="col flex-column col-md-11 ml-5" style={{ paddingTop: '30px' }}>
+                <div className="card product-card" >
+                    < div className="card-body">
+                        <h1 style={{ color: "Black" }}>Manage Products</h1>
+                        <Link size="10px" type="button" to={{ pathname: "/Addproduct" }} className="btn btn-success">
+                            + Add Product
+                        </Link>
 
-            </div>
-            </div>
+                    </div>
+                </div>
             </div>
 
             <div className="col flex-column col-md-11 ml-5">
@@ -77,8 +78,8 @@ const ViewProduct = () => {
                                         </div>
 
                                         <div className="col-sm-1  " >
-                                            <Link type="button" to={{ pathname: `/UpdateProduct/${item._id}` }} className="btn btn-outline-success btn-sm m-1">Update </Link> 
-                                            
+                                            <Link type="button" to={{ pathname: `/UpdateProduct/${item._id}` }} className="btn btn-outline-success btn-sm m-1">Update </Link>
+
                                             <button type="button" class="btn btn-outline-danger btn-sm m-1 " onClick={() => DeleteProduct(item._id)} >Delete</button>
                                         </div>
 
