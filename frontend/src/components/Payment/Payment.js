@@ -85,7 +85,8 @@ export default function Payment() {
                                         <Form.Control type="text"
                                             name='streetAddress'
                                             value={data.streetAddress}
-                                            onChange={handleChange} />
+                                            onChange={handleChange} 
+                                            required/>
                                     </Form.Group>
                                     <Row>
                                         <Col>
@@ -94,16 +95,19 @@ export default function Payment() {
                                                 <Form.Control type="text"
                                                     name='city'
                                                     value={data.city}
-                                                    onChange={handleChange} />
+                                                    onChange={handleChange} 
+                                                    required/>
                                             </Form.Group>
                                         </Col>
                                         <Col>
                                             <Form.Group controlId="pincode">
-                                                <Form.Label>Pincode</Form.Label>
+                                                <Form.Label>Pincode (6-digit)</Form.Label>
                                                 <Form.Control type="text"
                                                     name='pincode'
                                                     value={data.pincode}
-                                                    onChange={handleChange} />
+                                                    onChange={handleChange}
+                                                    pattern="[0-9]{6}"
+                                                    required />
                                             </Form.Group>
                                         </Col>
                                     </Row>
@@ -112,30 +116,37 @@ export default function Payment() {
                                         <Form.Control type="text"
                                             name='state'
                                             value={data.state}
-                                            onChange={handleChange} />
+                                            onChange={handleChange}
+                                            required />
                                     </Form.Group>
                                 </Col>
                                 <Col>
                                     <Form.Group controlId="cardName">
                                         <Form.Label>Cardholder's Name</Form.Label>
-                                        <Form.Control type="text" />
+                                        <Form.Control type="text"
+                                        required />
                                     </Form.Group>
                                     <Form.Group controlId="cardNumber">
-                                        <Form.Label>Card Number</Form.Label>
-                                        <Form.Control type="text" />
+                                        <Form.Label>Card Number (16-digit)</Form.Label>
+                                        <Form.Control type="text"
+                                         pattern="[0-9]{16}"
+                                         required  />
                                     </Form.Group>
                                     <Row>
                                         <Col>
                                             <Form.Group controlId="expDate">
                                                 <Form.Label>Exp Date</Form.Label>
                                                 <Form.Control type="date" 
-                                                pattern="\d{3,4}"/>
+                                                pattern="\d{3,4}"
+                                                required/>
                                             </Form.Group>
                                         </Col>
                                         <Col>
                                             <Form.Group controlId="cvv">
-                                                <Form.Label>CVV</Form.Label>
-                                                <Form.Control type="text" />
+                                                <Form.Label>CVV (3-digit)</Form.Label>
+                                                <Form.Control type="text" 
+                                                 pattern="[0-9]{3}"
+                                                 required />
                                             </Form.Group>
                                         </Col>
                                     </Row>
