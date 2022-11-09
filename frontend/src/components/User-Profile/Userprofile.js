@@ -43,28 +43,26 @@ const UserProfile = () => {
 
                     <nav className='navheight' id="sidebar" >
 
-                        <div>
+                        <div className='mt-2 mx-2'>
                             <h3>Your Profile</h3>
                         </div>
-
+                        <hr />
                         <ul className="list-unstyled components">
 
                             <li >
-                                <a aria-expanded="false" className="dropdown-toggle">Home</a>
-
+                            <Link className="nav-link" to={{ pathname: "/" }}>Home</Link>
                             </li>
                             <li>
                                 <Link className="nav-link" to={{ pathname: "/MyOrders" }}>My Orders</Link>
                             </li>
                             <li>
-                                <a aria-expanded="false" className="dropdown-toggle">Shop Now</a>
-
+                            <Link className="nav-link" to={{ pathname: "/product-list" }}>Shop Now</Link>
                             </li>
                             <li>
-                                <a>Change Password</a>
+                            <Link className="nav-link" to={{ pathname: "/changePassword" }}>Change Password</Link>
                             </li>
                             <li>
-                                <a >Cart</a>
+                            <Link className="nav-link" to={{ pathname: "/cart" }}>Cart</Link>
                             </li>
                         </ul>
 

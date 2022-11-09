@@ -25,7 +25,7 @@ function Header() {
         setisLogged(false);
     };
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-white w-100 navigation" id="navbar">
+        <nav className="navbar navbar-expand-lg navbar-light w-100 navigation" id="navbar">
             <div className="container">
 
                 <Link className="navbar-brand font-weight-bold" to={{ pathname: "/" }}>GetMeds</Link>
@@ -69,13 +69,10 @@ function Header() {
                             </svg></Link>
                         <Link className="button-1" onClick={logout}>Logout</Link>
                     </div>
-
-
-
                 )}
                 <ul className="top-menu list-inline mb-0 d-none d-lg-block" id="top-menu">
                     <li className="dropdown cart-nav dropdown-slide list-inline-item">
-                        <Link to={{ pathname: "/cart" }} className="dropdown-toggle cart-icon" data-toggle="dropdown" data-hover="dropdown">
+                        <Link to={{ pathname: "/cart" }} className="cart-icon">
                             <i className="tf-ion-android-cart"></i>
                         </Link>
                     </li>

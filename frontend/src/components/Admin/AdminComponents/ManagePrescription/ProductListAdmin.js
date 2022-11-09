@@ -2,13 +2,12 @@ import React from 'react';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
-import ProductCardAdmin from './ProductCardAdmin';
 
 
 
 let pro = [];
 
-const ProductListAdmin = () => {
+const ProductListAdmin = ({reply}) => {
 
     const location = useLocation()
 
@@ -131,7 +130,31 @@ const ProductListAdmin = () => {
                         }
                     }).map((product) => {
                         return (
-                            <ProductCardAdmin product={product} key={product._id} />
+                            <div className="col-md-3" class="column my-auto">
+                                <div className="our-team">
+                                    <div>
+                                        <div className="pic">
+                                            <img src={product.image} />
+                                        </div>
+                                        <div className="card-body mb-0 py-0">
+                                            <h6 className="card-title"><b>{product.title}</b></h6>
+                                            <div>
+                                                <p className="card-text text-truncate">
+                                                    <p className="text-info m-0 p-0"> {product.categories} </p>
+                                                </p>
+                                            </div>
+
+                                            <div>
+                                                <p className="text-dark"><b> ₹{product.price}</b></p>
+                                            </div>
+                                            <button type="button" className="btn btn-info mt-0 mb-1" onClick={() => reply(`/product-info/${product._id}`)}>
+                                                Add to reply
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         )
                     })}
 
