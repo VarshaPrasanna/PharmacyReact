@@ -101,7 +101,7 @@ export default function Payment() {
                                         </Col>
                                         <Col>
                                             <Form.Group controlId="pincode">
-                                                <Form.Label>Pincode</Form.Label>
+                                                <Form.Label>Pincode (6-digit)</Form.Label>
                                                 <Form.Control type="text"
                                                     name='pincode'
                                                     value={data.pincode}
@@ -127,7 +127,7 @@ export default function Payment() {
                                         required />
                                     </Form.Group>
                                     <Form.Group controlId="cardNumber">
-                                        <Form.Label>Card Number</Form.Label>
+                                        <Form.Label>Card Number (16-digit)</Form.Label>
                                         <Form.Control type="text"
                                          pattern="[0-9]{16}"
                                          required  />
@@ -143,7 +143,7 @@ export default function Payment() {
                                         </Col>
                                         <Col>
                                             <Form.Group controlId="cvv">
-                                                <Form.Label>CVV</Form.Label>
+                                                <Form.Label>CVV (3-digit)</Form.Label>
                                                 <Form.Control type="text" 
                                                  pattern="[0-9]{3}"
                                                  required />
