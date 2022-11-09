@@ -56,7 +56,7 @@ const AdminApp = (props) => {
                         </div>
                     </div>
                     <div class="col-xl-3 col-sm-6 mb-3" style={{ paddingLeft: 260 }}>
-                        <div className="mb-10" style={{ height: "300px", width: "400px" }}><BarChart />
+                        <div className="mb-10" style={{ height: "500px", width: "630px" }}><BarChart />
                         </div>
 
                     </div>
