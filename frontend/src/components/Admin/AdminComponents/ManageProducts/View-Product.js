@@ -43,7 +43,7 @@ const ViewProduct = () => {
 
             <div id="bg" />
 
-            <div className="col flex-column col-md-11 ml-5">
+            <div className="col flex-column col-md-11 ml-5" style={{ paddingTop: '30px'}}>
             <div className="card product-card" >
            < div className="card-body">
                 <h1 style={{ color: "Black" }}>Manage Products</h1>
@@ -76,10 +76,10 @@ const ViewProduct = () => {
 
                                         </div>
 
-                                        <div className="col-sm-1 btn-group ">
-                                            <Link type="button" to={{ pathname: `/UpdateProduct/${item._id}` }} className="btn btn-outline-success btn-sm m-1">Update </Link>
+                                        <div className="col-sm-1  " >
+                                            <Link type="button" to={{ pathname: `/UpdateProduct/${item._id}` }} className="btn btn-outline-success btn-sm m-1">Update </Link> 
+                                            
                                             <button type="button" class="btn btn-outline-danger btn-sm m-1 " onClick={() => DeleteProduct(item._id)} >Delete</button>
-
                                         </div>
 
                                     </div>
