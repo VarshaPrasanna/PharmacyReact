@@ -25,31 +25,23 @@ const PieChart = () => {
         }
     };
 
-
-
-
-    // var arr = [5, 5, 5, 2, 2, 2, 2, 2, 9, 4]
-
-
-
-    var q = ['Ayurveda', 'Clinical', 'Covid essentials', 'Health devices', 'Home Care', 'Nutrients', 'Personal Care'];
     var test = cat
 
 
-    console.log((test))
+    // console.log((test))
     localStorage.setItem('cat', [...test])
 
     var b = localStorage.getItem('cat')
     // console.log('b', b)
     var arr = b.split(',')
-    console.log('barr', arr)
+    // console.log('barr', arr)
 
     const map = arr.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
     var occurence = [...map.values()]
     var keys = [...map.keys()]
-    console.info([...map.keys()])
+    // console.info([...map.keys()])
 
-    console.info([...map.values()])
+    // console.info([...map.values()])
 
 
     const data = {

@@ -1,5 +1,8 @@
 import React from "react";
+// import BarChart from "./AdminComponents/BarChart";
 import PieChart from './AdminComponents/PieChart';
+import BarChart from "./BarChart";
+
 
 const AdminApp = (props) => {
     return (
@@ -46,11 +49,24 @@ const AdminApp = (props) => {
                         </div>
                     </div>
                 </div>
-                <div style={{ paddingLeft: 260 }}>
-                    <h4 className='title mt-3 mb-3 text-center text-secondary'>Data in Chart</h4>
-                    <div className="mb-5" style={{ height: "300px", width: "400px" }}><PieChart /> </div></div>
+                <div class="row" style={{ paddingLeft: 260 }}>
+
+                    <div class="col-xl-3 col-sm-6 mb-3">
+                        <div className="mb-5" style={{ height: "300px", width: "400px" }}><PieChart />
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 mb-3" style={{ paddingLeft: 260 }}>
+                        <div className="mb-10" style={{ height: "300px", width: "400px" }}><BarChart />
+                        </div>
+
+                    </div>
+
+                </div>
+
+
 
             </div>
+
 
 
 
