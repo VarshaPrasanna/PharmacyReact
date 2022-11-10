@@ -81,7 +81,7 @@ function ManagePrescription() {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {prescription
+                                            {prescription.reverse()
 
                                                 .map((item) => {
                                                     return (

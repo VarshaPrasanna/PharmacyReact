@@ -104,15 +104,15 @@ const ProductList = () => {
     return (
       <>
       <Header />
-      <div className='row'>
-      <div className="row-md-3">
-        <div style={{ paddingTop: 1, color: "blue", marginLeft: 50 }}>
+      <div className='row justify-content-start'>
+      
+        <div className='col-md-2 mb-2 mt-2' style={{ paddingTop: 1, color: "blue", marginLeft: 50 }}>
            <input type="text" style={{borderRadius: 10}} placeholder="Search for products" onChange={(e) => {
                     setSearch(e.target.value);
                 }} />
-        </div>
+       
       </div> 
-      <div className=" mb-4 mt-2 " style={{marginLeft: 50 }} >
+      <div className="col-md-2 mb-2 mt-2 " style={{marginLeft: 50 }} >
       <select  style={{borderRadius: 10, height: 50, backgroundColor: 'lightcyan'}} onChange={(e)=>{
         sorting(e.target.value);
       }} >
@@ -123,7 +123,7 @@ const ProductList = () => {
           <option value="HtoL">Sort By Price (High to Low)</option>
       </select>
      </div>  
-     <div className=" mb-4 mt-2"  style={{marginLeft: 50 }}>
+     <div className="col-md-2 mb-2 mt-2"  style={{marginLeft: 50 }}>
       <select value={type} style={{borderRadius: 10, height: 50,backgroundColor: 'lightcyan'}} onChange={(e)=>{category(e.target.value)}} >
         <option value="all" >All Categories</option>
         <option value="Homeopathy" >Homeopathy</option>
