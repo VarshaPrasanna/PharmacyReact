@@ -34,12 +34,7 @@ function EditProfile(props) {
         },
         [props]
     );
-    useEffect(() => {
-        console.log(Valerror)
-        if (Object.keys(Valerror).length === 0 && isSubmit) {
-            // console.log(data)
-        }
-    }, [Valerror]);
+
 
     const validate = (values) => {
         const errors = {};
@@ -83,7 +78,10 @@ function EditProfile(props) {
                 console.log(error);
             }
         }
-
+        if (Object.keys(Valerror).length === 0 && isSubmit) {
+            setisSubmit(true);
+            UpdateUser();
+        }
     }
     useEffect(() => {
         console.log(Valerror)
