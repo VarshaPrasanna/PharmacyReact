@@ -23,7 +23,7 @@ const Signup = () => {
 	const ConfirmPassword = ({ currentTarget: input })=>{
 
        if(data.password !== input.value){
-		window.alert("confirm password should match with password");
+		window.alert("Passwords do not match!");
 
 	   }
 	}
@@ -62,37 +62,41 @@ const Signup = () => {
 						<h1>Create Account</h1>
 						<input
 							type="text"
-							placeholder="First Name"
+							placeholder="First Name (Only Alphabets Allowed)"
 							name="firstName"
 							onChange={handleChange}
 							value={data.firstName}
+							pattern = "[a-zA-Z]+"
 							required
 							className={styles.input}
 						/>
 						<input
 							type="text"
-							placeholder="Last Name"
+							placeholder="Last Name (Only Alphabets Allowed)"
 							name="lastName"
 							onChange={handleChange}
 							value={data.lastName}
+							pattern = "[a-zA-Z]+"
 							required
 							className={styles.input}
 						/>
 						<input
 							type="email"
-							placeholder="Email"
+							placeholder="Email (Enter A Valid Email Address)"
 							name="email"
 							onChange={handleChange}
 							value={data.email}
+							pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$"
 							required
 							className={styles.input}
 						/>
                         <input
 							type="text"
-							placeholder="username"
+							placeholder="username (Must be Combination of Alphabets and No.)"
 							name="username"
 							onChange={handleChange}
 							value={data.username}
+							pattern= "[A-Za-z]+[0-9]+"
 							required
 							className={styles.input}
 						/>
@@ -116,15 +120,18 @@ const Signup = () => {
 							name="password"
 							onChange={handleChange}
 							value={data.password}
+							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
 							required
 							className={styles.input}
 						/>
+
 						<input
 							type="password"
 							placeholder="Confirm Password"
 							name="confirm password"
 							onBlur={ConfirmPassword}
 							// value={data.password}
+							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
 							required
 							className={styles.input}
 						/>

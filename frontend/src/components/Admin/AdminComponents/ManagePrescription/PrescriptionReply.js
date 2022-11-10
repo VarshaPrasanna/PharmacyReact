@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import ChipInput from "material-ui-chip-input";
 import _, { map } from 'underscore';
 import ProductListAdmin from "./ProductListAdmin";
+import { Modal, ModalBody } from 'react-bootstrap';
 
 export default function PrescriptionReply(props) {
 
@@ -25,6 +26,8 @@ export default function PrescriptionReply(props) {
   const imageurl = localStorage.getItem('imageurl')
 
   const [reply, setReply] = useState(initialState);
+  const [modal, setModal] = useState(false);
+  
   const navigate = useNavigate();
   const { _id } = useParams();
 
@@ -89,53 +92,62 @@ export default function PrescriptionReply(props) {
     navigate(`/managePrescription`)
   }
 
-
+  const modalToggle = () => {
+    setModal(!modal)
+  }
 
   return (
     <>
-
-      <form onSubmit={handleSubmit}>
-
-
-
-
-        {/* <input
-            className="inputreply " name="prescriptionReplies"
-            value={reply.prescriptionReplies}
-            type="text"
-            placeholder="View links"
-            onChange={handleChange}
-          /> */}
-        <div className="reply-container">
-
-          <ChipInput
-            value={reply.prescriptionReplies}
-            onAdd={(chip) => handleAddChip(chip)}
-            onDelete={(chip, index) => handleDeleteChip(chip, index)}
-          />
-
-          <div className="btn-group">
-            <input type="submit" value="Submit" className="btn btn-primary" />
-            <button
-              type="button"
-              onClick={handleCancel}
-              className="btn btn-secondary">
-              Cancel
-            </button>
-
-          </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Reply to prescription</h4>
         </div>
-      </form>
+      </div>
+      <div class="row align-items-top justify-content-center">
+        <div class="col-md-4 ml-2">
+          <img class="img-fluid" src={`http://localhost:3000/${imageurl} `} style={{ padding: '20px' }} />
+        </div>
+        <div class="col-md-3">
+          <form onSubmit={handleSubmit}>
 
+            <div className="reply-container">
+              <ChipInput
+                value={reply.prescriptionReplies}
+                onAdd={(chip) => handleAddChip(chip)}
+                onDelete={(chip, index) => handleDeleteChip(chip, index)}
+              />
+              <br />
+              <div className="btn-group mt-2">
+                <input type="submit" value="Submit" className="btn btn-primary" />
+                <button
+                  type="button"
+                  onClick={handleCancel}
+                  className="btn btn-secondary ml-1">
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={modalToggle}
+                  className="btn btn-info ml-1">
+                  Search products
+                </button>
+              </div>
+            </div>
+          </form>
 
+        </div>
+      </div>
 
-
-
-
-
-      <img width="50%" class="img-fluid" src={`http://localhost:3000/${imageurl} `} />
-
-      <ProductListAdmin reply={handleAddChip}/>
+      <Modal dialogClassName="modal-90w" show={modal} centered onHide={modalToggle} size="xl" scrollable>
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Search products
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ProductListAdmin reply={handleAddChip} />
+        </Modal.Body>
+      </Modal>
 
     </>
 

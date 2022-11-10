@@ -14,12 +14,12 @@ const UserAnalytics = () => {
     const getOrders = async () => {
         try {
             const data = await axios.get(
-                "http://localhost:3000/orders/" + userId
+                "http://localhost:3000/orders/user/" + userId
             );
             setOrder(data.data.orders);
             console.log(data.data.orders.length);
             orderLength = data.data.orders.length
-            var pending = data.data.orders.filter((p) => p.status === 'Pending');
+            var pending = data.data.orders.filter((p) => p.status !== 'delivered');
             pendingLength = pending.length
             console.log(pendingLength)
         } catch (e) {

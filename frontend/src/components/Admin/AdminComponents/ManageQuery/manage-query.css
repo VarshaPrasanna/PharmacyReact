@@ -4,7 +4,7 @@ body,
   height: 100%;
 }
 
-table td,
+/* table td,
 table th {
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -19,7 +19,7 @@ tbody th {
 tbody td {
   font-weight: 500;
   color: rgba(255,255,255,.65);
-}
+} */
 
 .card {
   border-radius: .5rem;

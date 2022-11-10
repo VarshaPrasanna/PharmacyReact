@@ -46,6 +46,7 @@ const Login = () => {
 	};
 
 	return (
+		<div>
 		<div className={styles.login_container}>
 			<div className={styles.login_form_container}>
 				<div className={styles.left}>
@@ -53,10 +54,11 @@ const Login = () => {
 						<h1>Login to Your Account</h1>
 						<input
 							type="text"
-							placeholder="username"
+							placeholder="username (Must be Combination of Alphabets and No.)"
 							name="username"
 							onChange={handleChange}
 							value={data.username}
+							pattern= "[A-Za-z]+[0-9]+"
 							required
 							className={styles.input}
 						/>
@@ -84,6 +86,8 @@ const Login = () => {
 					</Link>
 				</div>
 			</div>
+		</div>
+		
 		</div>
 	);
 };

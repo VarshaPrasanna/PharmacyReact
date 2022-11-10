@@ -19,11 +19,32 @@ const OrderController = {
             })
         }
     },
-
-
+// get order
+    async get_order(req, res) {
+        try {
+            const orders = await Order.findById(req.params.id);
+            if (!orders) {
+                res.status(404).json({
+                    type: "error",
+                    message: "User doesn't exists"
+                })
+            } else {
+                res.status(200).json({
+                    type: "success",
+                    orders
+                })
+            }
+        } catch (err) {
+            res.status(500).json({
+                type: "error",
+                message: "Something went wrong please try again",
+                err
+            })
+        }
+    },
 
     /* get user's orders */
-    async get_order(req, res) {
+    async user_order(req, res) {
         try {
             const orders = await Order.find({ userId: req.params.userId });
             if (!orders) {
