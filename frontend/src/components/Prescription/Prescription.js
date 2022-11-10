@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import * as IoIcons from "react-icons/io";
 function Prescription() {
 
     const [prescription, setprescription] = useState([]);
     const [replyUrl, setreplyurl] = useState([]);
 
     const getAllPrescriptions = async () => {
+
         try {
             const data = await axios.get(
                 "http://localhost:3000/Prescription/" + userId
@@ -30,7 +28,10 @@ function Prescription() {
         if (window.confirm("Are you sure?")) {
             axios.delete("http://localhost:3000/prescription/" + id)
 
-                .then(console.log("Deleted"))
+                .then(console.log("Deleted"),
+                    getAllPrescriptions()
+                )
+
                 .catch(err => console.log(err));
         }
     }
@@ -61,23 +62,20 @@ function Prescription() {
     }, {})
 
 
-    const submit = () => {
+    const submit = async () => {
         navigate('/prescription')
         const formdata = new FormData();
         formdata.append('firstName', firstName);
         formdata.append('userId', userId);
         formdata.append('prescriptionImage', prescriptionImage);
-        axios.post("http://localhost:3000/prescription/", formdata)
+        await axios.post("http://localhost:3000/prescription/", formdata)
 
-            .then(res => { // then print response status
+            .then(res => {
+                getAllPrescriptions()
                 console.warn(res);
                 console.log(res.data.savedPrescription.imageUrl + '.jpg')
                 console.log(imageUrl)
                 return imageUrl = res.data.savedPrescription.imageUrl + '.jpg'
-
-
-
-
             })
     }
 
