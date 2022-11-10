@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 
 
-const UserProfile = () => {
+const UserProfile = (props) => {
     const navigate = useNavigate()
     const userId = localStorage.getItem('userId')
     const fullname = localStorage.getItem('userName')
@@ -50,19 +50,19 @@ const UserProfile = () => {
                         <ul className="list-unstyled components">
 
                             <li >
-                            <Link className="nav-link" to={{ pathname: "/" }}>Home</Link>
+                                <Link className="nav-link" to={{ pathname: "/" }}>Home</Link>
                             </li>
                             <li>
                                 <Link className="nav-link" to={{ pathname: "/MyOrders" }}>My Orders</Link>
                             </li>
                             <li>
-                            <Link className="nav-link" to={{ pathname: "/product-list" }}>Shop Now</Link>
+                                <Link className="nav-link" to={{ pathname: "/product-list" }}>Shop Now</Link>
                             </li>
                             <li>
-                            <Link className="nav-link" to={{ pathname: "/changePassword" }}>Change Password</Link>
+                                <Link className="nav-link" to={{ pathname: "/changePassword" }}>Change Password</Link>
                             </li>
                             <li>
-                            <Link className="nav-link" to={{ pathname: "/cart" }}>Cart</Link>
+                                <Link className="nav-link" to={{ pathname: "/cart" }}>Cart</Link>
                             </li>
                         </ul>
 
@@ -93,7 +93,7 @@ const UserProfile = () => {
                                     <div className="card bg-c-blue order-card">
                                         <div className="card-block">
                                             <h6 className="m-b-20">Total Orders</h6>
-                                            <h2 className="text-right"><i className="fa fa-cart-plus f-left"></i><span>486</span></h2>
+                                            <h2 className="text-right"><i className="fa fa-cart-plus f-left"></i><span>{props.orderLength}</span></h2>
                                             <p className="m-b-0"><span className="f-right"></span></p>
                                         </div>
                                     </div>
@@ -103,7 +103,7 @@ const UserProfile = () => {
                                     <div className="card bg-c-green order-card">
                                         <div className="card-block">
                                             <h6 className="m-b-20">Pending Orders </h6>
-                                            <h2 className="text-right"><i className="fa fa-rocket f-left"></i><span>486</span></h2>
+                                            <h2 className="text-right"><i className="fa fa-rocket f-left"></i><span>{props.pendingLength}</span></h2>
                                             <p className="m-b-0"><span className="f-right"></span></p>
                                         </div>
                                     </div>
@@ -112,8 +112,8 @@ const UserProfile = () => {
                                 <div >
                                     <div className="card bg-c-pink order-card">
                                         <div className="card-block">
-                                            <h6 className="m-b-20">Orders Received</h6>
-                                            <h2 className="text-right"><i className="fa fa-credit-card f-left"></i><span>486</span></h2>
+                                            <h6 className="m-b-20">Items in Cart</h6>
+                                            <h2 className="text-right"><i className="fa fa-credit-card f-left"></i><span>{props.cartLength}</span></h2>
                                             <p className="m-b-0"><span className="f-right"></span></p>
                                         </div>
                                     </div>

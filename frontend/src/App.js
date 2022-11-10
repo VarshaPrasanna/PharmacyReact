@@ -39,6 +39,7 @@ import ProductInfo from './components/product-info/product-info';
 import ManageQuery from './components/Admin/AdminComponents/ManageQuery/manage-query';
 import DiscussionBoard from './components/discussion-board/DiscussionBoard';
 import ChangePassword from './components/change-password/ChangePassword';
+import UserAnalytics from './components/User-Profile/UserAnalytics';
 
 
 
@@ -68,13 +69,16 @@ function App() {
           <Route exact path='/payment' element={<Payment />} />
           <Route path='/product-list' element={<ProductList />} />
           <Route path='/ManageOrders' element={<ManageOrders />} />
-          <Route exact path='/Myprofile' element={<UserProfile />} />
+          <Route exact path='/Myprofile' element={<UserAnalytics />} />
           <Route exact path="/EditProfile" element={<EditProfile />} />
           <Route path='/update-status/:id' element={<UpdateStatus />} />
           <Route exact path="/ProductList" element={<ViewProduct />} />
           <Route exact path="/Addproduct" element={<AddProduct />} />
           <Route exact path="/UpdateProduct/:_id" element={<UpdateProduct />} />
           <Route exact path="/product-info/:id" element={<ProductInfo />} />
+          <Route exact path="/managePrescription" element={<ManagePrescription />} />
+          <Route path="/prescriptionReply/:_id" element={<PrescriptionReply />} />
+
           <Route exact path="/changePassword" element={<ChangePassword />} />
 
           {/* All admin components to be placed inside Admin layout  */}
@@ -82,8 +86,6 @@ function App() {
           <Route element={<AdminLayout />}>
             <Route exact path="/admin" element={<AdminAnalyitics />} />
             <Route exact path="/ManageUsers" element={<ManageUsers />} />
-            <Route exact path="/managePrescription" element={<ManagePrescription />} />
-            <Route path="/prescriptionReply/:_id" element={<PrescriptionReply />} />
 
             <Route exact path="/ManageMessages" element={<ManageQuery />} />
 

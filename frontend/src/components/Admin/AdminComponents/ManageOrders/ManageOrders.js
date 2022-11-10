@@ -1,31 +1,38 @@
 import React from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
+import Pagination from "../../../pagination/pagination";
 
+let PageSize = 5;
 const ManageOrders = () => {
-
-
   const [order, setOrder] = useState([]);
-
+  const [currentPage, setCurrentPage] = useState(0);
+  useEffect(() => {
+    getOrders();
+  }, []); 
   const getOrders = async () => {
     try {
       const data = await axios.get(
         "http://localhost:3000/orders/"
       );
       console.log(data.data);
-      // console.log(data.data.orders)
       setOrder(data.data.orders);
+      setCurrentPage(1);          
     } catch (e) {
       console.log(e);
     }
-  };
+  }; 
+  const currentTableData = useMemo(() => {    
 
-  useEffect(() => {
-    getOrders();
-  }, []);
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+
+    return order.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage]);
 
   return (
+    <>
     <div style={{ backgroundColor: "rgb(176, 211, 220)" }}>
       <div style={{ padding: "4%" }}>
         <div
@@ -57,7 +64,7 @@ const ManageOrders = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {order.map((item) => {
+                      {currentTableData.map((item) => {
                         return (
                           <tr>
                             <td scope="row">{item.userId} </td>
@@ -96,6 +103,14 @@ const ManageOrders = () => {
         </div>
       </div>
     </div>
+    <Pagination
+        className="pagination-bar"
+        currentPage={currentPage}
+        totalCount={order.length}
+        pageSize={PageSize}
+        onPageChange={page => setCurrentPage(page)}
+      />
+    </>
   );
 };
 
