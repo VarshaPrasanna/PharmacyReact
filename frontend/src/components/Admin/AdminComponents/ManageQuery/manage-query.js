@@ -23,7 +23,7 @@ const ManageQuery = () => {
       );
       console.log(data.data);
       // console.log(data.data.orders)
-      setMessage(data.data.msg);
+      setMessage(data.data.msg.reverse());
     } catch (e) {
       console.log(e);
     }
@@ -98,7 +98,7 @@ const ManageQuery = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          {message.reverse().map((msg) => {
+                          {message.map((msg) => {
                             return (
                               <tr>
                                 <th scope="row">{msg.firstName}</th>
