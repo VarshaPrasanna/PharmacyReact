@@ -4,6 +4,8 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Col, Form, Row, Table } from "react-bootstrap";
 import { deleteCart, getCart } from '../../service/cart.service';
+import { DatePicker } from 'antd';
+import '../../../node_modules/antd/dist/antd.css'
 import './Payment.css';
 
 export default function Payment() {
@@ -51,144 +53,146 @@ export default function Payment() {
             }
         }
     };
-    
-    if(isSubmitted){
-        return(
+
+    if (isSubmitted) {
+        return (
             <>
-            <div className="card">
-                        <div className="card-body">
-                            <h4 className="card-title">Payment Details</h4>
-                        </div>
+                <div className="card">
+                    <div className="card-body">
+                        <h4 className="card-title">Payment Details</h4>
                     </div>
-                    <div class="alert alert-success text-center centered" role="alert">
-                        <h1 className='text-success'>Your Order is placed!</h1>
-                        <a role='button' className='btn btn-success' href="/MyOrders">View your orders</a>
-                    </div>
-                </>
+                </div>
+                <div class="alert alert-success text-center centered" role="alert">
+                    <h1 className='text-success'>Your Order is placed!</h1>
+                    <a role='button' className='btn btn-success' href="/MyOrders">View your orders</a>
+                </div>
+            </>
         )
     } else {
-    return (
-        <>
-         <div className="card">
-                        <div className="card-body">
-                            <h4 className="card-title">Payment Details</h4>
-                        </div>
+        return (
+            <>
+                <div className="card">
+                    <div className="card-body">
+                        <h4 className="card-title">Payment Details</h4>
                     </div>
-            <Row>
-                <Col>
-                    <div className="form-wrapper">
-                        <Form onSubmit={handleSubmit}>
-                            <Row>
-                                <Col>
-                                    <Form.Group controlId="streetAddress">
-                                        <Form.Label>Street Address</Form.Label>
-                                        <Form.Control type="text"
-                                            name='streetAddress'
-                                            value={data.streetAddress}
-                                            onChange={handleChange} 
-                                            required/>
-                                    </Form.Group>
-                                    <Row>
-                                        <Col>
-                                            <Form.Group controlId="city">
-                                                <Form.Label>City</Form.Label>
-                                                <Form.Control type="text"
-                                                    name='city'
-                                                    value={data.city}
-                                                    onChange={handleChange} 
-                                                    required/>
-                                            </Form.Group>
-                                        </Col>
-                                        <Col>
-                                            <Form.Group controlId="pincode">
-                                                <Form.Label>Pincode (6-digit)</Form.Label>
-                                                <Form.Control type="text"
-                                                    name='pincode'
-                                                    value={data.pincode}
-                                                    onChange={handleChange}
-                                                    pattern="[0-9]{6}"
-                                                    required />
-                                            </Form.Group>
-                                        </Col>
-                                    </Row>
-                                    <Form.Group controlId="state">
-                                        <Form.Label>State</Form.Label>
-                                        <Form.Control type="text"
-                                            name='state'
-                                            value={data.state}
-                                            onChange={handleChange}
-                                            required />
-                                    </Form.Group>
-                                </Col>
-                                <Col>
-                                    <Form.Group controlId="cardName">
-                                        <Form.Label>Cardholder's Name</Form.Label>
-                                        <Form.Control type="text"
-                                        required />
-                                    </Form.Group>
-                                    <Form.Group controlId="cardNumber">
-                                        <Form.Label>Card Number (16-digit)</Form.Label>
-                                        <Form.Control type="text"
-                                         pattern="[0-9]{16}"
-                                         required  />
-                                    </Form.Group>
-                                    <Row>
-                                        <Col>
-                                            <Form.Group controlId="expDate">
-                                                <Form.Label>Exp Date</Form.Label>
-                                                <Form.Control type="date" 
-                                                pattern="\d{3,4}"
-                                                required/>
-                                            </Form.Group>
-                                        </Col>
-                                        <Col>
-                                            <Form.Group controlId="cvv">
-                                                <Form.Label>CVV (3-digit)</Form.Label>
-                                                <Form.Control type="text" 
-                                                 pattern="[0-9]{3}"
-                                                 required />
-                                            </Form.Group>
-                                        </Col>
-                                    </Row>
-                                </Col>
-                            </Row>
-                            <div className="submit-button">
-                                <Button variant="dark" size="lg" type="submit">Place Order</Button>
+                </div>
+                <Row>
+                    <Col>
+                        <div className="form-wrapper">
+                            <Form onSubmit={handleSubmit}>
+                                <Row>
+                                    <Col>
+                                        <Form.Group controlId="streetAddress">
+                                            <Form.Label>Street Address</Form.Label>
+                                            <Form.Control type="text"
+                                                name='streetAddress'
+                                                value={data.streetAddress}
+                                                onChange={handleChange}
+                                                required />
+                                        </Form.Group>
+                                        <Row>
+                                            <Col>
+                                                <Form.Group controlId="city">
+                                                    <Form.Label>City</Form.Label>
+                                                    <Form.Control type="text"
+                                                        name='city'
+                                                        value={data.city}
+                                                        onChange={handleChange}
+                                                        required />
+                                                </Form.Group>
+                                            </Col>
+                                            <Col>
+                                                <Form.Group controlId="pincode">
+                                                    <Form.Label>Pincode (6-digit)</Form.Label>
+                                                    <Form.Control type="text"
+                                                        name='pincode'
+                                                        value={data.pincode}
+                                                        onChange={handleChange}
+                                                        pattern="[0-9]{6}"
+                                                        required />
+                                                </Form.Group>
+                                            </Col>
+                                        </Row>
+                                        <Form.Group controlId="state">
+                                            <Form.Label>State</Form.Label>
+                                            <Form.Control type="text"
+                                                name='state'
+                                                value={data.state}
+                                                onChange={handleChange}
+                                                required />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col>
+                                        <Form.Group controlId="cardName">
+                                            <Form.Label>Cardholder's Name</Form.Label>
+                                            <Form.Control type="text"
+                                                required />
+                                        </Form.Group>
+                                        <Form.Group controlId="cardNumber">
+                                            <Form.Label>Card Number (16-digit)</Form.Label>
+                                            <Form.Control type="text"
+                                                pattern="[0-9]{16}"
+                                                required />
+                                        </Form.Group>
+                                        <Row>
+                                            <Col>
+                                                <Form.Group controlId="expDate">
+                                                    <Form.Label>Exp Date</Form.Label>
+                                                    <DatePicker
+                                                        name="startDate"
+                                                        picker='month'
+                                                        format='MM/YY'
+                                                    />
+                                                </Form.Group>
+                                            </Col>
+                                            <Col>
+                                                <Form.Group controlId="cvv">
+                                                    <Form.Label>CVV (3-digit)</Form.Label>
+                                                    <Form.Control type="text"
+                                                        pattern="[0-9]{3}"
+                                                        required />
+                                                </Form.Group>
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                </Row>
+                                <div className="submit-button">
+                                    <Button variant="dark" size="lg" type="submit">Place Order</Button>
+                                </div>
+                            </Form>
+                        </div>
+                    </Col>
+                    <Col md={3}>
+
+                        <div className="card border rounded flex-row bill-card">
+                            <div className="card-body">
+
+                                <Table borderless striped>
+                                    <thead>
+                                        <th><h4>Order Summary</h4></th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row">Total sum</td>
+                                            <td>{totalAmount - 50}</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">Shipping charges</td>
+                                            <td>{50}</td>
+                                        </tr>
+
+                                        <tr className="total">
+                                            <td scope="row">Total Amount</td>
+                                            <td>{totalAmount}</td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
                             </div>
-                        </Form>
-                    </div>
-                </Col>
-                <Col md={3}>
-
-                    <div className="card border rounded flex-row bill-card">
-                        <div className="card-body">
-
-                            <Table borderless striped>
-                                <thead>
-                                    <th><h4>Order Summary</h4></th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td scope="row">Total sum</td>
-                                        <td>{totalAmount - 50}</td>
-                                    </tr>
-                                    <tr>
-                                        <td scope="row">Shipping charges</td>
-                                        <td>{50}</td>
-                                    </tr>
-
-                                    <tr className="total">
-                                        <td scope="row">Total Amount</td>
-                                        <td>{totalAmount}</td>
-                                    </tr>
-                                </tbody>
-                            </Table>
                         </div>
-                    </div>
-                </Col>
-            </Row>
+                    </Col>
+                </Row>
 
-        </>
-    )
+            </>
+        )
     }
 }
