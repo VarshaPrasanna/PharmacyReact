@@ -9,7 +9,7 @@ const AdminApp = (props) => {
         <>
             <div className="App">
                 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"></link>
-                <div class="row" style={{ paddingLeft: 260 }}>
+                <div class="row mx-2" style={{ marginTop: 20 }}>
 
                     <div class="col-xl-3 col-sm-6 mb-3">
                         <div className="card bg-c-green order-card">
@@ -49,13 +49,13 @@ const AdminApp = (props) => {
                         </div>
                     </div>
                 </div>
-                <div class="row" style={{ paddingLeft: 260 }}>
+                <div class="row justify-content-around w-100" >
 
-                    <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="col mb-3 ml-5">
                         <div className="mb-5" style={{ height: "300px", width: "400px" }}>Categories<PieChart />
                         </div>
                     </div>
-                    <div class="col-xl-3 col-sm-6 mb-3" style={{ paddingLeft: 260 }}>
+                    <div class="col mb-3 mr-5" style={{ paddingLeft: 150 }}>
                         <div className="mb-10" style={{ height: "500px", width: "600px" }}><BarChart />
                         </div>
 

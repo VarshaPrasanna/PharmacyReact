@@ -7,7 +7,7 @@ import './ProductListAdmin.css';
 
 let pro = [];
 
-const ProductListAdmin = ({reply}) => {
+const ProductListAdmin = ({ reply }) => {
 
     const location = useLocation()
 
@@ -84,27 +84,26 @@ const ProductListAdmin = ({reply}) => {
 
     return (
         <>
+            <div className='row justify-content-start'>
 
-            <div className='row'>
-                <div className="row-md-3">
-                    <div style={{ paddingTop: 1, color: "blue", marginLeft: 50 }}>
-                        <input type="text" style={{ borderRadius: 10 }} placeholder="Search for products" onChange={(e) => {
-                            setSearch(e.target.value);
-                        }} />
-                    </div>
+                <div className='col-md-2 mb-2 mt-2' style={{ paddingTop: 1, color: "blue", marginLeft: 50 }}>
+                    <input type="text" style={{ borderRadius: 10 }} placeholder="Search for products" onChange={(e) => {
+                        setSearch(e.target.value);
+                    }} />
+
                 </div>
-                <div className=" mb-4 mt-2 " style={{ marginLeft: 50 }} >
+                <div className="col-md-2 mb-2 mt-2 " style={{ marginLeft: 50 }} >
                     <select style={{ borderRadius: 10, height: 50, backgroundColor: 'lightcyan' }} onChange={(e) => {
                         sorting(e.target.value);
                     }} >
-                        <option value="" >Sort</option>
+                        <option value="all" >Sort</option>
                         <option value="AtoZ" >Sort By Name (A to Z)</option>
                         <option value="ZtoA">Sort By Name (Z to A)</option>
                         <option value="LtoH">Sort By Price (Low to High)</option>
                         <option value="HtoL">Sort By Price (High to Low)</option>
                     </select>
                 </div>
-                <div className=" mb-4 mt-2" style={{ marginLeft: 50 }}>
+                <div className="col-md-2 mb-2 mt-2" style={{ marginLeft: 50 }}>
                     <select value={type} style={{ borderRadius: 10, height: 50, backgroundColor: 'lightcyan' }} onChange={(e) => { category(e.target.value) }} >
                         <option value="all" >All Categories</option>
                         <option value="Homeopathy" >Homeopathy</option>
