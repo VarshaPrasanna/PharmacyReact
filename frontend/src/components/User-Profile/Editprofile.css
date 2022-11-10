@@ -62,6 +62,15 @@
 	border-radius: 0.3em;
 	text-decoration: none;
 }
+.error_msg {
+	
+	margin: 5px 0;
+	font-size: 16px;
+	/* background-color: #f34646; */
+	color:  #f34646;
+	border-radius: 5px;
+	text-align: center;
+}
 
 #submit {
 	position: relative;
