@@ -10,6 +10,7 @@ import Pagination from '../pagination/pagination';
 
 let pro = [];
 let PageSize = 8;
+let y = 0;
 const ProductList = () => {
 
     const location = useLocation()
@@ -40,7 +41,7 @@ const ProductList = () => {
       const lastPageIndex = firstPageIndex + PageSize;
       console.log(product);
       return product.slice(firstPageIndex, lastPageIndex);
-    }, [currentPage]);
+    }, [currentPage, y]);
 
     useEffect(() => {
       getProductList().then(() => {
@@ -50,21 +51,29 @@ const ProductList = () => {
       })
     }, []);
     function sorting(value){
-        if(value == "ZtoA"){
+      if(value== "all"){
+        y=value;
+        setProduct(pro);
+      }
+        else if(value == "ZtoA"){
+          y=value;
           const p = [...product].sort((a,b)=>a.title > b.title ? -1 : 1,);
           console.log(p);
           setProduct(p);
         }else if(value == "AtoZ"){
+          y=value;
           const p = [...product].sort((a,b)=>a.title > b.title ? 1 : -1,);
           console.log(p);
           setProduct(p);
         }
         else if(value == "LtoH"){
+          y=value;
           const p = [...product].sort((a,b)=>a.price - b.price );
           console.log(p);
           setProduct(p);
         }
         else if(value == "HtoL"){
+          y=value;
           const p = [...product].sort((a,b)=>b.price - a.price );
           console.log(p);
           setProduct(p);
@@ -76,6 +85,7 @@ const ProductList = () => {
       console.log(pro);
       console.log(type);
       if (type !== "all") {
+        y = type;
         console.log(pro);
         const tempProducts = pro.filter(
           (x) => x.categories == type
@@ -83,6 +93,7 @@ const ProductList = () => {
         console.log(tempProducts);
         setProduct(tempProducts);
       } else {
+        y=5;
         setProduct(pro);
         console.log(pro);
       }
@@ -105,7 +116,7 @@ const ProductList = () => {
       <select  style={{borderRadius: 10, height: 50, backgroundColor: 'lightcyan'}} onChange={(e)=>{
         sorting(e.target.value);
       }} >
-          <option value="" >Sort</option>
+          <option value="all" >Sort</option>
           <option value="AtoZ" >Sort By Name (A to Z)</option>
           <option value="ZtoA">Sort By Name (Z to A)</option>
           <option value="LtoH">Sort By Price (Low to High)</option>
@@ -128,7 +139,7 @@ const ProductList = () => {
      </div>
         <section className="container2">       
           <div className='row'> 
-          {product.filter((item) => {
+          {currentTableData.filter((item) => {
              if (search == "") {
              return item;
            } else if (

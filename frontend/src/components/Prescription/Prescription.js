@@ -29,7 +29,7 @@ function Prescription() {
             axios.delete("http://localhost:3000/prescription/" + id)
 
                 .then(console.log("Deleted"),
-                    getAllPrescriptions()
+                    window.location.reload()
                 )
 
                 .catch(err => console.log(err));

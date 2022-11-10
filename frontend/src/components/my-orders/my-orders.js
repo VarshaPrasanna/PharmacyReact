@@ -49,7 +49,7 @@ const MyOrders = () => {
                 }
                 console.log(item);
                 console.log(localStorage.getItem('userId'));
-              }).map((item) => {
+              }).reverse().map((item) => {
                 return (
                   <MyOrderCard order={item} key={item._id} />
                 )
