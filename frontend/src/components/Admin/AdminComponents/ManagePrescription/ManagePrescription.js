@@ -3,12 +3,17 @@ import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 
 // import { PDFExport, savePDF } from "@progress/kendo-react-pdf";s
-import { useRef, useState, useEffect } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Prescription from '../../../Prescription/Prescription';
 
+import Pagination from "../../../pagination/pagination";
+
+let PageSize = 2;
 function ManagePrescription() {
 
     const [prescription, setprescription] = useState([]);
+    const [currentPage, setCurrentPage] = useState(0);
+
     const getAllPrescriptions = async () => {
         try {
             const data = await axios.get(
@@ -16,11 +21,20 @@ function ManagePrescription() {
             );
             console.log(data.data);
             console.log(data.data.pre)
-            setprescription(data.data.pre);
+            setprescription(data.data.pre.reverse());
+            setCurrentPage(1);
         } catch (e) {
             console.log(e);
         }
     };
+
+    const currentTableData = useMemo(() => {
+
+        const firstPageIndex = (currentPage - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+
+        return prescription.slice(firstPageIndex, lastPageIndex);
+    }, [currentPage]);
 
     //Delete prescription
     const removePrescription = (id) => {
@@ -81,7 +95,7 @@ function ManagePrescription() {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {prescription.reverse()
+                                            {currentTableData
 
                                                 .map((item) => {
                                                     return (
@@ -128,7 +142,13 @@ function ManagePrescription() {
                     </div>
                 </div >
             </div >
-
+            <Pagination
+                className="pagination-bar"
+                currentPage={currentPage}
+                totalCount={prescription.length}
+                pageSize={PageSize}
+                onPageChange={page => setCurrentPage(page)}
+            />
 
         </div>
         ///////
