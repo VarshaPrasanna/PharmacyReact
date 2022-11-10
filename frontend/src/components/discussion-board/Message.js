@@ -2,7 +2,7 @@ export default function MessageCard(props) {
     return (
         <div class="card border-secondary row w-75 mx-auto">
             <div class="list-group-item">
-                {props.msg.firstName}<div className="msg-date">{props.msg.date}</div>
+                {props.msg.firstName}<div className="msg-date">{props.msg.date.slice(0, 10)}</div>
             </div>
             <div class="card-body">
                 <p class="card-text">{props.msg.message}</p>

@@ -22,27 +22,22 @@ function ManagePrescription() {
         }
     };
 
-    //Delete user
+    //Delete prescription
     const removePrescription = (id) => {
         if (window.confirm("Are you sure?")) {
             axios.delete("http://localhost:3000/prescription/" + id)
 
-                .then(console.log("Deleted"))
+                .then(() => {
+                    console.log("Deleted");
+                    window.location.reload();
+                })
                 .catch(err => console.log(err));
         }
     }
 
-
-
-
-
-
     useEffect(() => {
         getAllPrescriptions();
     }, []);
-
-
-    // 
 
 
     const navigate = useNavigate()
