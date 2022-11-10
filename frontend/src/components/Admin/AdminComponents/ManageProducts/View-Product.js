@@ -1,11 +1,15 @@
 import React from "react";
 import axios from "axios";
+import { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
+import Pagination from "../../../pagination/pagination";
 
-import { useEffect, useState } from "react";
 
+
+let PageSize = 3;
 const ViewProduct = () => {
 
+    const [currentPage, setCurrentPage] = useState(0);
 
     const [product, setProduct] = useState([]);
 
@@ -17,10 +21,19 @@ const ViewProduct = () => {
             console.log(data.data);
             console.log(data.data.products)
             setProduct(data.data.products);
+            setCurrentPage(1);          
+
         } catch (e) {
             console.log(e);
         }
     };
+    const currentTableData = useMemo(() => {    
+
+        const firstPageIndex = (currentPage - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+        console.log(product);
+        return product.slice(firstPageIndex, lastPageIndex);
+      }, [currentPage]);
     //Delete Product
     const DeleteProduct = (id) => {
         if (window.confirm("Are you sure?")) {
@@ -39,13 +52,14 @@ const ViewProduct = () => {
     }, []);
 
     return (
+        <div>
         <div classname="ViewProducts">
 
 
-            <div id="bg" />
+            <div  />
 
             <div className="col flex-column col-md-11 ml-5" style={{ paddingTop: '30px' }}>
-                <div className="card product-card" >
+                <div className="card product-card" style={{backgroundColor:'#ADD8E6'}} >
                     < div className="card-body">
                         <h1 style={{ color: "Black" }}>Manage Products</h1>
                         <Link size="10px" type="button" to={{ pathname: "/Addproduct" }} className="btn btn-success">
@@ -57,12 +71,12 @@ const ViewProduct = () => {
             </div>
 
             <div className="col flex-column col-md-11 ml-5">
-                {product
+                {currentTableData
 
                     .map((item) => {
                         return (
 
-                            <div className="card product-card" >
+                            <div className="card product-card" style={{backgroundColor:'#ADD8E6'}} >
                                 <div className="card-body">
                                     <div className="row align-items-center">
                                         <div className="col-sm-2">
@@ -92,6 +106,14 @@ const ViewProduct = () => {
 
 
             </div>
+        </div>
+        <Pagination
+        className="pagination-bar"
+        currentPage={currentPage}
+        totalCount={product.length}
+        pageSize={PageSize}
+        onPageChange={page => setCurrentPage(page)}
+      />
         </div>
 
     );

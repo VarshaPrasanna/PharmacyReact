@@ -12,10 +12,9 @@ import ManageUsers from './components/Admin/AdminComponents/ManageUsers/ManageUs
 import Payment from './components/Payment/Payment';
 import ManageOrders from './components/Admin/AdminComponents/ManageOrders/ManageOrders';
 import Home from './components/Home/Home';
-
-
 import Cart from './components/Cart/Cart';
 import AdminAnalyitics from './components/Admin/AdminAnalyitics';
+import AdminRoutes from './components/AdminProtected';
 
 import {
   BrowserRouter,
@@ -40,57 +39,72 @@ import ManageQuery from './components/Admin/AdminComponents/ManageQuery/manage-q
 import DiscussionBoard from './components/discussion-board/DiscussionBoard';
 import ChangePassword from './components/change-password/ChangePassword';
 import UserAnalytics from './components/User-Profile/UserAnalytics';
-
+import ProtectedRoutes from './components/ProtectedRoutes';
 
 
 
 function App() {
   return (
 
-    <div>  {/* className="App" */}
+    <div>
 
       <BrowserRouter>
         <Routes>
 
-
+          {/* UNPROTECTED ROUTES */}
           <Route element={<Layout />}>
-            {/* ALL components which needs header should be placed inside layout tag */}
             <Route exact path="/" element={<Home />} />
-            <Route path="/prescription" element={<Prescription />} />
-            <Route exact path="discussion-board" element={<DiscussionBoard />} />
-            <Route path='/MyOrders' element={<MyOrders />} />
-
           </Route>
-
-          {/* ALL components which "do not" header  */}
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/login" element={<Login />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route exact path='/payment' element={<Payment />} />
-          <Route path='/product-list' element={<ProductList />} />
-          <Route path='/ManageOrders' element={<ManageOrders />} />
-          <Route exact path='/Myprofile' element={<UserAnalytics />} />
-          <Route exact path="/EditProfile" element={<EditProfile />} />
-          <Route path='/update-status/:id' element={<UpdateStatus />} />
-          <Route exact path="/ProductList" element={<ViewProduct />} />
-          <Route exact path="/Addproduct" element={<AddProduct />} />
-          <Route exact path="/UpdateProduct/:_id" element={<UpdateProduct />} />
           <Route exact path="/product-info/:id" element={<ProductInfo />} />
-          <Route exact path="/managePrescription" element={<ManagePrescription />} />
-          <Route path="/prescriptionReply/:_id" element={<PrescriptionReply />} />
+          <Route path='/product-list' element={<ProductList />} />
 
-          <Route exact path="/changePassword" element={<ChangePassword />} />
+          {/* PROTECTED ROUTES */}
+          <Route path="/" element={<ProtectedRoutes />}>
+            <Route element={<Layout />}>
+              <Route path="/prescription" element={<Prescription />} />
+              <Route exact path="discussion-board" element={<DiscussionBoard />} />
+              <Route path='/MyOrders' element={<MyOrders />} />
+            </Route>
+            <Route path="/cart" element={<Cart />} />
+            <Route exact path='/payment' element={<Payment />} />
+            <Route exact path='/Myprofile' element={<UserAnalytics />} />
+            <Route exact path="/EditProfile" element={<EditProfile />} />
+            <Route exact path="/changePassword" element={<ChangePassword />} />
+          </Route>
 
-          {/* All admin components to be placed inside Admin layout  */}
 
-          <Route element={<AdminLayout />}>
-            <Route exact path="/admin" element={<AdminAnalyitics />} />
-            <Route exact path="/ManageUsers" element={<ManageUsers />} />
 
-            <Route exact path="/ManageMessages" element={<ManageQuery />} />
+
+
+
+          {/* ADMIN ROUTES */}
+          <Route path="/" element={<AdminRoutes />}>
+            <Route element={<AdminLayout />}>
+              <Route exact path="/admin" element={<AdminAnalyitics />} />
+              <Route exact path="/ManageUsers" element={<ManageUsers />} />
+
+              <Route exact path="/ManageMessages" element={<ManageQuery />} />
+
+            </Route>
+
+            <Route path='/ManageOrders' element={<ManageOrders />} />
+            <Route path='/update-status/:id' element={<UpdateStatus />} />
+            <Route exact path="/ProductList" element={<ViewProduct />} />
+            <Route exact path="/Addproduct" element={<AddProduct />} />
+            <Route exact path="/UpdateProduct/:_id" element={<UpdateProduct />} />
+
+            <Route exact path="/managePrescription" element={<ManagePrescription />} />
+            <Route path="/prescriptionReply/:_id" element={<PrescriptionReply />} />
+            {/* All admin components to be placed inside Admin layout  */}
+
+
 
           </Route>
-          {/* End of admin layout */}
+
+
+
 
 
 
