@@ -51,18 +51,14 @@ const Login = () => {
 	const validate=(values)=>{
 		const errors={};
 		
-		const pass=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{5,}/
-		const userVal=/^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$/
+		// const pass=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{5,}/
+		// const userVal=/^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$/
 	
 		if(!values.username){
 			errors.username="Username is required "
-		}else if(!userVal.test(values.username)){
-			errors.username="Invalid username(Must contain one alphabet and one number)"
 		}
 		if(!values.password){
 			errors.password="Password is required "
-		}else if(!pass.test(values.password)){
-			errors.password="Password must  contain atleast 1 (uppercase,lowercase,number,special character)"
 		}
 		
 
@@ -85,8 +81,7 @@ const Login = () => {
 							name="username"
 							onChange={handleChange}
 							value={data.username}
-							pattern= "[A-Za-z]+[0-9]+"
-							required
+							
 							className={styles.input}
 						/>
 						{Valerror.username && <span className={styles.error_msg}>{Valerror.username}</span>}
@@ -96,7 +91,7 @@ const Login = () => {
 							name="password"
 							onChange={handleChange}
 							value={data.password}
-							required
+							
 							className={styles.input}
 						/>
 						{Valerror.password && <span className={styles.error_msg}>{Valerror.password}</span>}

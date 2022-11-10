@@ -8,7 +8,7 @@ export default function DiscussionBoard() {
 
     const [messages, setMessages] = useState([]);
     const [modal, setModal] = useState(false);
-    
+
     const [data, setData] = useState({
         userId: localStorage.getItem('userId'),
         firstName: localStorage.getItem('userName'),
@@ -25,6 +25,21 @@ export default function DiscussionBoard() {
             console.log(err);
         }
     }
+    const [isLogged, setisLogged] = useState(false);
+
+    useEffect(() => {
+        checkStorage();
+        return () => { };
+    }, [isLogged]);
+
+    function checkStorage() {
+        if (localStorage.getItem("userId")) {
+            setisLogged(true);
+        } else {
+            setisLogged(false);
+        }
+    }
+
 
     useEffect(() => {
         getMessages();
@@ -40,8 +55,7 @@ export default function DiscussionBoard() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        //setData({ ...data, [e.target.name]: e.target.value });
-        //console.log(e);
+
         try {
             const url = "http://localhost:3000/message";
             const res = await axios.post(url, data);
@@ -70,13 +84,27 @@ export default function DiscussionBoard() {
                         </div>
                     </div>
                 </div>
+                {isLogged ? (
+                    <>
+                        <button type="button" class="button-53 mb-5" onClick={modalToggle} ><svg
+                            xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-plus-circle-fill mt-1 mr-2" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                        </svg>Add new query</button>
+                    </>
+                ) : (
+                    <>
+                        <button type="button" class="button-53 mb-5" ><svg
+                            xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-plus-circle-fill mt-1 mr-2" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                        </svg>Login to add your query</button>
+                    </>
+                )}
 
-                <button type="button" class="button-53 mb-5" onClick={modalToggle} ><svg
-                    xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                    class="bi bi-plus-circle-fill mt-1 mr-2" viewBox="0 0 16 16">
-                    <path
-                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-                </svg>Add new query</button>
+
 
                 <Modal show={modal} centered onHide={modalToggle} className="text-center">
                     <Modal.Header closeButton>
@@ -101,6 +129,7 @@ export default function DiscussionBoard() {
                         </Modal.Footer>
                     </Form>
                 </Modal>
+
 
                 {messages.map(message => {
                     return (
