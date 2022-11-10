@@ -23,7 +23,7 @@ const Signup = () => {
 	const ConfirmPassword = ({ currentTarget: input })=>{
 
        if(data.password !== input.value){
-		window.alert("confirm password should match with password");
+		window.alert("Passwords do not match!");
 
 	   }
 	}
