@@ -32,7 +32,7 @@ const Signup = () => {
 		setValerror(validate(data))
 		setisSubmit(true)
 		
-		
+		if(Object.keys(Valerror).length===0 && isSubmit){
 		try {
 			const url = "http://localhost:3000/auth/register";
 			const { data: res } = await axios.post(url, data);
@@ -48,6 +48,7 @@ const Signup = () => {
 				setError(error.response.data.message);
 			}
 		}
+	}
 	};
 	useEffect(()=>{
 		console.log(Valerror)
@@ -181,7 +182,7 @@ const Signup = () => {
 						/>
 						{Valerror.confirmPass && <span className={styles.error_msg}>{Valerror.confirmPass}</span>}
 
-						
+						{/* <input type="submit" className={styles.green_btn} value="sign Up"/> */}
 						<button type="submit" className={styles.green_btn}>
 							Sign Up
 						</button>
