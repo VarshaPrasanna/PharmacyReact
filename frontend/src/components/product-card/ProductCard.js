@@ -2,11 +2,25 @@ import { Link } from 'react-router-dom';
 import { addProductToCart } from '../../service/cart.service'
 import './ProductCard.css';
 import { Modal, Button, CloseButton } from 'react-bootstrap';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function ProductCard(props) {
 
     const [show, setShow] = useState(false);
+    const [isLogged, setisLogged] = useState(false);
+
+    useEffect(() => {
+        checkStorage();
+        return () => { };
+    }, [isLogged]);
+
+    function checkStorage() {
+        if (localStorage.getItem("userId")) {
+            setisLogged(true);
+        } else {
+            setisLogged(false);
+        }
+    }
 
     const addToCart = (product) => {
         addProductToCart(product, 1);
@@ -31,11 +45,6 @@ function ProductCard(props) {
                                     <p className="text-info m-0 p-0"> {props.product.categories} </p>
                                 </p>
                             </div>
-                            {/* <div>
-                                            <p className="card-text text-truncate text-muted">
-                                                {product.description}
-                                            </p>
-                                        </div> */}
                             <div>
                                 <p className="text-dark"><b> ₹{props.product.price}</b></p>
                             </div>
@@ -44,19 +53,29 @@ function ProductCard(props) {
                             <button
                                 type="button"
                                 className="btn btn-info mt-0 mb-1"
-                                data-toggle="modal"
-                                data-target="#modalCart"
                                 onClick={() => addToCart(props.product)} >
                                 Add to Cart
                             </button>
                             <Modal size="sm" show={show} onHide={handleClose} className="text-center">
                                 <Modal.Header closeButton>
                                 </Modal.Header>
-                                <Modal.Body>Product added to cart! </Modal.Body>
-                                <Modal.Footer>
-                                    <Button variant="info" href='/cart'>Go to Cart</Button>
-                                    <Button variant="outline-info" onClick={handleClose}>Close</Button>
-                                </Modal.Footer>
+                                {isLogged ? (
+                                    <>
+                                        <Modal.Body>Product added to cart! </Modal.Body>
+                                        <Modal.Footer>
+                                            <Button variant="info" href='/cart'>Go to Cart</Button>
+                                            <Button variant="outline-info" onClick={handleClose}>Close</Button>
+                                        </Modal.Footer>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Modal.Body>Please Login or Signup before adding products to cart.</Modal.Body>
+                                        <Modal.Footer>
+                                            <Button variant="info" href='/login'>Login</Button>
+                                            <Button variant="info" href='/signup'>Sign up</Button>
+                                        </Modal.Footer>
+                                    </>
+                                )}
                             </Modal>
                         </div>
                     </div>
