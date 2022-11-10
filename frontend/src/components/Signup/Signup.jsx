@@ -33,10 +33,11 @@ const Signup = () => {
 		setisSubmit(true)
 		
 		
+		
 		try {
 			const url = "http://localhost:3000/auth/register";
 			const { data: res } = await axios.post(url, data);
-			navigate("/login");
+			
 			console.log(res.message);
 			
 		} catch (error) {
@@ -53,6 +54,7 @@ const Signup = () => {
 		console.log(Valerror)
 		if(Object.keys(Valerror).length===0 && isSubmit){
 			console.log(data)
+			navigate("/login");
 		}
 	},[Valerror]);
 
