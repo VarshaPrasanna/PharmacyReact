@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import PopularProducts from "./popularProducts/PopularProducts";
 import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
 
 export default function Home() {
 
@@ -29,6 +30,7 @@ export default function Home() {
 
     return (
         <>
+
             <HomeCarousel />
             <hr />
             <div className="categories">
@@ -38,7 +40,7 @@ export default function Home() {
                 <Row>
 
                     <Col>
-                        <Link to={{ pathname: '/product-list' }} state={{type: 'Nutrients'}}>
+                        <Link to={{ pathname: '/product-list' }} state={{ type: 'Nutrients' }}>
                             <Card className="category">
                                 <Card.Img variant="top" src="https://newassets.apollo247.com/pub/media/catalog/category/h_and_n.png" className="category-img" />
                                 <Card.Body>
@@ -49,7 +51,7 @@ export default function Home() {
                     </Col>
 
                     <Col>
-                    <Link to={{ pathname: '/product-list' }} state={{type: 'Ayurveda'}}>
+                        <Link to={{ pathname: '/product-list' }} state={{ type: 'Ayurveda' }}>
                             <Card className="category">
                                 <Card.Img variant="top" src="https://newassets.apollo247.com/pub/media/catalog/category/ayurveda.jpg" className="category-img" />
                                 <Card.Body>
@@ -60,7 +62,7 @@ export default function Home() {
                     </Col>
 
                     <Col>
-                    <Link to={{ pathname: '/product-list' }} state={{type: 'Health devices'}}>
+                        <Link to={{ pathname: '/product-list' }} state={{ type: 'Health devices' }}>
                             <Card className="category">
                                 <Card.Img variant="top" src="https://newassets.apollo247.com/pub/media/catalog/category/health_devices_22oct.png" />
                                 <Card.Body>
@@ -71,7 +73,7 @@ export default function Home() {
                     </Col>
 
                     <Col>
-                    <Link to={{ pathname: '/product-list' }} state={{type: 'Covid essentials'}}>
+                        <Link to={{ pathname: '/product-list' }} state={{ type: 'Covid essentials' }}>
                             <Card className="category">
                                 <Card.Img variant="top" src="https://newassets.apollo247.com/pub/media/catalog/category/logo.jpg" />
                                 <Card.Body>
