@@ -65,7 +65,6 @@ function App() {
           <Route path="/" element={<ProtectedRoutes />}>
             <Route element={<Layout />}>
               <Route path="/prescription" element={<Prescription />} />
-
               <Route path='/MyOrders' element={<MyOrders />} />
             </Route>
             <Route path="/cart" element={<Cart />} />
