@@ -140,10 +140,9 @@ function EditProfile(props) {
 
                     <ul className="instructions">
                         <li>
-                            Username should begin with a alphabetic character, should be between 4
-                            to 32 letters.
+                            Username should contain alphabetic character, and must have atleast 1 number
                         </li>
-                        <li>Password 8 character. 1 lower 1 upper 1 special symbol 1 number</li>
+                        <li>Password must contain 1 lower 1 upper 1 special symbol 1 number</li>
                     </ul>
 
                 </div>

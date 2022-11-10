@@ -83,7 +83,7 @@ function Prescription() {
         <div className="container mr-60">
             <div className="formdesign">
                 <div className="form-row">
-                    <input type="text" className="form-control" value={firstName}></input>
+                    {/* <input type="text" className="form-control" value={firstName}></input> */}
                     <label className="text-white">Select Image :</label>
                     <input multiple type="file" className="form-control" name="upload_file" onChange={(e) => setImage(e.target.files[0])} />
                 </div>
