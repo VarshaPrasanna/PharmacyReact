@@ -55,22 +55,6 @@ function ManagePrescription() {
     }, {})
 
 
-    const submit = () => {
-        navigate('/prescription')
-        const formdata = new FormData();
-        formdata.append('firstName', firstName);
-        formdata.append('userId', userId);
-        formdata.append('prescriptionImage', prescriptionImage);
-        axios.post("http://localhost:3000/prescription/", formdata)
-
-            .then(res => { // then print response status
-                console.warn(res);
-                console.log(res.data.savedPrescription.imageUrl)
-                return setImageUrl(res.data.savedPrescription.imageUrl)
-            })
-    }
-
-
     return (
 
 
