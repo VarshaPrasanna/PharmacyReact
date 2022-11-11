@@ -19,7 +19,7 @@ const OrderController = {
             })
         }
     },
-// get order
+    // get order
     async get_order(req, res) {
         try {
             const orders = await Order.findById(req.params.id);
