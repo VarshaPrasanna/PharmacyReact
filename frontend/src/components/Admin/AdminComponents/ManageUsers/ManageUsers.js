@@ -94,7 +94,7 @@ const ManageUsers = () => {
                                                     <th scope="col">Gender</th>
                                                     <th scope="col">username</th>
                                                     <th scope="col">Email</th>
-                                                    <th scope="col">isAdmin</th>
+                                                    {/* <th scope="col">isAdmin</th> */}
                                                     <th scope="col">Delete</th>
                                                 </tr>
                                             </thead>
@@ -118,7 +118,7 @@ const ManageUsers = () => {
                                                                 <td>{item.gender}</td>
                                                                 <td>{item.username}</td>
                                                                 <td>{item.email}</td>
-                                                                <td>{item.isAdmin}</td>
+                                                                {/* <td>{item.isAdmin}</td> */}
                                                                 <td>
 
                                                                     <a role="button" onDelete onClick={() => removeUser(item._id)}
