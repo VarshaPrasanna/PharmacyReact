@@ -66,7 +66,7 @@ function AddProduct(props) {
                             name="price"
                             className="form-control"
                             onChange={handleChange}
-                            pattern= '[0-9]'
+                            pattern='[0-9]'
                             required
                         />
                     </div>
