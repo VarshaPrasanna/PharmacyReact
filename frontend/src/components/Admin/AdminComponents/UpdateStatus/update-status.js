@@ -28,12 +28,15 @@ const UpdateStatus = () => {
     console.log(order);
 
     async function udpateStatus() {
+      if(window.confirm("are you sure")){
+      
         try {
             const response = await axios.put(`http://localhost:3000/orders/${order._id}`, order);
             navigate("/ManageOrders")
         } catch (error) {
             console.log(error);
         }
+      }
     }
     function handleSubmit(event){
       event.preventDefault();
