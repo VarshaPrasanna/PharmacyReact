@@ -9,6 +9,7 @@ function Header() {
     const [isLogged, setisLogged] = useState(false);
 
     useEffect(() => {
+
         checkStorage();
         return () => { };
     }, [isLogged]);

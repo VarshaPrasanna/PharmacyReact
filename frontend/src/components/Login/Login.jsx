@@ -36,8 +36,10 @@ const Login = () => {
               }
               else {
                 navigate('/');
+				window.location.reload()
                 localStorage.setItem('role', 'user')
               }
+			  
 		} catch (error) {
 			if (
 				error.response &&

@@ -80,6 +80,9 @@ const Signup = () => {
 		}else if(!regex.test(values.email)){
 			errors.email="Not a valid email Format"
 		}
+		if(!data.gender){
+			errors.gender="Select a Value"
+		}
 		if(!values.password){
 			errors.password="Password is required "
 		}else if(!pass.test(values.password)){
@@ -149,7 +152,7 @@ const Signup = () => {
 							className={styles.input}
 						/>
 						{Valerror.username && <span className={styles.error_msg}>{Valerror.username}</span>}
-						<div className='row' >
+						<div className='row'  required>
                         <input
 							type="radio"
 							name="gender"
@@ -163,6 +166,7 @@ const Signup = () => {
 							value="Female"
 						/>Female
 						</div>
+						{Valerror.gender && <span className={styles.error_msg}>{Valerror.gender}</span>}
 						<input
 							type="password"
 							placeholder="Password"
