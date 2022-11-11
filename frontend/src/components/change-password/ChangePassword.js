@@ -48,13 +48,15 @@ export default function ChangePassword() {
                 <div className="col passform-container">
                     <Form className="passform-wrapper" onSubmit={handleSubmit}>
                         <Form.Group controlId="password">
-                            <Form.Label>Enter New Password</Form.Label>
+                            <Form.Label>Enter New Password <br />
+                            </Form.Label>
                             <Form.Control type="password"
                                 name='password'
                                 pattern="^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{5,}" 
                                 value={data.password}
                                 onChange={handleChange}
                                 required />
+                    <small>Password must contain atleast 1 lowercase, 1 uppercase, 1 special symbol and 1 number.</small>
                         </Form.Group>
                         <Form.Group controlId="confirmPassword">
                             <Form.Label>Confirm Password</Form.Label>
