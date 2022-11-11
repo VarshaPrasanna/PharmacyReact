@@ -11,7 +11,7 @@ router.post('/', OrderController.create_order);
 
 router.put('/:id', OrderController.update_order);
 
-router.delete('/:id', isAdminVerifier, OrderController.delete_order);
+router.delete('/:id', OrderController.delete_order);
 
 
 module.exports = router;
