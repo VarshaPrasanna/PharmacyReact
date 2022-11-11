@@ -9,7 +9,7 @@ import ProductCard from "../../product-card/ProductCard";
 function PopularProducts() {
 
     const [popProducts, setPopProducts] = useState([]);
-    const [error, setError] = useState(false)
+    //const [error, setError] = useState(false)
 
     async function getPopularProducts() {
         try {
@@ -17,17 +17,15 @@ function PopularProducts() {
             const data = await axios.get("http://localhost:3000/orders/popular")
             console.log("pop", data.data);
             data.data.data.map(dta => {
-                products.push(dta.product[0])
-                if (dta.product == []) {
-                    setError(true);
+                if (dta.product.length != 0) {
+                    products.push(dta.product[0])
                 }
             })
             // console.log("test", test)
-            if (!error) {
-                //popProducts = products;
-                setPopProducts(products);
-                console.log("test", popProducts);
-            }
+
+            //popProducts = products;
+            setPopProducts(products);
+
         } catch (e) {
             console.log(e);
         }
@@ -35,12 +33,13 @@ function PopularProducts() {
 
     useEffect(() => {
         getPopularProducts();
+        console.log("test", popProducts);
         /* if (popProducts.length == 0) {
             getPopularProducts();
         } */
     }, []);
 
-    if (!error) {
+    if (popProducts.length > 0) {
         return (
             <div className="categories">
                 <h1 className="section-heading mb-5">Popular Products</h1>

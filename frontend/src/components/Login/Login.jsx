@@ -3,7 +3,6 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
-import AdminApp from "../Admin/AdminApp";
 
 const Login = () => {
 	const [data, setData] = useState({ username: "", password: "" });

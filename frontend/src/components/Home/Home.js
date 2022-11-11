@@ -97,8 +97,9 @@ export default function Home() {
                 })}
 
             </div>
-
-            <PopularProducts />
+            <section>
+                <PopularProducts />
+            </section>
             <Footer />
         </>
     );
