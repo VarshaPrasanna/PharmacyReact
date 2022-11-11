@@ -16,20 +16,15 @@ export const createCart = async () => {
 }
 
 export const getCart = async () => {
-    if (localStorage.getItem('cartId')) {
-        try {
-            const data = await axios.get(`http://localhost:3000/carts/${userId}`);
-            console.log(data);
-            localStorage.setItem('cartId', data.data.cart._id);
-            return data.data.cart.products;
-        } catch (err) {
-            console.log(err);
-            return createCart();
-        }
-    } else {
+    try {
+        const data = await axios.get(`http://localhost:3000/carts/${userId}`);
+        console.log(data);
+        localStorage.setItem('cartId', data.data.cart._id);
+        return data.data.cart.products;
+    } catch (err) {
+        console.log(err);
         return createCart();
     }
-
 }
 
 export const addProductToCart = async (product, q) => {
