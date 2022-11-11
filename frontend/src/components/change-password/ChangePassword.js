@@ -28,8 +28,9 @@ export default function ChangePassword() {
                     password: data.password
                 });
                 console.log(res);
-                /* navigate('/Myprofile'); */
                 setData({ isSubmitted: true });
+                alert('Password changed successfully');
+                navigate('/Myprofile');
             } catch (err) {
                 console.log(err);
             }
