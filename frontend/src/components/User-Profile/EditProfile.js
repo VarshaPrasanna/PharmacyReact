@@ -19,6 +19,7 @@ function EditProfile(props) {
     const { _id } = useParams();
 
 
+
     useEffect(
         function () {
             async function getUserprofile() {
@@ -81,7 +82,7 @@ function EditProfile(props) {
         console.log(Valerror)
         if (Object.keys(Valerror).length === 0 && isSubmit) {
             console.log(editUser);
-            
+
             UpdateUser();
             navigate(`/Myprofile`);
         }

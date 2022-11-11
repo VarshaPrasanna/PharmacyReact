@@ -11,6 +11,12 @@ const UserProfile = (props) => {
     const userId = localStorage.getItem('userId')
     const fullname = localStorage.getItem('userName')
     const [userData, setuserData] = useState([]);
+    const logout = () => {
+        localStorage.removeItem("userId");
+        localStorage.clear();
+        window.location.reload();
+    };
+
     const getUserprofile = async () => {
         try {
             const data = await axios.get(
@@ -72,7 +78,10 @@ const UserProfile = (props) => {
                                 <a ><Link to={{ pathname: `/EditProfile` }} >Edit Profile </Link></a>
                             </li>
                             <li>
-                                <a >Logout</a>
+                                <a onClick={logout}>
+
+                                    <span>Logout</span>
+                                </a>
                             </li>
                         </ul>
                     </nav>
