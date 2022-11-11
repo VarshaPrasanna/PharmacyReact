@@ -63,30 +63,27 @@ function EditProfile(props) {
 
 
     }
+    async function UpdateUser() {
+        try {
+            await axios.put(`http://localhost:3000/users/update/${editUser._id}`, editUser);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     function handleSubmit(event) {
         event.preventDefault();
         setValerror(validate(editUser));
         setisSubmit(true);
 
-        async function UpdateUser() {
-            try {
-                await axios.put(`http://localhost:3000/users/update/${editUser._id}`, editUser);
-
-                navigate(`/Myprofile`)
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        if (Object.keys(Valerror).length === 0 && isSubmit) {
-            setisSubmit(true);
-            UpdateUser();
-        }
     }
     useEffect(() => {
         console.log(Valerror)
         if (Object.keys(Valerror).length === 0 && isSubmit) {
-            console.log(editUser)
+            console.log(editUser);
+            
+            UpdateUser();
+            navigate(`/Myprofile`);
         }
     }, [Valerror]);
 
