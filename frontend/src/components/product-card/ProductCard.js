@@ -11,7 +11,7 @@ function ProductCard(props) {
 
     useEffect(() => {
         checkStorage();
-        return () => { };
+        //return () => { };
     }, [isLogged]);
 
     function checkStorage() {

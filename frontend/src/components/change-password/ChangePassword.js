@@ -51,6 +51,7 @@ export default function ChangePassword() {
                             <Form.Label>Enter New Password</Form.Label>
                             <Form.Control type="password"
                                 name='password'
+                                pattern="^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{5,}" 
                                 value={data.password}
                                 onChange={handleChange}
                                 required />
