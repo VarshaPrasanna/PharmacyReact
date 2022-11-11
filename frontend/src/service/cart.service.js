@@ -61,7 +61,8 @@ export const addProductToCart = async (product, q) => {
 }
 
 export const deleteCart = async () => {
-    const data = await axios.delete(`http://localhost:3000/carts/${userId}`);
+    const cartId = localStorage.getItem('cartId');
+    const data = await axios.delete(`http://localhost:3000/carts/${cartId}`);
     localStorage.removeItem('cartId');
     console.log(data);
 }
