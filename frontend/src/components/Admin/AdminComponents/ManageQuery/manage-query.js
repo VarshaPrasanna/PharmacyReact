@@ -11,7 +11,6 @@ const ManageQuery = () => {
   const [modal, setModal] = useState(false);
   const [data, setData] = useState({
     userId: localStorage.getItem('userId'),
-    firstName: localStorage.getItem('userName'),
     replies: ''
   });
   const [id, setId] = useState('');
