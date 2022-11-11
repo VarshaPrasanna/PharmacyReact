@@ -48,7 +48,11 @@ const ManageUsers = () => {
         if (window.confirm("Are you sure?")) {
             await axios.delete("http://localhost:3000/users/" + id)
 
-                .then(console.log("Deleted"))
+                .then(console.log("Deleted"),
+                    window.location.reload()
+                )
+
+
                 .catch(err => console.log(err));
         }
     }
