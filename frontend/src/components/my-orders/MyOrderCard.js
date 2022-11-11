@@ -18,7 +18,7 @@ export default function MyOrderCard(props) {
                             Order details
                         </p>
 
-                        <p className="small text-muted mb-0">orderId:{props.order._id}  </p>
+                        {/* <p className="small text-muted mb-0">orderId:{props.order._id}  </p> */}
                         <a align="center" role="button" onClick={handleExportWithComponent}
                             class="button-5">DOWNLOAD PDF
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">

@@ -92,7 +92,7 @@ const CartController = {
             await Cart.findOneAndDelete(req.params.id);
             res.status(200).json({
                 type: "success",
-                message: "Product has been deleted successfully"
+                message: "Cart has been deleted successfully"
             });
         } catch (err) {
             res.status(500).json({
