@@ -88,7 +88,7 @@ const ManageUsers = () => {
                                         <table class="table table-striped table-dark table-borderless" align="center">
                                             <thead class="thead-dark">
                                                 <tr>
-                                                    <th scope="col">User ID</th>
+                                                    {/* <th scope="col">User ID</th> */}
                                                     <th scope="col">First Name</th>
                                                     <th scope="col">Last Name</th>
                                                     <th scope="col">Gender</th>
@@ -112,7 +112,7 @@ const ManageUsers = () => {
                                                     .map((item) => {
                                                         return (
                                                             <tr >
-                                                                <td>{item._id} </td>
+                                                                {/* <td>{item._id} </td> */}
                                                                 <td>{item.firstName}</td>
                                                                 <td>{item.lastName}</td>
                                                                 <td>{item.gender}</td>
