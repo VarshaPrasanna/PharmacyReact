@@ -55,7 +55,7 @@ const ManageOrders = () => {
                     align="center">
                     <thead className="thead-dark">
                       <tr>
-                        <th scope="col">UserId</th>
+                        <th scope="col">orderId</th>
                         <th scope="col">Amount</th>
                         <th scope="col">Address</th>
                         <th scope="col">Status</th>
@@ -67,7 +67,7 @@ const ManageOrders = () => {
                       {currentTableData.map((item) => {
                         return (
                           <tr>
-                            <td scope="row">{item.userId} </td>
+                            <td scope="row">{item._id} </td>
                             <td>₹ {item.amount} </td>
                             <td>{Object.keys(item.address)[0]} : {item.address[Object.keys(item.address)[0]]} <br />
                               {Object.keys(item.address)[1]}: {item.address[Object.keys(item.address)[1]]} <br />
