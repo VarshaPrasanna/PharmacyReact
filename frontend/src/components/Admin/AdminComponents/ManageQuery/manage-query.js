@@ -88,7 +88,7 @@ const ManageQuery = () => {
                         <thead>
                           <tr>
                             <th scope="col">User Name</th>
-                            <th scope="col">Message ID</th>
+                            {/* <th scope="col">Message ID</th> */}
                             <th scope="col">Message</th>
                             <th scope="col">Replies</th>
                             <th scope="col">Date</th>
@@ -100,7 +100,7 @@ const ManageQuery = () => {
                             return (
                               <tr>
                                 <th scope="row">{msg.firstName}</th>
-                                <td>{msg._id}</td>
+                                {/* <td>{msg._id}</td> */}
                                 <td>{msg.message}</td>
                                 <td>{msg.replies}</td>
                                 <td>{msg.date.slice(0, 10)}</td>
