@@ -17,7 +17,7 @@ const ManageOrders = () => {
         "http://localhost:3000/orders/"
       );
       console.log(data.data);
-      setOrder(data.data.orders);
+      setOrder(data.data.orders.reverse());
       setCurrentPage(1);          
     } catch (e) {
       console.log(e);
