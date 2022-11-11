@@ -4,7 +4,6 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Col, Form, Row, Table } from "react-bootstrap";
 import { deleteCart, getCart } from '../../service/cart.service';
-import { DatePicker } from 'antd';
 import '../../../node_modules/antd/dist/antd.css'
 import './Payment.css';
 
@@ -20,8 +19,6 @@ export default function Payment() {
         pincode: "",
         state: "",
     });
-    const [error, setError] = useState("");
-    const navigate = useNavigate();
 
     const handleChange = (e) => {
         console.log(e.target);
@@ -44,13 +41,7 @@ export default function Payment() {
             deleteCart();
             setSubmit(true);
         } catch (error) {
-            if (
-                error.response &&
-                error.response.status >= 400 &&
-                error.response.status <= 500
-            ) {
-                setError(error.response.data.message);
-            }
+            console.log(error);
         }
     };
 
@@ -124,8 +115,9 @@ export default function Payment() {
                                     </Col>
                                     <Col>
                                         <Form.Group controlId="cardName">
-                                            <Form.Label>Cardholder's Name</Form.Label>
+                                            <Form.Label>Cardholder's Name (min. 3 characters)</Form.Label>
                                             <Form.Control type="text"
+                                                pattern="[a-zA-z]{3,}"
                                                 required />
                                         </Form.Group>
                                         <Form.Group controlId="cardNumber">
@@ -138,18 +130,16 @@ export default function Payment() {
                                             <Col>
                                                 <Form.Group controlId="expDate">
                                                     <Form.Label>Exp Date</Form.Label>
-                                                    <DatePicker
-                                                        name="startDate"
-                                                        picker='month'
-                                                        format='MM/YY'
-                                                    />
+                                                    <Form.Control
+                                                        type="month"
+                                                        required />
                                                 </Form.Group>
                                             </Col>
                                             <Col>
                                                 <Form.Group controlId="cvv">
-                                                    <Form.Label>CVV (3-digit)</Form.Label>
-                                                    <Form.Control type="text"
-                                                        pattern="[0-9]{3}"
+                                                    <Form.Label>CVV (3 or 4-digit)</Form.Label>
+                                                    <Form.Control type="password"
+                                                        pattern="[0-9]{3,4}"
                                                         required />
                                                 </Form.Group>
                                             </Col>
