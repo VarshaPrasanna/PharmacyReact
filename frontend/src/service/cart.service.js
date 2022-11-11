@@ -62,6 +62,7 @@ export const addProductToCart = async (product, q) => {
 
 export const deleteCart = async () => {
     const cartId = localStorage.getItem('cartId');
+    //delete cart from backend
     const data = await axios.delete(`http://localhost:3000/carts/${cartId}`);
     localStorage.removeItem('cartId');
     console.log(data);
