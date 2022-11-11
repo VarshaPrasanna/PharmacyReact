@@ -10,7 +10,6 @@ const ManageQuery = () => {
   const [message, setMessage] = useState([]);
   const [modal, setModal] = useState(false);
   const [data, setData] = useState({
-    userId: localStorage.getItem('userId'),
     replies: ''
   });
   const [id, setId] = useState('');
