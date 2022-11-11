@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const userId = localStorage.getItem('userId');
 
-let cart = [];
+
 
 export const createCart = async () => {
     const data = await axios.post('http://localhost:3000/carts', {
@@ -34,6 +34,7 @@ export const getCart = async () => {
 
 export const addProductToCart = async (product, q) => {
     //console.log("product", product);
+    let cart = [];
     await getCart().then(data => {
         cart = data
         console.log(cart);
